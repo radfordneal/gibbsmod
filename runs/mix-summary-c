@@ -1,0 +1,440 @@
+
+R version 4.1.2 (2021-11-01) -- "Bird Hippie"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # PLOT DATA SUMMARY FROM MIXTURE MODEL RUNS.
+> 
+> source("plot.r")
+> source("mix.r")
+> 
+> args <- commandArgs(trailingOnly=TRUE)   # Run type and number from after --args
+> if (length(args)<1)
++ { stop("Need run type as argument")
++ }
+> rtype <- args[1]
+> 
+> if (length(args)<2)
++ { stop("Need number of runs as argument")
++ }
+> nruns <- as.numeric(args[2])             # Number of runs to use
+> runs <- 0:(nruns-1)
+> 
+> 
+> # PRINT SELF-TRANSITION DATA.
+> 
+> print (read_self (paste0("runs/mix-res-",rtype), runs))
+$self
+         Random Shuffled Sequential Random order Random order x4
+UNAM  0.6391880           0.6388407    0.6391965       0.6389903
+ZDNAM 0.6052622           0.6052605    0.6055632       0.6053153
+ST    0.6054907           0.6052895    0.6050035       0.6051309
+UDST  0.6051618           0.6054812    0.6053212       0.6050321
+FSS   0.6074549           0.6072570    0.6072199       0.6072369
+ZFSS  0.6051547           0.6051667    0.6052844       0.6052750
+
+$prhalf
+         Random Shuffled Sequential Random order Random order x4
+UNAM  0.8581182           0.8579369    0.8580283       0.8579930
+ZDNAM 0.8579614           0.8580569    0.8581129       0.8580953
+ST    0.8581232           0.8580416    0.8580086       0.8581270
+UDST  0.8580089           0.8581608    0.8580525       0.8580341
+FSS   0.8581980           0.8580834    0.8579801       0.8580912
+ZFSS  0.8580970           0.8579887    0.8580632       0.8580861
+
+$self_pr
+         Random Shuffled Sequential Random order Random order x4
+UNAM  0.6391525           0.6388973    0.6391615       0.6390139
+ZDNAM 0.6052886           0.6052688    0.6054992       0.6052839
+ST    0.6054706           0.6053357    0.6050480       0.6051600
+UDST  0.6052051           0.6054253    0.6053447       0.6051039
+FSS   0.6073723           0.6073048    0.6071725       0.6072275
+ZFSS  0.6051658           0.6051925    0.6052858       0.6052971
+
+$min_self
+         Random Shuffled Sequential Random order Random order x4
+UNAM  0.6053672           0.6052747    0.6053951       0.6053171
+ZDNAM 0.6053068           0.6052973    0.6054283       0.6052509
+ST    0.6054830           0.6053783    0.6050957       0.6051995
+UDST  0.6052508           0.6054237    0.6053622       0.6051541
+FSS   0.6054265           0.6053782    0.6052407       0.6053041
+ZFSS  0.6051867           0.6052267    0.6052771       0.6053146
+
+> 
+> 
+> # COMPUTE AND PLOT THE ASYMPTOTIC VARIANCES.
+> 
+> width <- 7
+> height <- 9
+> 
+> asv <- NULL
+> 
+> for (runn in runs)
++ {
++   load (paste0("runs/mix-res-",rtype,runn))
++   methods <- rownames(res)
++   scans <- colnames(res)
++ 
++   asymvar <- list()
++ 
++   pdf(paste0("runs/mix-cl1-",rtype,runn,".pdf"),width=width,height=height)
++   
++   asymvar <- c (asymvar, cl1=list(
++    acv_plots ("Obs 1 in cluster 1", methods, scans,
++               maxlag=200.5*n, maxvar=0.12, mean_to_use=1/X,
++               data=res, sub="cl1"
++             )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/mix-eq10-",rtype,runn,".pdf"),width=width,height=height)
++   
++   asymvar <- c (asymvar, eq10=list(
++    acv_plots ("Obs 10 cluster size", methods, scans,
++               maxlag=15.5*n, maxvar=3.5, 
++               data=res, sub="eq10"
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/mix-eq30-",rtype,runn,".pdf"),width=width,height=height)
++   
++   asymvar <- c (asymvar, eq30=list(
++    acv_plots ("Obs 30 cluster size", methods, scans,
++               maxlag=10.5*n, maxvar=7, 
++               data=res, sub="eq30"
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/mix-cl1t-",rtype,runn,".pdf"),width=width,height=height)
++   
++   asymvar <- c (asymvar, cl1t=list(
++    acv_plots ("Obs 1 in cluster 1", methods, scans,
++               maxlag=200, maxvar=0.12, mean_to_use=1/X,
++               data=res, sub="cl1", thin=n
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/mix-eq10t-",rtype,runn,".pdf"),width=width,height=height)
++   
++   asymvar <- c (asymvar, eq10t=list(
++    acv_plots ("Obs 10 cluster size", methods, scans,
++               maxlag=15, maxvar=3.5, 
++               data=res, sub="eq10", thin=n
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/mix-eq30t-",rtype,runn,".pdf"),width=width,height=height)
++   
++   asymvar <- c (asymvar, eq30t=list(
++    acv_plots ("Obs 30 cluster size", methods, scans,
++               maxlag=10, maxvar=7, 
++               data=res, sub="eq30", thin=n
++              )))
++   
++   dev.off()
++ 
++   if (is.null(asv))
++   { asv <- rep (list(array(0,c(dim(asymvar[[1]]),length(runs)))),
++                 length(asymvar))
++     names(asv) <- names(asymvar)
++     for (i in 1:length(asymvar))
++     { rownames(asv[[i]]) <- rownames(asymvar[[i]])
++       colnames(asv[[i]]) <- colnames(asymvar[[i]])
++     }
++   }
++ 
++   for (i in 1:length(asymvar))
++   { asv[[i]][,,runn+1] <- asymvar[[i]]
++   }
++ }
+> 
+> print(asv)
+$cl1
+, , 1
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  181.7095            79.35393    110.14552        84.33093
+ZDNAM 184.6345            65.68108    102.86362        72.61508
+ST    167.6542            72.06017     85.39368        83.61896
+UDST  182.7433            71.90137     89.33350        82.04821
+FSS   175.9432            74.27062     91.57006        70.79252
+ZFSS  153.1196            77.26781     91.58354        86.96002
+
+, , 2
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  169.4839            68.17201    107.78833        89.98464
+ZDNAM 179.0743            60.68001    102.58006        71.76742
+ST    193.7788            70.00166     88.72298        78.57290
+UDST  175.6116            64.11177    102.60024        73.30801
+FSS   186.1886            67.55765     97.22479        76.32587
+ZFSS  172.8784            70.79318    106.72541        76.80840
+
+, , 3
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  159.9016            81.01276    101.55210        88.23366
+ZDNAM 175.5943            79.51936    103.75718        75.47051
+ST    180.0341            76.98722    100.08294        83.97696
+UDST  171.9550            79.39101     97.50099        72.05389
+FSS   184.9985            66.17927     98.19677        76.38737
+ZFSS  184.6545            71.91751    103.68546        66.04159
+
+, , 4
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  169.5790            75.16425    117.97089        82.80960
+ZDNAM 194.6797            70.05232    105.18351        70.34705
+ST    188.1614            69.32292    101.67759        76.44709
+UDST  188.0728            77.12764     99.21387        71.01725
+FSS   180.8726            80.38357    104.71044        71.51217
+ZFSS  192.1188            66.48422     97.52020        76.05063
+
+
+$eq10
+, , 1
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  288.0685            138.4628     168.5440        145.5507
+ZDNAM 254.5368            114.8374     144.0223        122.7740
+ST    254.2715            111.7715     148.7464        121.3328
+UDST  268.5948            114.9327     144.0251        119.9448
+FSS   259.5352            114.1081     151.4154        123.1050
+ZFSS  265.6882            116.3232     147.9616        123.1170
+
+, , 2
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  278.3439            137.2576     175.6737        145.7332
+ZDNAM 254.0831            118.2020     147.9440        120.1236
+ST    247.2713            114.4050     148.8445        120.3521
+UDST  250.9390            115.8629     144.5799        124.7393
+FSS   243.4229            116.4538     141.8689        122.8920
+ZFSS  257.4545            119.0293     148.9428        124.4064
+
+, , 3
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  285.3286            140.7156     164.9899        142.1197
+ZDNAM 257.8491            114.2398     147.6587        124.3274
+ST    262.3535            114.5813     147.8984        121.3450
+UDST  261.5568            116.9965     147.4700        120.7372
+FSS   254.3580            115.5109     146.5139        124.8081
+ZFSS  254.4468            112.4081     143.8441        121.0104
+
+, , 4
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  273.9023            132.6627     174.6444        142.8211
+ZDNAM 250.0325            116.5820     148.1085        124.2266
+ST    249.8340            117.1302     146.8882        123.1808
+UDST  251.6179            110.1846     145.2846        122.1156
+FSS   250.8568            115.2823     149.6226        122.1567
+ZFSS  251.5702            115.5927     145.4248        122.7320
+
+
+$eq30
+, , 1
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  369.3240            183.6476     223.7940        185.1588
+ZDNAM 343.1685            171.0195     206.6238        174.6132
+ST    338.1315            172.8428     201.5361        173.4520
+UDST  349.6723            169.9698     203.8535        171.6685
+FSS   349.6430            176.7332     206.9034        180.1321
+ZFSS  354.8956            179.2196     206.9674        178.4201
+
+, , 2
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  374.7658            183.7255     219.6233        185.8425
+ZDNAM 347.1243            172.9789     203.2914        172.2126
+ST    338.3005            170.7902     196.1658        170.9462
+UDST  354.5390            172.5332     205.6015        167.7771
+FSS   347.6815            178.8393     202.7281        181.0671
+ZFSS  352.5847            175.6538     209.0994        177.1014
+
+, , 3
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  371.3979            184.9395     223.6651        187.4885
+ZDNAM 352.7088            171.3734     203.2596        170.7879
+ST    344.4962            170.4114     202.0762        172.3278
+UDST  348.8135            169.4939     211.8080        170.9306
+FSS   347.8310            175.9436     207.3519        179.9561
+ZFSS  349.6085            173.4746     208.1770        174.7930
+
+, , 4
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  365.9128            184.5264     224.3414        187.0150
+ZDNAM 351.1535            177.4653     203.7381        172.6424
+ST    346.5148            172.6033     201.2575        170.9290
+UDST  352.7960            174.3077     201.8094        173.7302
+FSS   346.7915            177.3371     204.8291        178.8078
+ZFSS  350.8088            179.0500     214.9589        180.0044
+
+
+$cl1t
+, , 1
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  181.4324            79.35492    109.18247        84.26524
+ZDNAM 184.6817            65.68099    101.45417        72.41009
+ST    168.0051            72.05967     84.73559        83.72912
+UDST  182.8516            71.89979     88.88769        82.07801
+FSS   176.6305            74.27217     90.67487        70.45917
+ZFSS  152.6109            77.26839     90.74299        86.69184
+
+, , 2
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  169.2089            68.17222    106.59647        89.88382
+ZDNAM 179.7627            60.67969    101.59622        71.59951
+ST    194.2336            70.00217     87.52949        78.36786
+UDST  175.6841            64.11037    101.28682        73.04617
+FSS   186.2919            67.55787     96.00471        76.27501
+ZFSS  173.1249            70.79262    105.28529        76.59372
+
+, , 3
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  159.6077            81.01139    100.72309        88.11772
+ZDNAM 175.3582            79.52052    102.67169        75.56927
+ST    179.6344            76.98822     99.21887        83.61762
+UDST  172.1762            79.39106     97.19151        71.91821
+FSS   185.5993            66.17919     97.54734        76.40702
+ZFSS  184.8377            71.91777    102.50962        65.83669
+
+, , 4
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  169.1313            75.16406    116.88242        82.65766
+ZDNAM 194.9086            70.05361    104.30792        70.22754
+ST    188.9065            69.32402    100.84801        76.33021
+UDST  188.1303            77.12766     98.52622        70.93159
+FSS   180.8356            80.38316    103.76306        71.13639
+ZFSS  191.8340            66.48637     96.33659        75.83981
+
+
+$eq10t
+, , 1
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  300.2124            144.8732     158.8882        149.8256
+ZDNAM 271.9636            121.3749     133.5417        128.5213
+ST    272.6489            118.8935     135.9918        126.0970
+UDST  286.4354            122.0540     134.2511        124.1703
+FSS   275.7736            121.4050     137.4229        128.4285
+ZFSS  281.4506            124.0130     136.3851        127.7590
+
+, , 2
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  290.5557            143.1963     162.9050        149.3571
+ZDNAM 268.7290            125.8965     134.9612        124.4753
+ST    260.7737            121.9042     137.8901        124.2334
+UDST  264.0427            123.2040     132.6702        129.6801
+FSS   259.8426            123.3997     132.0261        127.6598
+ZFSS  272.6470            127.2714     139.2084        128.7797
+
+, , 3
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  299.5094            147.2653     154.8799        147.6514
+ZDNAM 272.9623            120.7854     136.9857        129.1227
+ST    278.9809            122.4571     136.8944        125.2767
+UDST  276.5770            124.3278     137.7139        125.4646
+FSS   272.2494            122.6944     134.4214        126.9231
+ZFSS  270.1956            119.8770     133.1898        125.5570
+
+, , 4
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  288.8283            138.6267     163.9786        147.2736
+ZDNAM 266.0749            122.9951     134.5476        129.2027
+ST    267.5461            123.5771     137.6754        125.9550
+UDST  267.2143            116.4299     133.2399        126.3538
+FSS   264.9640            121.9352     138.1305        127.4164
+ZFSS  270.1930            123.4894     135.4500        126.1764
+
+
+$eq30t
+, , 1
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  408.4057            199.8222     208.8598        196.8890
+ZDNAM 387.2364            191.5965     203.9857        190.4221
+ST    376.1848            194.0220     202.1550        193.5325
+UDST  388.8574            191.1112     196.7829        189.2523
+FSS   393.1951            197.2493     204.3653        196.8798
+ZFSS  397.5603            199.7034     206.9307        196.1668
+
+, , 2
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  412.6859            200.3689     208.8071        194.7232
+ZDNAM 390.0598            193.8104     200.2208        190.6028
+ST    383.5515            191.1016     196.4842        189.4825
+UDST  399.6984            194.0350     200.0048        184.0695
+FSS   389.5512            199.5106     201.8022        197.6228
+ZFSS  395.1716            195.3693     210.2510        194.0699
+
+, , 3
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  410.2847            201.5604     212.7229        197.5323
+ZDNAM 394.3175            192.7145     200.3383        190.7866
+ST    390.9002            191.8110     201.3779        192.2704
+UDST  390.3280            189.4718     205.2066        188.5927
+FSS   392.6301            195.4259     208.2307        198.2040
+ZFSS  393.0130            195.1312     207.4698        192.9974
+
+, , 4
+
+        Random Shuffled Sequential Random order Random order x4
+UNAM  406.9568            201.1680     210.3303        198.3485
+ZDNAM 397.2377            198.9614     199.6095        189.9654
+ST    387.4108            194.1331     201.7214        189.3466
+UDST  392.4917            194.7645     197.8389        191.2932
+FSS   386.4979            197.9890     205.1673        200.0796
+ZFSS  392.4195            199.3889     211.9443        198.7653
+
+
+> 
+> 
+> # PLOT SUMMARIES.
+> 
+> pdf(paste0("runs/mix-summary-",rtype,".pdf"),width=6.5,height=8.5)
+> 
+> summary_plot (asv,
++               methods=rownames(res),
++               orders=colnames(res),
++               ranges=list (cl1=c(50,300,50),        # Asymp var range & step
++                            eq10=c(50,400,50),
++                            eq30=c(100,500,50)),
++               qnames=c(cl1="Obs 1 in cluster 1",       # Names for display
++                        eq10="Obs 10 cluster size",
++                        eq30="Obs 30 cluster size"))
+methods: UNAM ZDNAM ST UDST FSS ZFSS 
+> 
+> dev.off()
+null device 
+          1 
+> 

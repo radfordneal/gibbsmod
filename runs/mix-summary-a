@@ -1,0 +1,440 @@
+
+R version 4.1.2 (2021-11-01) -- "Bird Hippie"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # PLOT DATA SUMMARY FROM MIXTURE MODEL RUNS.
+> 
+> source("plot.r")
+> source("mix.r")
+> 
+> args <- commandArgs(trailingOnly=TRUE)   # Run type and number from after --args
+> if (length(args)<1)
++ { stop("Need run type as argument")
++ }
+> rtype <- args[1]
+> 
+> if (length(args)<2)
++ { stop("Need number of runs as argument")
++ }
+> nruns <- as.numeric(args[2])             # Number of runs to use
+> runs <- 0:(nruns-1)
+> 
+> 
+> # PRINT SELF-TRANSITION DATA.
+> 
+> print (read_self (paste0("runs/mix-res-",rtype), runs))
+$self
+        Random Shuffled Sequential Random order Random order x4
+ST   0.6053892           0.6052075    0.6054666       0.6051674
+DST  0.6057242           0.6051216    0.6053543       0.6054681
+UST  0.6051826           0.6053085    0.6051763       0.6050905
+UDST 0.6051813           0.6050882    0.6054491       0.6055374
+HST  0.6053200           0.6054857    0.6051578       0.6053338
+OHST 0.6054455           0.6052060    0.6051685       0.6053140
+
+$prhalf
+        Random Shuffled Sequential Random order Random order x4
+ST   0.8580963           0.8579420    0.8581595       0.8580666
+DST  0.8581623           0.8580639    0.8580675       0.8580769
+UST  0.8581045           0.8580164    0.8580665       0.8579849
+UDST 0.8579903           0.8579997    0.8581409       0.8581475
+HST  0.8580542           0.8580950    0.8580197       0.8580309
+OHST 0.8580519           0.8580569    0.8581620       0.8580508
+
+$self_pr
+        Random Shuffled Sequential Random order Random order x4
+ST   0.6053549           0.6052220    0.6054162       0.6052377
+DST  0.6057143           0.6052414    0.6053441       0.6054106
+UST  0.6051700           0.6052850    0.6052280       0.6051414
+UDST 0.6052123           0.6051079    0.6054240       0.6054745
+HST  0.6052874           0.6054683    0.6051568       0.6053097
+OHST 0.6054444           0.6052000    0.6052369       0.6052946
+
+$min_self
+        Random Shuffled Sequential Random order Random order x4
+ST   0.6053444           0.6052511    0.6053793       0.6052488
+DST  0.6057040           0.6053055    0.6053573       0.6053536
+UST  0.6051505           0.6052969    0.6052518       0.6051769
+UDST 0.6052050           0.6051494    0.6053999       0.6054556
+HST  0.6052741           0.6054319    0.6051886       0.6053057
+OHST 0.6054301           0.6052159    0.6052865       0.6052657
+
+> 
+> 
+> # COMPUTE AND PLOT THE ASYMPTOTIC VARIANCES.
+> 
+> width <- 7
+> height <- 9
+> 
+> asv <- NULL
+> 
+> for (runn in runs)
++ {
++   load (paste0("runs/mix-res-",rtype,runn))
++   methods <- rownames(res)
++   scans <- colnames(res)
++ 
++   asymvar <- list()
++ 
++   pdf(paste0("runs/mix-cl1-",rtype,runn,".pdf"),width=width,height=height)
++   
++   asymvar <- c (asymvar, cl1=list(
++    acv_plots ("Obs 1 in cluster 1", methods, scans,
++               maxlag=200.5*n, maxvar=0.12, mean_to_use=1/X,
++               data=res, sub="cl1"
++             )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/mix-eq10-",rtype,runn,".pdf"),width=width,height=height)
++   
++   asymvar <- c (asymvar, eq10=list(
++    acv_plots ("Obs 10 cluster size", methods, scans,
++               maxlag=15.5*n, maxvar=3.5, 
++               data=res, sub="eq10"
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/mix-eq30-",rtype,runn,".pdf"),width=width,height=height)
++   
++   asymvar <- c (asymvar, eq30=list(
++    acv_plots ("Obs 30 cluster size", methods, scans,
++               maxlag=10.5*n, maxvar=7, 
++               data=res, sub="eq30"
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/mix-cl1t-",rtype,runn,".pdf"),width=width,height=height)
++   
++   asymvar <- c (asymvar, cl1t=list(
++    acv_plots ("Obs 1 in cluster 1", methods, scans,
++               maxlag=200, maxvar=0.12, mean_to_use=1/X,
++               data=res, sub="cl1", thin=n
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/mix-eq10t-",rtype,runn,".pdf"),width=width,height=height)
++   
++   asymvar <- c (asymvar, eq10t=list(
++    acv_plots ("Obs 10 cluster size", methods, scans,
++               maxlag=15, maxvar=3.5, 
++               data=res, sub="eq10", thin=n
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/mix-eq30t-",rtype,runn,".pdf"),width=width,height=height)
++   
++   asymvar <- c (asymvar, eq30t=list(
++    acv_plots ("Obs 30 cluster size", methods, scans,
++               maxlag=10, maxvar=7, 
++               data=res, sub="eq30", thin=n
++              )))
++   
++   dev.off()
++ 
++   if (is.null(asv))
++   { asv <- rep (list(array(0,c(dim(asymvar[[1]]),length(runs)))),
++                 length(asymvar))
++     names(asv) <- names(asymvar)
++     for (i in 1:length(asymvar))
++     { rownames(asv[[i]]) <- rownames(asymvar[[i]])
++       colnames(asv[[i]]) <- colnames(asymvar[[i]])
++     }
++   }
++ 
++   for (i in 1:length(asymvar))
++   { asv[[i]][,,runn+1] <- asymvar[[i]]
++   }
++ }
+> 
+> print(asv)
+$cl1
+, , 1
+
+       Random Shuffled Sequential Random order Random order x4
+ST   170.2975            67.57741    114.38644        72.05711
+DST  155.2299            70.13405    110.10003        82.92424
+UST  206.3880            62.57079     95.34458        71.96510
+UDST 211.2543            64.27438     92.21131        77.68462
+HST  166.2246            72.74206    110.54093        79.88156
+OHST 169.3190            71.56398    107.13468        79.92119
+
+, , 2
+
+       Random Shuffled Sequential Random order Random order x4
+ST   169.7885            72.31812     90.70934        84.17873
+DST  188.4260            58.29326    104.56548        79.79470
+UST  173.4519            69.09945    104.49315        72.48625
+UDST 171.3151            75.75339     95.29007        88.49440
+HST  169.8778            75.30108     89.28590        71.01289
+OHST 151.1800            64.93496    103.36006        85.16849
+
+, , 3
+
+       Random Shuffled Sequential Random order Random order x4
+ST   168.5396            69.61373     92.87471        85.40213
+DST  195.3891            64.29204    103.70655        70.00551
+UST  164.4167            67.82109     98.86711        72.10010
+UDST 160.9531            74.82103     91.94983        89.93997
+HST  150.8198            67.19690     83.09027        82.38582
+OHST 185.5691            73.73596    107.94357        83.82345
+
+, , 4
+
+       Random Shuffled Sequential Random order Random order x4
+ST   158.0680            67.49503     98.96277        73.06918
+DST  172.6666            71.40297     94.91557        75.96150
+UST  166.6883            69.66724    105.03295        83.11844
+UDST 190.9235            78.51329    102.27939        78.86113
+HST  179.4455            76.00200    106.59411        72.01026
+OHST 192.9453            66.74783     96.46843        77.52910
+
+
+$eq10
+, , 1
+
+       Random Shuffled Sequential Random order Random order x4
+ST   251.9926            117.5928     145.2305        125.5694
+DST  255.0545            114.2980     151.2738        123.7954
+UST  258.8082            114.6689     144.3597        124.9274
+UDST 251.6752            116.3725     147.3833        124.5589
+HST  272.8582            111.2871     150.3982        129.4590
+OHST 260.1066            113.6233     152.8627        120.1453
+
+, , 2
+
+       Random Shuffled Sequential Random order Random order x4
+ST   251.7977            113.5733     144.3432        122.8766
+DST  248.8681            114.6582     146.3215        124.2487
+UST  254.2804            116.9809     145.4658        122.1426
+UDST 262.3332            111.2604     142.7802        125.7020
+HST  271.0088            112.8634     151.4349        126.5826
+OHST 255.3840            115.9003     152.8427        126.6124
+
+, , 3
+
+       Random Shuffled Sequential Random order Random order x4
+ST   253.4066            117.2928     150.8021        124.6095
+DST  255.4375            115.3356     146.8294        125.2850
+UST  243.3010            111.2745     144.8069        121.2591
+UDST 254.2664            114.6914     145.2755        125.9081
+HST  256.0309            112.5073     147.9902        127.0475
+OHST 264.4175            111.4224     146.3758        122.3395
+
+, , 4
+
+       Random Shuffled Sequential Random order Random order x4
+ST   260.9800            116.3703     148.5994        122.8466
+DST  254.7221            113.7353     148.1796        127.6863
+UST  252.6335            113.1585     146.5812        119.3774
+UDST 265.7410            117.6227     143.2406        125.1072
+HST  255.8769            116.8200     145.5308        125.8209
+OHST 250.7434            114.3928     150.9051        121.7820
+
+
+$eq30
+, , 1
+
+       Random Shuffled Sequential Random order Random order x4
+ST   346.1060            174.3990     196.9354        169.9378
+DST  348.5579            168.6570     204.2120        171.7784
+UST  330.5107            165.7591     200.3432        172.3046
+UDST 350.8119            171.8252     206.3706        172.5669
+HST  383.9442            175.3766     214.9860        179.6085
+OHST 360.1077            170.2395     201.1711        172.1471
+
+, , 2
+
+       Random Shuffled Sequential Random order Random order x4
+ST   344.2183            170.9642     196.9014        170.0514
+DST  352.0367            171.1857     204.4657        169.6651
+UST  345.5359            161.4151     198.6599        174.0881
+UDST 348.3144            169.8554     202.9052        174.0019
+HST  382.7475            178.5060     216.2268        182.1049
+OHST 370.7912            168.7090     206.7324        166.5545
+
+, , 3
+
+       Random Shuffled Sequential Random order Random order x4
+ST   341.4223            171.8000     203.6470        173.7523
+DST  349.8177            172.5254     203.8677        174.7588
+UST  342.8907            165.6687     206.6308        166.5470
+UDST 358.5698            172.2332     207.1886        171.3181
+HST  367.4477            178.3535     219.2740        180.2893
+OHST 359.8253            171.2328     205.3060        169.0925
+
+, , 4
+
+       Random Shuffled Sequential Random order Random order x4
+ST   351.4868            172.4357     200.1582        175.1724
+DST  340.9236            168.8867     198.1100        171.2560
+UST  334.1969            167.2066     205.0008        168.8164
+UDST 351.2354            169.7853     209.5005        173.1677
+HST  380.6098            174.9416     214.1749        176.2706
+OHST 349.7331            165.7476     204.7459        171.6492
+
+
+$cl1t
+, , 1
+
+       Random Shuffled Sequential Random order Random order x4
+ST   169.9084            67.57781    112.79334        71.69789
+DST  155.7996            70.13644    109.09551        82.76519
+UST  206.1951            62.57251     94.08221        71.99569
+UDST 210.3255            64.27221     91.41346        77.43836
+HST  166.1387            72.74217    109.54756        79.99122
+OHST 169.7193            71.56424    106.42771        79.71329
+
+, , 2
+
+       Random Shuffled Sequential Random order Random order x4
+ST   169.9176            72.31892     90.13731        83.94189
+DST  188.3252            58.29467    103.76467        79.65434
+UST  172.8943            69.09742    103.70499        72.23332
+UDST 171.7283            75.75342     94.49566        88.25504
+HST  169.8309            75.30212     88.29641        71.18949
+OHST 151.2508            64.93519    102.31174        84.76899
+
+, , 3
+
+       Random Shuffled Sequential Random order Random order x4
+ST   168.8233            69.61301     91.76581        85.37137
+DST  195.1051            64.29272    103.21531        69.69209
+UST  165.1738            67.82086     98.00161        71.94314
+UDST 160.8198            74.82079     91.35607        89.94529
+HST  150.9064            67.19699     81.96497        82.11957
+OHST 186.0527            73.73609    106.88462        83.54966
+
+, , 4
+
+       Random Shuffled Sequential Random order Random order x4
+ST   158.1257            67.49694     98.27286        72.69852
+DST  173.0415            71.40419     93.87069        75.41159
+UST  167.0705            69.66722    103.65679        82.77912
+UDST 191.4417            78.51391    101.63929        78.63456
+HST  179.9659            76.00146    105.90229        71.97757
+OHST 192.7068            66.74754     95.46914        77.03836
+
+
+$eq10t
+, , 1
+
+       Random Shuffled Sequential Random order Random order x4
+ST   268.6793            124.8147     134.6133        129.3511
+DST  270.5635            121.4939     139.7038        129.5305
+UST  272.3503            121.0040     131.3730        128.6026
+UDST 265.9562            123.6475     134.9535        129.4888
+HST  289.9536            118.5731     140.0119        134.9108
+OHST 274.2394            120.7965     141.7648        124.7948
+
+, , 2
+
+       Random Shuffled Sequential Random order Random order x4
+ST   270.4459            120.8968     134.3603        127.1146
+DST  264.4562            122.4583     136.3694        129.0115
+UST  269.3440            124.3302     133.4888        125.8029
+UDST 278.6465            118.4036     131.7720        129.5211
+HST  287.6548            120.2257     138.6503        130.6509
+OHST 275.5931            122.8646     138.7736        131.7865
+
+, , 3
+
+       Random Shuffled Sequential Random order Random order x4
+ST   271.6148            123.0432     140.1508        129.3151
+DST  270.6334            123.3780     136.0837        129.5711
+UST  259.7447            118.2279     133.8828        126.2999
+UDST 267.8387            122.2191     135.7048        129.5018
+HST  270.6159            119.4665     135.2421        132.8104
+OHST 280.7654            119.7251     132.8186        126.8074
+
+, , 4
+
+       Random Shuffled Sequential Random order Random order x4
+ST   273.3770            123.8307     137.9291        125.4384
+DST  270.5889            120.1826     136.9376        134.7831
+UST  267.0442            119.9834     136.6274        122.5069
+UDST 284.7063            125.5219     132.8326        129.4024
+HST  272.2036            124.8765     136.0581        130.7860
+OHST 267.8250            120.7082     139.4665        127.1614
+
+
+$eq30t
+, , 1
+
+       Random Shuffled Sequential Random order Random order x4
+ST   388.7142            193.9967     199.5840        188.1453
+DST  389.3562            189.8967     198.5193        188.1145
+UST  375.2694            185.3354     199.0161        187.5740
+UDST 394.9302            190.7185     200.1562        189.0536
+HST  427.0772            194.4625     210.2391        198.1245
+OHST 403.8870            190.5791     196.9332        190.6585
+
+, , 2
+
+       Random Shuffled Sequential Random order Random order x4
+ST   387.0018            190.8283     200.2607        187.3963
+DST  392.6053            190.5697     204.8573        189.4580
+UST  388.7721            182.5525     199.0780        192.4166
+UDST 390.7826            188.1034     198.9989        191.9205
+HST  424.6093            201.0084     212.9513        202.2933
+OHST 417.4358            189.2274     202.3281        185.2223
+
+, , 3
+
+       Random Shuffled Sequential Random order Random order x4
+ST   379.6056            191.8829     200.5760        190.4058
+DST  397.9056            193.3433     202.0210        191.4846
+UST  384.6878            185.6789     204.6127        186.6296
+UDST 404.5304            192.7636     201.9419        190.5807
+HST  405.9938            198.9261     218.0719        197.0281
+OHST 405.0941            192.4534     199.5463        186.7544
+
+, , 4
+
+       Random Shuffled Sequential Random order Random order x4
+ST   394.4895            192.4467     197.5475        192.6452
+DST  381.9052            189.6909     191.0572        186.0730
+UST  374.4731            187.5922     202.8054        187.4194
+UDST 396.1440            189.7774     205.5797        190.0242
+HST  424.8837            196.5745     212.2488        194.1308
+OHST 392.4171            184.2150     199.2418        189.4585
+
+
+> 
+> 
+> # PLOT SUMMARIES.
+> 
+> pdf(paste0("runs/mix-summary-",rtype,".pdf"),width=6.5,height=8.5)
+> 
+> summary_plot (asv,
++               methods=rownames(res),
++               orders=colnames(res),
++               ranges=list (cl1=c(50,300,50),        # Asymp var range & step
++                            eq10=c(50,400,50),
++                            eq30=c(100,500,50)),
++               qnames=c(cl1="Obs 1 in cluster 1",       # Names for display
++                        eq10="Obs 10 cluster size",
++                        eq30="Obs 30 cluster size"))
+methods: ST DST UST UDST HST OHST 
+> 
+> dev.off()
+null device 
+          1 
+> 

@@ -1,0 +1,53 @@
+T5820c: time run-beliefnet
+
+real    834m1.260s
+user    833m58.089s
+sys     0m3.489s
+
+real    834m44.235s
+user    834m40.853s
+sys     0m3.160s
+
+real    835m4.402s
+user    834m59.337s
+sys     0m3.361s
+
+real    837m0.330s
+user    836m56.918s
+sys     0m3.298s
+
+real    846m16.042s
+user    846m11.630s
+sys     0m4.021s
+
+real    846m35.523s
+user    846m31.681s
+sys     0m3.028s
+
+real    847m38.451s
+user    847m34.432s
+sys     0m3.208s
+
+real    848m47.589s
+user    848m42.069s
+sys     0m3.480s
+
+real    855m24.779s
+user    855m20.248s
+sys     0m3.276s
+
+real    855m29.904s
+user    855m26.480s
+sys     0m3.260s
+
+real    858m14.443s
+user    858m10.924s
+sys     0m3.337s
+
+real    860m14.491s
+user    860m9.884s
+sys     0m3.554s
+
+real    892m30.047s
+user    10189m23.107s
+sys     2m21.924s

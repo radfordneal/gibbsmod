@@ -1,0 +1,763 @@
+
+R version 4.1.2 (2021-11-01) -- "Bird Hippie"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # DO THE MIXTURE MODEL EXPERIMENTAL RUNS - SET A.
+> 
+> source("methods.r")
+> source("scans.r")
+> source("mix.r")
+> source("plot.r")
+> 
+> rtype <- "a"
+> 
+> meth <- list (ST=trans_ST, 
++               DST=trans_DST,
++               UST=trans_UST,
++               UDST=trans_UDST,
++               HST=trans_HST,
++               OHST=trans_OHST
++         )
+> 
+> scan <- list (Random=scan_random,
++               `Shuffled Sequential`=scan_shuffled_sequential,
++               `Random order`=scan_random_order,
++               `Random order x4`=scan_random_order_x4
++         )
+> 
+> source("mix-runs-tail.r")
+Shuffle order: 25 4 7 1 2 23 11 14 18 19 27 10 30 21 28 9 5 22 15 12 13 17 26 8 6 20 29 3 24 16 
+
+ST, Random:
+cntx:
+[1] 0 4 8 0 0 5 5 8 0
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    0    0    0    0    0    0    0    0    0     0
+ [2,]    0    0    1    3    1    2    3    2    1     0
+ [3,]    7    7    8    7    1    1    1    0    5     3
+ [4,]    0    0    0    0    0    0    0    0    0     0
+ [5,]    0    0    0    0    0    0    0    0    0     0
+ [6,]    0    0    1    0    4    5    5    4    5     2
+ [7,]    1    0    5    5    0    0    5    5    2     3
+ [8,]    6    6    0    0    6    6    0    0    4     3
+ [9,]    0    0    0    0    0    0    0    0    0     0
+self transition frequency: 0.6054803 
+average self transition probability: 0.6053241 
+minimum self transition probability: 0.6052748 
+fraction of time max pr > 1/2: 0.8580957 
+
+cl1: mean 0.1180337  variance 0.1041017 
+
+eq10: mean 5.566542  variance 3.229937 
+
+eq30: mean 4.366756  variance 6.424346 
+
+   user  system elapsed 
+268.160   0.066 268.236 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+3 3 3 3 3 3 3 6 6 6 2 6 6 7 7 7 2 7 7 8 8 8 8 3 8 8 8 2 8 2 
+
+ST, Shuffled Sequential:
+cntx:
+[1] 6 4 0 2 1 9 5 3 0
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    0    0    0    1    4    5    6    5    4     2
+ [2,]    1    1    0    1    1    1    0    0    1     1
+ [3,]    0    0    0    0    0    0    0    0    0     0
+ [4,]    2    2    2    2    0    0    0    0    0     1
+ [5,]    0    0    1    1    0    0    1    1    0     1
+ [6,]    4    3    9    9    0    1    6    5    6     3
+ [7,]    4    4    2    0    5    5    1    0    5     2
+ [8,]    3    3    1    1    2    2    0    0    1     1
+ [9,]    0    0    0    0    0    0    0    0    0     0
+self transition frequency: 0.6052467 
+average self transition probability: 0.6052283 
+minimum self transition probability: 0.6051912 
+fraction of time max pr > 1/2: 0.8578103 
+
+cl1: mean 0.10749  variance 0.09593592 
+
+eq10: mean 5.565779  variance 3.277651 
+
+eq30: mean 4.361431  variance 6.425536 
+
+   user  system elapsed 
+268.570   0.048 268.619 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+6 4 8 6 4 6 6 1 1 1 1 1 7 6 6 6 6 6 5 8 7 7 8 7 7 2 2 2 2 1 
+
+ST, Random order:
+cntx:
+[1] 2 7 0 0 1 8 5 7 0
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    0    1    1    1    0    0    1    1    2     0
+ [2,]    0    0    1    1    5    6    7    5    5     2
+ [3,]    0    0    0    0    0    0    0    0    0     0
+ [4,]    0    0    0    0    0    0    0    0    0     0
+ [5,]    0    0    0    0    0    1    0    0    0     1
+ [6,]    6    6    7    8    0    0    1    0    4     2
+ [7,]    1    0    5    5    0    1    5    5    2     3
+ [8,]    7    6    1    0    7    6    0    0    4     3
+ [9,]    0    0    0    0    0    0    0    0    0     0
+self transition frequency: 0.6049785 
+average self transition probability: 0.6050358 
+minimum self transition probability: 0.605079 
+fraction of time max pr > 1/2: 0.8579043 
+
+cl1: mean 0.1186952  variance 0.1046066 
+
+eq10: mean 5.561596  variance 3.258568 
+
+eq30: mean 4.354918  variance 6.367179 
+
+   user  system elapsed 
+270.434   0.056 270.492 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+6 6 6 6 6 6 6 2 2 2 2 2 2 7 7 1 7 7 7 8 8 8 8 8 8 8 5 6 1 2 
+
+ST, Random order x4:
+cntx:
+[1] 7 8 0 0 3 8 0 2 2
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    6    6    7    7    0    0    1    0    4     2
+ [2,]    1    0    6    8    1    2    7    7    3     3
+ [3,]    0    0    0    0    0    0    0    0    0     0
+ [4,]    0    0    0    0    0    0    0    0    0     0
+ [5,]    0    0    0    0    2    3    2    2    2     1
+ [6,]    7    7    1    0    7    6    0    0    5     3
+ [7,]    0    0    0    0    0    0    0    0    0     0
+ [8,]    0    0    0    0    1    2    2    2    2     2
+ [9,]    0    0    1    0    1    1    2    0    1     0
+self transition frequency: 0.6047987 
+average self transition probability: 0.6049665 
+minimum self transition probability: 0.6050562 
+fraction of time max pr > 1/2: 0.8577995 
+
+cl1: mean 0.1099747  variance 0.09788026 
+
+eq10: mean 5.564041  variance 3.29012 
+
+eq30: mean 4.359379  variance 6.422867 
+
+   user  system elapsed 
+268.977   0.056 269.034 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+1 1 1 1 1 1 1 5 5 8 2 8 9 2 2 2 2 2 2 6 6 6 6 6 6 6 5 2 6 9 
+
+DST, Random:
+cntx:
+[1] 2 3 2 1 4 7 1 3 7
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    1    0    1    1    1    0    1    1    1     0
+ [2,]    0    0    3    3    0    0    3    3    1     2
+ [3,]    2    2    0    0    2    2    0    0    1     1
+ [4,]    0    0    0    1    0    0    0    0    0     0
+ [5,]    2    3    0    0    2    2    1    0    3     0
+ [6,]    1    0    3    3    4    6    7    6    5     2
+ [7,]    0    0    0    0    1    1    1    1    1     1
+ [8,]    2    2    1    0    2    3    0    0    1     3
+ [9,]    6    6    7    7    0    0    1    0    4     2
+self transition frequency: 0.60545 
+average self transition probability: 0.6055549 
+minimum self transition probability: 0.6055704 
+fraction of time max pr > 1/2: 0.8580553 
+
+cl1: mean 0.1115732  variance 0.09912461 
+
+eq10: mean 5.5689  variance 3.27318 
+
+eq30: mean 4.367355  variance 6.408545 
+
+   user  system elapsed 
+285.611   0.052 285.667 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+9 9 9 9 9 9 9 6 6 7 6 6 6 6 2 1 6 2 2 3 3 5 8 8 5 1 8 4 5 5 
+
+DST, Shuffled Sequential:
+cntx:
+[1] 1 5 1 6 6 1 3 0 7
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    0    0    0    0    0    1    0    0    0     1
+ [2,]    0    0    0    1    4    5    5    5    4     2
+ [3,]    0    0    0    0    0    0    1    0    0     0
+ [4,]    6    5    6    6    0    0    1    0    4     2
+ [5,]    1    0    6    6    0    1    6    6    3     3
+ [6,]    0    0    1    0    1    1    1    0    1     0
+ [7,]    0    2    1    2    0    0    0    0    1     0
+ [8,]    0    0    0    0    0    0    0    0    0     0
+ [9,]    7    6    1    0    7    6    0    0    4     3
+self transition frequency: 0.6054483 
+average self transition probability: 0.6055377 
+minimum self transition probability: 0.605571 
+fraction of time max pr > 1/2: 0.858231 
+
+cl1: mean 0.1126  variance 0.09992126 
+
+eq10: mean 5.560176  variance 3.254526 
+
+eq30: mean 4.36359  variance 6.3952 
+
+   user  system elapsed 
+284.296   0.048 284.345 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+4 4 4 4 4 4 7 2 2 2 2 2 6 5 5 5 5 5 5 9 9 9 9 9 9 9 1 7 7 3 
+
+DST, Random order:
+cntx:
+[1] 0 1 6 0 7 7 4 0 5
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    0    0    0    0    0    0    0    0    0     0
+ [2,]    1    0    0    0    1    0    0    0    0     0
+ [3,]    6    6    1    0    6    6    0    0    4     3
+ [4,]    0    0    0    0    0    0    0    0    0     0
+ [5,]    0    0    2    2    5    7    7    6    6     2
+ [6,]    5    6    6    6    0    0    0    0    4     1
+ [7,]    1    1    1    2    0    1    2    0    1     2
+ [8,]    0    0    0    0    0    0    0    0    0     0
+ [9,]    1    0    5    5    0    0    5    5    2     3
+self transition frequency: 0.6051638 
+average self transition probability: 0.6052696 
+minimum self transition probability: 0.6053354 
+fraction of time max pr > 1/2: 0.8578867 
+
+cl1: mean 0.1136645  variance 0.1007449 
+
+eq10: mean 5.564879  variance 3.276904 
+
+eq30: mean 4.364794  variance 6.420703 
+
+   user  system elapsed 
+286.518   0.044 286.563 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+6 6 6 6 6 7 6 5 5 5 5 5 5 9 9 9 5 9 9 3 3 3 3 3 3 2 7 7 6 7 
+
+DST, Random order x4:
+cntx:
+[1] 0 3 3 6 7 0 0 7 4
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    0    0    0    0    0    0    0    0    0     0
+ [2,]    1    0    3    3    0    0    3    3    0     2
+ [3,]    0    2    1    1    0    1    0    0    1     1
+ [4,]    6    6    1    0    6    6    0    0    4     3
+ [5,]    0    0    2    2    5    7    7    6    6     2
+ [6,]    0    0    0    0    0    0    0    0    0     0
+ [7,]    0    0    0    0    0    0    0    0    0     0
+ [8,]    6    5    7    7    0    0    2    1    5     3
+ [9,]    1    0    1    2    1    0    2    1    1     0
+self transition frequency: 0.6050662 
+average self transition probability: 0.6050496 
+minimum self transition probability: 0.6050107 
+fraction of time max pr > 1/2: 0.8578057 
+
+cl1: mean 0.1122927  variance 0.09968304 
+
+eq10: mean 5.555526  variance 3.2667 
+
+eq30: mean 4.357565  variance 6.390317 
+
+   user  system elapsed 
+287.304   0.052 287.357 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+8 8 8 8 8 8 3 5 5 5 5 5 5 2 8 9 5 2 2 4 4 4 4 4 4 9 3 9 3 9 
+
+UST, Random:
+cntx:
+[1] 0 6 7 1 2 8 0 6 0
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    0    0    0    0    0    0    0    0    0     0
+ [2,]    0    0    1    0    4    6    5    4    5     3
+ [3,]    1    0    6    7    1    2    7    7    3     3
+ [4,]    1    1    1    1    0    0    0    0    1     0
+ [5,]    1    0    0    0    1    0    1    0    0     0
+ [6,]    5    6    6    7    0    0    1    0    4     2
+ [7,]    0    0    0    0    0    0    0    0    0     0
+ [8,]    6    6    1    0    6    6    0    0    4     3
+ [9,]    0    0    0    0    0    0    0    0    0     0
+self transition frequency: 0.6048158 
+average self transition probability: 0.6048437 
+minimum self transition probability: 0.6048601 
+fraction of time max pr > 1/2: 0.8576 
+
+cl1: mean 0.1242268  variance 0.1087945 
+
+eq10: mean 5.564454  variance 3.267163 
+
+eq30: mean 4.348852  variance 6.375983 
+
+   user  system elapsed 
+278.929   0.032 278.965 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+4 6 6 6 6 6 6 2 2 2 3 2 2 3 3 3 3 3 3 8 8 8 8 8 8 5 2 6 6 5 
+
+UST, Shuffled Sequential:
+cntx:
+[1] 7 0 0 3 8 5 6 1 0
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    5    6    6    6    0    0    0    0    4     1
+ [2,]    0    0    0    0    0    0    0    0    0     0
+ [3,]    0    0    0    0    0    0    0    0    0     0
+ [4,]    2    1    3    3    0    0    3    2    1     3
+ [5,]    7    6    1    0    7    7    0    0    4     4
+ [6,]    0    0    1    1    4    5    5    4    4     2
+ [7,]    0    0    4    5    0    1    5    4    3     1
+ [8,]    0    0    0    0    1    1    1    1    1     0
+ [9,]    0    0    0    0    0    0    0    0    0     0
+self transition frequency: 0.6055503 
+average self transition probability: 0.6054912 
+minimum self transition probability: 0.6054145 
+fraction of time max pr > 1/2: 0.8580375 
+
+cl1: mean 0.1102595  variance 0.09810236 
+
+eq10: mean 5.561155  variance 3.271885 
+
+eq30: mean 4.360209  variance 6.391966 
+
+   user  system elapsed 
+279.994   0.048 280.055 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+1 1 1 1 1 4 1 8 6 6 6 6 6 4 7 7 7 7 4 5 5 5 5 5 5 5 5 7 1 7 
+
+UST, Random order:
+cntx:
+[1] 7 0 1 5 1 2 7 7 0
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    0    0    2    2    5    7    7    6    6     2
+ [2,]    0    0    0    0    0    0    0    0    0     0
+ [3,]    0    0    0    1    0    0    0    0    0     0
+ [4,]    1    0    5    5    0    0    5    5    2     3
+ [5,]    1    1    1    1    0    0    1    0    1     1
+ [6,]    0    0    0    0    0    1    1    0    0     1
+ [7,]    6    6    7    6    1    1    0    0    4     2
+ [8,]    6    6    0    0    6    5    0    0    4     2
+ [9,]    0    0    0    0    0    0    0    0    0     0
+self transition frequency: 0.605006 
+average self transition probability: 0.6051237 
+minimum self transition probability: 0.6051819 
+fraction of time max pr > 1/2: 0.8579135 
+
+cl1: mean 0.1100078  variance 0.09790613 
+
+eq10: mean 5.554571  variance 3.233478 
+
+eq30: mean 4.352111  variance 6.366649 
+
+   user  system elapsed 
+279.362   0.040 279.424 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+7 7 7 7 7 5 7 1 1 1 1 1 1 4 4 4 1 4 4 8 8 8 8 7 8 8 6 3 8 6 
+
+UST, Random order x4:
+cntx:
+[1] 4 4 1 0 0 4 8 6 3
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    4    4    1    0    4    4    0    0    2     3
+ [2,]    2    3    1    2    2    2    0    0    2     0
+ [3,]    1    0    1    1    0    0    1    1    0     1
+ [4,]    0    0    0    0    0    0    0    0    0     0
+ [5,]    0    0    0    0    0    0    0    0    0     0
+ [6,]    0    0    0    0    3    4    4    4    4     2
+ [7,]    0    1    6    5    1    2    7    5    5     2
+ [8,]    6    5    6    6    0    0    1    0    4     2
+ [9,]    1    0    0    1    2    2    1    1    0     1
+self transition frequency: 0.605135 
+average self transition probability: 0.6051758 
+minimum self transition probability: 0.6051462 
+fraction of time max pr > 1/2: 0.8581848 
+
+cl1: mean 0.1098057  variance 0.0977484 
+
+eq10: mean 5.554569  variance 3.254816 
+
+eq30: mean 4.35964  variance 6.354092 
+
+   user  system elapsed 
+279.334   0.064 279.411 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+8 8 8 8 8 8 2 6 6 6 9 6 7 3 7 7 7 7 7 1 1 2 1 1 2 9 9 2 7 7 
+
+UDST, Random:
+cntx:
+[1] 5 4 1 7 6 0 0 2 5
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    4    5    5    5    0    0    0    0    2     1
+ [2,]    2    1    1    2    1    0    0    0    2     0
+ [3,]    0    0    0    1    1    1    1    1    0     0
+ [4,]    0    0    1    0    4    6    6    4    5     3
+ [5,]    6    6    1    0    6    6    0    0    4     3
+ [6,]    0    0    0    0    0    0    0    0    0     0
+ [7,]    0    0    0    0    0    0    0    0    0     0
+ [8,]    2    1    2    2    0    0    2    1    1     2
+ [9,]    0    0    5    5    0    1    5    5    3     2
+self transition frequency: 0.6049387 
+average self transition probability: 0.6049082 
+minimum self transition probability: 0.6048813 
+fraction of time max pr > 1/2: 0.8577532 
+
+cl1: mean 0.114639  variance 0.1014969 
+
+eq10: mean 5.557411  variance 3.26998 
+
+eq30: mean 4.36585  variance 6.39727 
+
+   user  system elapsed 
+377.270   0.036 377.333 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+1 1 1 2 1 8 1 4 4 4 3 4 4 8 9 9 9 9 9 5 5 5 5 5 5 2 4 2 2 4 
+
+UDST, Shuffled Sequential:
+cntx:
+[1] 1 0 4 0 6 4 5 2 8
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    1    0    1    1    0    0    0    0    1     0
+ [2,]    0    0    0    0    0    0    0    0    0     0
+ [3,]    1    3    2    3    0    0    0    0    2     0
+ [4,]    0    0    0    0    0    0    0    0    0     0
+ [5,]    6    6    1    0    6    6    0    0    4     3
+ [6,]    4    4    4    4    0    0    1    0    2     2
+ [7,]    0    0    1    1    5    5    5    4    4     1
+ [8,]    1    0    0    0    1    1    0    0    0     1
+ [9,]    1    0    6    6    0    2    8    7    4     4
+self transition frequency: 0.6050583 
+average self transition probability: 0.6051129 
+minimum self transition probability: 0.6051403 
+fraction of time max pr > 1/2: 0.8579718 
+
+cl1: mean 0.10722  variance 0.09572389 
+
+eq10: mean 5.559458  variance 3.278588 
+
+eq30: mean 4.359232  variance 6.395364 
+
+   user  system elapsed 
+376.797   0.048 376.874 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+6 6 3 1 6 6 3 7 7 7 7 9 7 9 9 9 9 9 9 5 5 5 5 5 5 8 8 3 3 9 
+
+UDST, Random order:
+cntx:
+[1] 0 8 4 1 2 7 0 0 8
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    0    0    0    0    0    0    0    0    0     0
+ [2,]    7    6    8    8    0    0    2    1    4     3
+ [3,]    0    0    4    4    0    0    4    4    2     2
+ [4,]    0    0    0    0    0    0    1    0    0     0
+ [5,]    1    0    0    1    1    0    0    0    0     0
+ [6,]    0    0    2    2    5    7    7    6    6     2
+ [7,]    0    0    0    0    0    0    0    0    0     0
+ [8,]    0    0    0    0    0    0    0    0    0     0
+ [9,]    6    7    1    0    6    7    0    0    5     4
+self transition frequency: 0.6053258 
+average self transition probability: 0.605387 
+minimum self transition probability: 0.6054293 
+fraction of time max pr > 1/2: 0.858187 
+
+cl1: mean 0.108031  variance 0.09636032 
+
+eq10: mean 5.565776  variance 3.251979 
+
+eq30: mean 4.357929  variance 6.381876 
+
+   user  system elapsed 
+376.669   0.048 376.745 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+2 2 2 2 2 2 2 6 6 6 6 6 6 2 3 3 6 3 3 9 9 9 9 9 9 5 9 5 9 4 
+
+UDST, Random order x4:
+cntx:
+[1] 1 7 7 0 0 3 0 9 3
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    0    0    0    1    0    0    0    0    0     0
+ [2,]    6    6    7    7    0    0    1    0    4     2
+ [3,]    0    0    0    1    4    6    6    5    4     3
+ [4,]    0    0    0    0    0    0    0    0    0     0
+ [5,]    0    0    0    0    0    0    0    0    0     0
+ [6,]    0    0    3    3    0    1    3    3    2     0
+ [7,]    0    0    0    0    0    0    0    0    0     0
+ [8,]    7    7    2    0    8    7    1    0    6     3
+ [9,]    1    0    3    3    0    0    3    3    1     3
+self transition frequency: 0.6051692 
+average self transition probability: 0.6052666 
+minimum self transition probability: 0.6053575 
+fraction of time max pr > 1/2: 0.8581248 
+
+cl1: mean 0.1168932  variance 0.1032292 
+
+eq10: mean 5.556666  variance 3.270029 
+
+eq30: mean 4.363556  variance 6.409466 
+
+   user  system elapsed 
+376.948   0.068 377.046 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+2 2 2 2 2 2 2 3 3 3 3 3 8 9 9 6 6 6 9 8 8 8 8 8 8 8 3 1 8 3 
+
+HST, Random:
+cntx:
+[1] 7 5 7 0 1 0 8 0 2
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    7    6    1    0    7    6    0    0    4     3
+ [2,]    0    0    1    1    5    5    5    4    4     1
+ [3,]    2    1    7    7    0    1    7    6    4     4
+ [4,]    0    0    0    0    0    0    0    0    0     0
+ [5,]    0    0    0    0    0    0    1    0    0     0
+ [6,]    0    0    0    0    0    0    0    0    0     0
+ [7,]    5    6    6    7    0    0    0    0    4     1
+ [8,]    0    0    0    0    0    0    0    0    0     0
+ [9,]    0    0    0    0    0    2    1    1    1     2
+self transition frequency: 0.6050482 
+average self transition probability: 0.605046 
+minimum self transition probability: 0.6050715 
+fraction of time max pr > 1/2: 0.8580873 
+
+cl1: mean 0.1073277  variance 0.09580845 
+
+eq10: mean 5.573879  variance 3.304889 
+
+eq30: mean 4.375253  variance 6.467259 
+
+   user  system elapsed 
+271.111   0.068 271.194 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+7 7 7 7 7 3 7 2 2 2 2 9 2 3 3 3 3 3 3 1 1 1 1 1 1 1 9 7 7 5 
+
+HST, Shuffled Sequential:
+cntx:
+[1] 0 6 0 0 3 7 6 0 8
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    0    0    0    0    0    0    0    0    0     0
+ [2,]    6    6    1    0    6    6    0    0    4     3
+ [3,]    0    0    0    0    0    0    0    0    0     0
+ [4,]    0    0    0    0    0    0    0    0    0     0
+ [5,]    1    0    0    1    1    0    1    0    0     0
+ [6,]    1    0    6    6    1    2    7    7    4     3
+ [7,]    0    0    1    1    4    6    5    4    4     3
+ [8,]    0    0    0    0    0    0    0    0    0     0
+ [9,]    6    7    7    7    0    0    1    0    5     2
+self transition frequency: 0.6057587 
+average self transition probability: 0.605709 
+minimum self transition probability: 0.6056313 
+fraction of time max pr > 1/2: 0.8582353 
+
+cl1: mean 0.11309  variance 0.1003007 
+
+eq10: mean 5.553955  variance 3.256211 
+
+eq30: mean 4.352963  variance 6.384819 
+
+   user  system elapsed 
+270.983   0.052 271.054 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+9 9 9 9 9 9 9 6 7 7 7 7 7 6 6 6 6 6 6 2 2 2 2 2 2 5 7 5 9 5 
+
+HST, Random order:
+cntx:
+[1] 6 1 1 0 2 5 2 8 5
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    5    5    6    6    0    0    0    0    3     1
+ [2,]    0    0    0    0    0    1    0    0    0     1
+ [3,]    0    0    0    1    0    0    0    0    0     0
+ [4,]    0    0    0    0    0    0    0    0    0     0
+ [5,]    2    1    0    0    2    1    0    0    0     0
+ [6,]    0    0    4    5    1    1    5    5    2     2
+ [7,]    1    2    1    1    0    0    1    0    2     1
+ [8,]    1    0    3    2    4    6    8    6    6     3
+ [9,]    5    5    1    0    5    5    0    0    4     3
+self transition frequency: 0.6048388 
+average self transition probability: 0.6049172 
+minimum self transition probability: 0.6050492 
+fraction of time max pr > 1/2: 0.8580052 
+
+cl1: mean 0.1158263  variance 0.1024106 
+
+eq10: mean 5.555034  variance 3.283057 
+
+eq30: mean 4.365059  variance 6.406284 
+
+   user  system elapsed 
+271.904   0.056 271.975 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+1 1 1 1 1 7 1 8 8 8 6 8 8 8 6 6 8 6 6 5 9 9 9 9 9 5 2 3 7 8 
+
+HST, Random order x4:
+cntx:
+[1] 8 6 6 1 1 6 0 1 1
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    7    7    1    0    7    6    0    0    5     3
+ [2,]    5    5    6    6    0    0    0    0    3     1
+ [3,]    1    0    6    6    0    1    6    6    3     3
+ [4,]    0    0    0    1    0    0    0    0    0     0
+ [5,]    0    0    0    0    0    1    0    0    0     1
+ [6,]    0    0    1    1    5    6    6    5    5     2
+ [7,]    0    0    0    0    0    0    0    0    0     0
+ [8,]    1    1    1    1    0    0    1    0    1     1
+ [9,]    0    0    0    0    0    0    1    0    0     0
+self transition frequency: 0.6054988 
+average self transition probability: 0.6054267 
+minimum self transition probability: 0.6054261 
+fraction of time max pr > 1/2: 0.85801 
+
+cl1: mean 0.1140682  variance 0.1010566 
+
+eq10: mean 5.570052  variance 3.266128 
+
+eq30: mean 4.362599  variance 6.397753 
+
+   user  system elapsed 
+271.848   0.044 271.904 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+2 2 2 2 2 8 2 6 6 6 6 6 6 3 3 3 3 3 3 1 1 1 1 1 1 1 5 4 1 9 
+
+OHST, Random:
+cntx:
+[1] 0 6 0 0 9 7 0 8 0
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    0    0    0    0    0    0    0    0    0     0
+ [2,]    0    0    2    1    4    6    6    5    6     2
+ [3,]    0    0    0    0    0    0    0    0    0     0
+ [4,]    0    0    0    0    0    0    0    0    0     0
+ [5,]    7    7    1    0    7    7    0    0    5     4
+ [6,]    6    6    7    7    0    0    1    0    4     2
+ [7,]    0    0    0    0    0    0    0    0    0     0
+ [8,]    1    0    5    7    1    1    7    6    2     3
+ [9,]    0    0    0    0    0    0    0    0    0     0
+self transition frequency: 0.6055043 
+average self transition probability: 0.6056073 
+minimum self transition probability: 0.6056526 
+fraction of time max pr > 1/2: 0.8582745 
+
+cl1: mean 0.110636  variance 0.09839569 
+
+eq10: mean 5.562859  variance 3.274059 
+
+eq30: mean 4.352657  variance 6.411101 
+
+   user  system elapsed 
+299.612   0.056 299.690 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+6 6 6 6 6 6 6 2 2 2 8 2 2 8 8 8 2 8 8 5 5 5 5 5 5 5 5 8 5 8 
+
+OHST, Shuffled Sequential:
+cntx:
+[1] 0 6 2 9 0 0 7 6 0
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    0    0    0    0    0    0    0    0    0     0
+ [2,]    0    0    5    6    1    2    6    6    3     2
+ [3,]    1    0    0    0    2    1    1    1    1     0
+ [4,]    7    6    8    9    0    0    2    1    4     3
+ [5,]    0    0    0    0    0    0    0    0    0     0
+ [6,]    0    0    0    0    0    0    0    0    0     0
+ [7,]    6    7    1    0    6    6    0    0    5     3
+ [8,]    0    0    1    0    3    5    5    3    4     3
+ [9,]    0    0    0    0    0    0    0    0    0     0
+self transition frequency: 0.6050975 
+average self transition probability: 0.6051521 
+minimum self transition probability: 0.6051754 
+fraction of time max pr > 1/2: 0.8579083 
+
+cl1: mean 0.11009  variance 0.09797021 
+
+eq10: mean 5.560841  variance 3.267348 
+
+eq30: mean 4.362098  variance 6.41265 
+
+   user  system elapsed 
+299.294   0.048 299.347 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+4 4 4 4 4 4 4 3 8 8 2 8 8 4 2 2 2 2 2 7 7 7 7 7 7 3 8 4 7 8 
+
+OHST, Random order:
+cntx:
+[1] 3 1 7 8 0 0 5 5 1
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    0    0    3    3    0    1    3    3    2     1
+ [2,]    0    0    0    0    0    1    1    1    1     1
+ [3,]    7    6    1    0    7    6    0    0    4     3
+ [4,]    5    6    6    7    0    0    0    0    4     1
+ [5,]    0    0    0    0    0    0    0    0    0     0
+ [6,]    0    0    0    0    0    0    0    0    0     0
+ [7,]    0    0    1    1    5    5    5    4    4     1
+ [8,]    2    1    4    4    0    0    5    3    2     3
+ [9,]    0    0    0    0    0    1    0    0    0     1
+self transition frequency: 0.605332 
+average self transition probability: 0.6053397 
+minimum self transition probability: 0.6053717 
+fraction of time max pr > 1/2: 0.858164 
+
+cl1: mean 0.1158145  variance 0.1024015 
+
+eq10: mean 5.569316  variance 3.277692 
+
+eq30: mean 4.358276  variance 6.422138 
+
+   user  system elapsed 
+300.267   0.048 300.322 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+4 4 4 4 4 8 4 7 7 7 7 2 7 8 1 8 1 1 8 3 3 3 3 3 3 3 9 4 4 8 
+
+OHST, Random order x4:
+cntx:
+[1] 1 0 6 2 8 1 1 5 6
+cnt1:
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    0    0    0    0    0    1    0    0    0     1
+ [2,]    0    0    0    0    0    0    0    0    0     0
+ [3,]    5    5    6    6    0    0    0    0    3     1
+ [4,]    0    1    0    0    0    1    1    1    2     1
+ [5,]    2    1    7    8    0    1    7    6    4     4
+ [6,]    1    1    0    0    1    1    0    0    0     1
+ [7,]    0    0    0    0    1    1    1    1    1     1
+ [8,]    0    0    1    1    4    4    5    3    3     0
+ [9,]    6    5    1    0    6    5    0    0    4     2
+self transition frequency: 0.6051863 
+average self transition probability: 0.6051599 
+minimum self transition probability: 0.605134 
+fraction of time max pr > 1/2: 0.8581107 
+
+cl1: mean 0.1095327  variance 0.09753528 
+
+eq10: mean 5.561656  variance 3.262591 
+
+eq30: mean 4.359032  variance 6.378942 
+
+   user  system elapsed 
+299.977   0.048 300.043 
+A A A A A A A B B B B B B C C C C C C D D D D D D E E E E E 
+3 3 3 3 3 5 3 8 8 7 8 4 8 5 5 5 5 5 5 9 9 9 6 9 9 9 1 5 4 8 
+> 

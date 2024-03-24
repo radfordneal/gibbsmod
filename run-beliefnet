@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ x$R == x ]; then
+  R=R
+fi
+
+for i in 0 1 2 3
+do
+  time $R --vanilla --args $i <beliefnet-runs-a.r >&runs/beliefnet-output-a$i &
+  time $R --vanilla --args $i <beliefnet-runs-b.r >&runs/beliefnet-output-b$i & 
+  time $R --vanilla --args $i <beliefnet-runs-c.r >&runs/beliefnet-output-c$i &
+# wait   # comment out if you have plenty of cores and RAM
+done
+wait
+
+$R --vanilla --args a 4 <beliefnet-summary.r >&runs/beliefnet-summary-a
+$R --vanilla --args b 4 <beliefnet-summary.r >&runs/beliefnet-summary-b
+$R --vanilla --args c 4 <beliefnet-summary.r >&runs/beliefnet-summary-c

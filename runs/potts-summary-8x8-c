@@ -1,0 +1,216 @@
+
+R version 4.1.2 (2021-11-01) -- "Bird Hippie"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # PLOT DATA SUMMARY FROM 8x8 POTTS RUNS.
+> 
+> source("plot.r")
+> source("potts-8x8.r")
+> 
+> args <- commandArgs(trailingOnly=TRUE)   # Run type from after --args
+> if (length(args)==0)
++ { stop("Need run type as argument")
++ }
+> rtype <- args[1]
+> 
+> if (length(args)<2)
++ { stop("Need number of runs as argument")
++ }
+> nruns <- as.numeric(args[2])             # Number of runs to use
+> runs <- 0:(nruns-1)
+> 
+> 
+> # PRINT SELF-TRANSITION DATA.
+> 
+> print (read_self (paste0("runs/potts-res-8x8-",rtype), runs))
+$self
+         Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  0.3140032  0.3137461           0.3142549    0.3138696    0.3135798
+ZDNAM 0.2288435  0.2286883           0.2289361    0.2286838    0.2286550
+ST    0.2290412  0.2289110           0.2287315    0.2287161    0.2285896
+UDST  0.2286858  0.2288334           0.2289158    0.2289015    0.2287800
+FSS   0.2358420  0.2355848           0.2356018    0.2356454    0.2355181
+ZFSS  0.2290809  0.2288706           0.2289187    0.2287232    0.2289496
+      Random order x4
+UNAM        0.3139090
+ZDNAM       0.2287417
+ST          0.2290348
+UDST        0.2288335
+FSS         0.2357274
+ZFSS        0.2287577
+
+$prhalf
+         Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  0.4024744  0.4022252           0.4028584    0.4023018    0.4019144
+ZDNAM 0.4024565  0.4021302           0.4024636    0.4022568    0.4021521
+ST    0.4025857  0.4024732           0.4022212    0.4024417    0.4020056
+UDST  0.4020854  0.4024101           0.4024254    0.4024537    0.4024139
+FSS   0.4025180  0.4022660           0.4022557    0.4024035    0.4023693
+ZFSS  0.4026632  0.4023620           0.4025551    0.4023814    0.4024287
+      Random order x4
+UNAM        0.4024221
+ZDNAM       0.4023169
+ST          0.4026521
+UDST        0.4023602
+FSS         0.4024144
+ZFSS        0.4022864
+
+$self_pr
+         Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  0.3139473  0.3137994           0.3142106    0.3138720    0.3136046
+ZDNAM 0.2288341  0.2287348           0.2289127    0.2287177    0.2286488
+ST    0.2290234  0.2288862           0.2287449    0.2287907    0.2285811
+UDST  0.2286504  0.2288666           0.2288858    0.2289061    0.2288274
+FSS   0.2358187  0.2356020           0.2356126    0.2356956    0.2356283
+ZFSS  0.2290314  0.2288512           0.2289032    0.2288193    0.2288971
+      Random order x4
+UNAM        0.3139200
+ZDNAM       0.2287629
+ST          0.2290152
+UDST        0.2288009
+FSS         0.2357232
+ZFSS        0.2287625
+
+$min_self
+         Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  0.2288915  0.2287402           0.2291540    0.2287905    0.2285038
+ZDNAM 0.2288398  0.2287173           0.2289193    0.2287318    0.2286791
+ST    0.2290089  0.2288825           0.2287489    0.2288452    0.2285859
+UDST  0.2286252  0.2288589           0.2288692    0.2289072    0.2288595
+FSS   0.2289405  0.2287501           0.2287492    0.2288679    0.2288250
+ZFSS  0.2290278  0.2288185           0.2289446    0.2288317    0.2288784
+      Random order x4
+UNAM        0.2288583
+ZDNAM       0.2287732
+ST          0.2290059
+UDST        0.2287944
+FSS         0.2288617
+ZFSS        0.2287728
+
+> 
+> 
+> # COMPUTE AND PLOT THE ASYMPTOTIC VARIANCES.
+> 
+> width <- 7
+> hght <- 9
+> 
+> asv <- NULL
+> 
+> for (runn in runs)
++ {
++   load (paste0("runs/potts-res-8x8-",rtype,runn))
++   methods <- rownames(res)
++   scans <- colnames(res)
++ 
++   asymvar <- list()
++ 
++   pdf(paste0("runs/potts-8x8-cnt1-",rtype,runn,".pdf"),width=width,height=hght)
++   
++   asymvar <- c (asymvar, cnt1=list(
++    acv_plots ("Count of 1s", methods, scans,
++               maxlag=32.5*n, maxvar=70, mean_to_use=n/NV,
++               data=res, sub="cnt1"
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/potts-8x8-sumsqcnt-",rtype,runn,".pdf"),
++               width=width,height=hght)
++   
++   asymvar <- c (asymvar, sumsqcnt=list(
++    acv_plots ("sum squared counts", methods, scans,
++               maxlag=16.5*n, maxvar=62000, 
++               data=res, sub="sumsqcnt"
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/potts-8x8-eq-",rtype,runn,".pdf"),width=width,height=hght)
++   
++   asymvar <- c (asymvar, eq=list(
++    acv_plots ("Equal neighbors", methods, scans,
++               maxlag=13.5*n, maxvar=70, 
++               data=res, sub="eq"
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/potts-8x8-cnt1t-",rtype,runn,".pdf"),width=width,height=hght)
++   
++   asymvar <- c (asymvar, cnt1=list(
++    acv_plots ("Count of 1s", methods, scans,
++               maxlag=32, maxvar=70, mean_to_use=n/NV,
++               data=res, sub="cnt1", thin=n
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/potts-8x8-sumsqcntt-",rtype,runn,".pdf"),
++               width=width,height=hght)
++   
++   asymvar <- c (asymvar, sumsqcnt=list(
++    acv_plots ("sum squared counts", methods, scans,
++               maxlag=16, maxvar=62000, 
++               data=res, sub="sumsqcnt", thin=n
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/potts-8x8-eqt-",rtype,runn,".pdf"),width=width,height=hght)
++   
++   asymvar <- c (asymvar, eq=list(
++    acv_plots ("Equal neighbors", methods, scans,
++               maxlag=13, maxvar=70, 
++               data=res, sub="eq", thin=n
++              )))
++   
++   dev.off()
++ 
++   if (is.null(asv))
++   { asv <- rep (list(array(0,c(dim(asymvar[[1]]),length(runs)))),
++                 length(asymvar))
++     names(asv) <- names(asymvar)
++     for (i in 1:length(asymvar))
++     { rownames(asv[[i]]) <- rownames(asymvar[[i]])
++       colnames(asv[[i]]) <- colnames(asymvar[[i]])
++     }
++   }
++ 
++   for (i in 1:length(asymvar))
++   { asv[[i]][,,runn+1] <- asymvar[[i]]
++   }
++ }
+> 
+> 
+> # PLOT SUMMARIES.
+> 
+> pdf(paste0("runs/potts-summary-8x8-",rtype,".pdf"),width=6.5,height=8.5)
+> 
+> summary_plot (asv,
++               methods=rownames(res),
++               orders=colnames(res),
++               ranges=list (cnt1=c(9000,72000,10000),  # Asymp var range & step
++                            sumsqcnt=c(4.5e6,42e6,10e6),
++                            eq=c(5000,26000,5000)),
++               qnames=c(cnt1="Count of 1s",             # Names for display
++                        sumsqcnt="Sum squared counts",
++                        eq="Equal neighbors"))
+methods: UNAM ZDNAM ST UDST FSS ZFSS 
+> 
+> dev.off()
+null device 
+          1 
+> 
