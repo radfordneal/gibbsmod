@@ -1,0 +1,53 @@
+T7810: time run-potts-8x8
+
+real    493m31.018s
+user    492m33.877s
+sys     0m57.704s
+
+real    495m31.533s
+user    494m33.757s
+sys     0m57.989s
+
+real    498m29.571s
+user    497m31.481s
+sys     0m58.498s
+
+real    499m41.046s
+user    498m41.375s
+sys     0m58.601s
+
+real    505m14.248s
+user    504m16.518s
+sys     0m57.852s
+
+real    507m24.059s
+user    506m26.596s
+sys     0m58.096s
+
+real    509m1.191s
+user    508m3.291s
+sys     0m58.366s
+
+real    512m43.570s
+user    511m45.926s
+sys     0m57.247s
+
+real    631m36.444s
+user    630m37.515s
+sys     0m58.672s
+
+real    637m52.053s
+user    636m51.326s
+sys     1m0.932s
+
+real    638m30.871s
+user    637m32.490s
+sys     0m58.481s
+
+real    644m28.442s
+user    643m20.824s
+sys     1m6.086s
+
+real    1161m39.568s
+user    7072m34.913s
+sys     18m52.621s

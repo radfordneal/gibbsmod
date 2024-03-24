@@ -1,0 +1,770 @@
+
+R version 4.1.2 (2021-11-01) -- "Bird Hippie"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # DO THE BELIEFNET EXPERIMENTAL RUNS - SET B.
+> 
+> source("methods.r")
+> source("scans.r")
+> source("beliefnet.r")
+
+Network parameters:
+$p0
+, , 1, 1
+
+           [,1]       [,2]       [,3]      [,4]       [,5]
+[1,] -0.9629958 -0.1529035 -0.7765564  4.732635 -0.5205062
+[2,]  3.4046372 -0.1369130  0.9999085  1.129631  0.2569342
+[3,]  0.2042436  1.3500699  0.9940860 -2.369361  0.2558834
+
+, , 2, 1
+
+           [,1]      [,2]       [,3]       [,4]       [,5]
+[1,] -0.4804594 0.5729414 -2.1409904 -0.7547253  0.4049920
+[2,] -0.9018101 1.7526282 -0.5250540 -0.4818529 -0.7310772
+[3,] -0.7177859 2.6264727 -0.4268959  1.1687968  1.1445419
+
+, , 3, 1
+
+          [,1]       [,2]      [,3]       [,4]       [,5]
+[1,] 2.8640030  0.2351000 0.6370677 -1.2894213  1.7090683
+[2,] 1.4369333 -0.3903924 1.8423432  0.2414981  2.8013312
+[3,] 0.2485217  0.1188521 2.2554305  1.5816561 -0.5752866
+
+, , 1, 2
+
+            [,1]      [,2]       [,3]       [,4]       [,5]
+[1,] -0.02866884 -1.100776 -0.2541541 -0.6312577  0.2545942
+[2,] -0.05033374  1.356326  5.6867507 -2.2031860  0.6196496
+[3,] -0.46352502  2.396612  0.0692249  0.2594117 -1.5713515
+
+, , 2, 2
+
+            [,1]       [,2]       [,3]       [,4]       [,5]
+[1,] -0.02452961  0.4831541 -1.8844462 -0.1359927 -0.3973308
+[2,] -1.54065298  0.6629451  1.3288270  0.9726348  0.9765195
+[3,] -2.07472551 -0.8271870 -0.2579591  0.2551260 -0.7539650
+
+, , 3, 2
+
+          [,1]      [,2]       [,3]     [,4]        [,5]
+[1,] 0.9520184 1.5444996 -1.2173766 1.294679 -0.07600699
+[2,] 0.7744900 0.6324836 -1.1426800 1.221880 -0.22452616
+[3,] 0.4171492 1.5078446 -0.3770404 0.239762  1.18588805
+
+, , 1, 3
+
+           [,1]        [,2]       [,3]        [,4]       [,5]
+[1,]  0.8174334  0.62209539  0.4031592 -0.02743718 -1.5070331
+[2,] -0.5504655 -0.01898147  0.1667100 -1.67683938 -1.7918828
+[3,]  0.1457383 -0.62623609 -0.6643882  1.21724602  0.8380762
+
+, , 2, 3
+
+           [,1]      [,2]      [,3]      [,4]       [,5]
+[1,] -0.9366670 -1.821970 0.8077236  1.566960 -0.3491906
+[2,] -0.4754847  1.049294 0.9265507 -1.178887 -1.5007805
+[3,]  1.1640306  1.420693 1.3507441  1.805513  1.3410873
+
+, , 3, 3
+
+          [,1]       [,2]       [,3]       [,4]       [,5]
+[1,] 0.1111396  0.4385014 -0.1099300 1.94338827 -0.9048281
+[2,] 2.0373177  1.3658819 -4.5601122 0.94372566  1.3213393
+[3,] 0.3756828 -0.2595969  0.8920138 0.04272516 -0.2617825
+
+, , 1, 4
+
+           [,1]       [,2]       [,3]        [,4]        [,5]
+[1,]  1.7116914  1.1359460 2.26065672 -0.05451669  1.45969252
+[2,] -0.8109702 -0.5199028 0.05186774  2.50488565 -0.08489099
+[3,]  0.8079320 -0.5301317 0.59606902  1.05209420 -1.17074911
+
+, , 2, 4
+
+          [,1]       [,2]        [,3]     [,4]       [,5]
+[1,] 1.2190664 -0.1179324 -0.17421884 0.715466  0.7672084
+[2,] 0.1368677 -0.7791940 -0.24949175 1.626369 -0.1088909
+[3,] 1.0238986  0.1930063 -0.06390877 1.751972  0.3420303
+
+, , 3, 4
+
+            [,1]       [,2]      [,3]      [,4]      [,5]
+[1,]  0.09565897 -0.5730497 0.4992374  1.961227 -1.090629
+[2,] -0.69941364  1.8834891 0.9054992 -6.717631  2.064298
+[3,] -0.48676075  0.2392859 0.5275415 -1.356328 -1.171985
+
+
+$p1
+, , 1, 1
+
+           [,1]        [,2]
+[1,] -1.0676996 -1.07913769
+[2,] -0.5429042 -0.03413201
+[3,]  0.7292304 -1.97687512
+[4,]  1.6596521 -0.61910578
+[5,] -1.2451201  2.09407269
+
+, , 2, 1
+
+            [,1]        [,2]
+[1,] -0.67561771 -0.09301686
+[2,]  1.66687465  1.17810678
+[3,] -0.01063493  1.98341615
+[4,]  0.12993855 -2.81133741
+[5,]  0.44558417  0.22241516
+
+, , 3, 1
+
+           [,1]       [,2]
+[1,]  0.2363881 -0.7703947
+[2,] -0.8444706  0.3221932
+[3,] -6.5844338  0.7002286
+[4,] -0.1119000 -0.1452428
+[5,]  0.2133989 -0.3972514
+
+, , 4, 1
+
+           [,1]        [,2]
+[1,]  1.6026149 -0.21336944
+[2,]  1.2460922  0.81041393
+[3,] -0.9586838 -0.05410304
+[4,]  0.7918170 -0.91314896
+[5,]  1.1071132  0.04440776
+
+, , 1, 2
+
+             [,1]        [,2]
+[1,]  1.998832402  3.02309875
+[2,]  1.514530111 -0.14522610
+[3,] -0.007664588  0.11348540
+[4,] -0.724380479  0.98027256
+[5,] -1.050055825  0.07563707
+
+, , 2, 2
+
+           [,1]      [,2]
+[1,]  1.5132580 0.3309667
+[2,]  0.8645617 0.6650847
+[3,]  0.6484403 1.5312077
+[4,] -0.1720663 0.6024827
+[5,] -0.7644418 0.7436829
+
+, , 3, 2
+
+           [,1]        [,2]
+[1,]  0.8661743 -0.51141105
+[2,] -0.8235028 -1.77239058
+[3,] -1.6411404 -0.10925535
+[4,] -0.7263073  0.04501328
+[5,]  1.0351032  1.03498807
+
+, , 4, 2
+
+            [,1]       [,2]
+[1,]  0.12791591 -0.7435576
+[2,] -0.39118893 -0.5864068
+[3,] -0.02528368 -0.6181198
+[4,] -1.05007577 -0.1975768
+[5,] -5.83795112 -0.6871171
+
+, , 1, 3
+
+            [,1]       [,2]
+[1,] -0.49257738  0.9365694
+[2,]  0.07719142  1.2602711
+[3,]  1.19510043  2.1969954
+[4,]  0.13751604 -0.8110316
+[5,] -0.27405899  1.6574441
+
+, , 2, 3
+
+          [,1]        [,2]
+[1,] 0.2998187 -0.51305491
+[2,] 0.8642972 -0.03586008
+[3,] 1.3435992  0.16681250
+[4,] 0.9477006  0.05138332
+[5,] 0.9188038  0.22047250
+
+, , 3, 3
+
+             [,1]       [,2]
+[1,]  2.041456517 -0.3913184
+[2,] -0.433743438  1.1458349
+[3,] -0.007221262  0.8952850
+[4,]  0.123377120 -2.3102842
+[5,] -0.078797833 -0.2499645
+
+, , 4, 3
+
+           [,1]       [,2]
+[1,] -0.7160425  0.5417905
+[2,] -2.0896010 -0.2433887
+[3,] -0.6729345  0.4284244
+[4,]  0.1625617 -0.3063526
+[5,]  0.4923925 -0.8029929
+
+, , 1, 4
+
+           [,1]       [,2]
+[1,]  0.2790303 -1.4437484
+[2,]  0.8039531 -0.8657942
+[3,] -1.8616540  0.3621119
+[4,] -0.5716989 -1.1947735
+[5,] -0.1589371 -0.5539897
+
+, , 2, 4
+
+           [,1]       [,2]
+[1,] -1.2677248 -0.2138294
+[2,] -1.6860852  1.4892335
+[3,] -0.5817946  0.1788599
+[4,] -0.5037422 -0.3817182
+[5,]  2.2170571 -0.5976763
+
+, , 3, 4
+
+             [,1]       [,2]
+[1,] -0.008022989  1.2600041
+[2,] -1.800277107 -0.1574452
+[3,] -0.825804952  0.1988733
+[4,] -0.557388712 -1.4247796
+[5,] -0.160063605  0.0946071
+
+, , 4, 4
+
+           [,1]        [,2]
+[1,]  0.3977316  0.01779624
+[2,] -1.1928951 -1.39386425
+[3,]  0.9695773  0.67251893
+[4,] -0.6555281 -3.88710268
+[5,]  1.1064135  0.34664047
+
+, , 1, 5
+
+           [,1]       [,2]
+[1,] -0.8657655  0.4638229
+[2,]  0.5846849  1.7521599
+[3,]  0.7023235 -1.2270778
+[4,]  1.2710115  0.8043761
+[5,]  0.3576359  0.4710022
+
+, , 2, 5
+
+           [,1]      [,2]
+[1,] -0.7465040  1.085894
+[2,] -3.9020721 -1.267595
+[3,]  0.4099566  1.201708
+[4,]  1.9126673  2.867670
+[5,] -0.3907243  0.511797
+
+, , 3, 5
+
+            [,1]        [,2]
+[1,] -0.70402627 0.002651766
+[2,]  0.48481514 0.502527346
+[3,]  0.06738687 0.876564373
+[4,] -0.91774182 1.191406111
+[5,] -0.23166393 0.213029362
+
+, , 4, 5
+
+            [,1]       [,2]
+[1,]  0.14335257  1.4410107
+[2,]  0.42173763  1.3634545
+[3,] -0.99458693 -1.8489079
+[4,]  0.83897940  2.5974439
+[5,]  0.01676015 -0.7945314
+
+
+$p2
+           [,1]       [,2]       [,3]      [,4]      [,5]
+[1,] -0.7779184  0.3818518 -0.9130290 0.3996311 0.8881213
+[2,]  1.5774384 -1.2528901  0.7038322 0.5241986 0.4848049
+
+
+> source("plot.r")
+> 
+> rtype <- "a"
+> 
+> meth <- list (ST=trans_ST, 
++               DST=trans_DST,
++               UST=trans_UST,
++               UDST=trans_UDST,
++               HST=trans_HST,
++               OHST=trans_OHST
++         )
+> 
+> scan <- list (Random=scan_random,
++               Sequential=scan_sequential,
++               `Shuffled Sequential`=scan_shuffled_sequential,
++               `Random order`=scan_random_order,
++               `Random order x4`=scan_random_order_x4
++         )
+> 
+> source("beliefnet-runs-tail.r")
+Shuffle order: 9 4 7 1 2 5 3 10 6 8 
+
+ST, Random:
+self transition frequency: 0.5559077 
+average self transition probability: 0.5557698 
+minimum self transition probability: 0.5557733 
+fraction of time max pr >= 1/2: 0.8902315 
+
+mar1: mean 0.2100348  variance 0.1659202 
+
+mar2: mean 0.0732135  variance 0.06785329 
+
+and02: mean 0.0490464  variance 0.04664086 
+    user   system  elapsed 
+1631.558    0.888 1632.508 
+ [1] 1 1 2 2 3 2 3 2 4 1
+
+ST, Sequential:
+self transition frequency: 0.5560525 
+average self transition probability: 0.5559627 
+minimum self transition probability: 0.555898 
+fraction of time max pr >= 1/2: 0.8903645 
+
+mar1: mean 0.211728  variance 0.1668993 
+
+mar2: mean 0.073718  variance 0.06828366 
+
+and02: mean 0.049742  variance 0.04726774 
+    user   system  elapsed 
+1636.816    0.092 1636.981 
+ [1] 3 3 1 3 2 2 3 1 3 1
+
+ST, Shuffled Sequential:
+self transition frequency: 0.5559496 
+average self transition probability: 0.555869 
+minimum self transition probability: 0.5558596 
+fraction of time max pr >= 1/2: 0.890199 
+
+mar1: mean 0.210831  variance 0.1663813 
+
+mar2: mean 0.073559  variance 0.06814808 
+
+and02: mean 0.0493315  variance 0.04689791 
+    user   system  elapsed 
+1643.154    0.096 1643.272 
+ [1] 1 2 2 3 1 2 3 2 4 1
+
+ST, Random order:
+self transition frequency: 0.5554299 
+average self transition probability: 0.5555317 
+minimum self transition probability: 0.555584 
+fraction of time max pr >= 1/2: 0.8900544 
+
+mar1: mean 0.2113159  variance 0.1666615 
+
+mar2: mean 0.073749  variance 0.06831009 
+
+and02: mean 0.0498662  variance 0.04737957 
+    user   system  elapsed 
+1653.460    0.100 1653.594 
+ [1] 3 1 2 4 1 1 4 1 5 3
+
+ST, Random order x4:
+self transition frequency: 0.5555081 
+average self transition probability: 0.5555072 
+minimum self transition probability: 0.5555388 
+fraction of time max pr >= 1/2: 0.8899764 
+
+mar1: mean 0.2100366  variance 0.1659212 
+
+mar2: mean 0.0736489  variance 0.06822475 
+
+and02: mean 0.0493514  variance 0.04691584 
+    user   system  elapsed 
+1634.644    0.092 1634.898 
+ [1] 1 2 2 4 1 2 2 3 5 5
+
+DST, Random:
+self transition frequency: 0.5555182 
+average self transition probability: 0.5555336 
+minimum self transition probability: 0.5556085 
+fraction of time max pr >= 1/2: 0.890181 
+
+mar1: mean 0.2102619  variance 0.1660519 
+
+mar2: mean 0.0727338  variance 0.0674436 
+
+and02: mean 0.0491862  variance 0.04676692 
+    user   system  elapsed 
+1698.688    0.092 1698.867 
+ [1] 1 3 2 3 1 4 1 1 4 3
+
+DST, Sequential:
+self transition frequency: 0.5560208 
+average self transition probability: 0.5559456 
+minimum self transition probability: 0.5558632 
+fraction of time max pr >= 1/2: 0.8902314 
+
+mar1: mean 0.2118937  variance 0.1669948 
+
+mar2: mean 0.073026  variance 0.06769321 
+
+and02: mean 0.0490872  variance 0.04667765 
+    user   system  elapsed 
+1667.899    0.108 1668.068 
+ [1] 3 1 3 1 1 3 3 2 4 1
+
+DST, Shuffled Sequential:
+self transition frequency: 0.5559206 
+average self transition probability: 0.5557747 
+minimum self transition probability: 0.5557157 
+fraction of time max pr >= 1/2: 0.8901342 
+
+mar1: mean 0.209695  variance 0.165723 
+
+mar2: mean 0.074023  variance 0.0685436 
+
+and02: mean 0.0499275  variance 0.04743475 
+    user   system  elapsed 
+1691.274    0.080 1691.362 
+ [1] 3 3 3 2 2 3 2 3 2 4
+
+DST, Random order:
+self transition frequency: 0.5557352 
+average self transition probability: 0.5557363 
+minimum self transition probability: 0.5557808 
+fraction of time max pr >= 1/2: 0.8903326 
+
+mar1: mean 0.210809  variance 0.1663686 
+
+mar2: mean 0.073463  variance 0.06806619 
+
+and02: mean 0.0495234  variance 0.04707084 
+    user   system  elapsed 
+1681.797    0.096 1681.896 
+ [1] 1 3 2 3 4 2 1 1 5 1
+
+DST, Random order x4:
+self transition frequency: 0.55537 
+average self transition probability: 0.5555713 
+minimum self transition probability: 0.5556807 
+fraction of time max pr >= 1/2: 0.8901525 
+
+mar1: mean 0.2112355  variance 0.1666151 
+
+mar2: mean 0.073932  variance 0.06846607 
+
+and02: mean 0.0497419  variance 0.04726765 
+    user   system  elapsed 
+1695.445    0.104 1695.555 
+ [1] 1 1 2 4 1 4 1 3 4 3
+
+UST, Random:
+self transition frequency: 0.5559251 
+average self transition probability: 0.5558785 
+minimum self transition probability: 0.5558428 
+fraction of time max pr >= 1/2: 0.8901684 
+
+mar1: mean 0.2112632  variance 0.1666311 
+
+mar2: mean 0.073691  variance 0.06826064 
+
+and02: mean 0.0498776  variance 0.04738983 
+    user   system  elapsed 
+1654.508    0.092 1654.607 
+ [1] 3 1 1 2 4 2 4 1 5 1
+
+UST, Sequential:
+self transition frequency: 0.555449 
+average self transition probability: 0.5555748 
+minimum self transition probability: 0.5557178 
+fraction of time max pr >= 1/2: 0.8902818 
+
+mar1: mean 0.211354  variance 0.1666835 
+
+mar2: mean 0.073575  variance 0.06816173 
+
+and02: mean 0.0495904  variance 0.0471312 
+    user   system  elapsed 
+1664.895    0.084 1664.985 
+ [1] 1 1 2 2 1 2 1 3 2 1
+
+UST, Shuffled Sequential:
+self transition frequency: 0.555731 
+average self transition probability: 0.5557253 
+minimum self transition probability: 0.555657 
+fraction of time max pr >= 1/2: 0.8901438 
+
+mar1: mean 0.211163  variance 0.1665732 
+
+mar2: mean 0.073609  variance 0.06819072 
+
+and02: mean 0.0492929  variance 0.04686311 
+    user   system  elapsed 
+1656.518    0.076 1656.599 
+ [1] 3 1 1 2 2 2 2 3 2 4
+
+UST, Random order:
+self transition frequency: 0.5556165 
+average self transition probability: 0.5556541 
+minimum self transition probability: 0.555716 
+fraction of time max pr >= 1/2: 0.8900419 
+
+mar1: mean 0.2105459  variance 0.1662163 
+
+mar2: mean 0.072909  variance 0.06759328 
+
+and02: mean 0.0492527  variance 0.04682688 
+    user   system  elapsed 
+1681.560    0.092 1681.660 
+ [1] 3 1 1 2 4 2 4 1 5 1
+
+UST, Random order x4:
+self transition frequency: 0.5557057 
+average self transition probability: 0.5556632 
+minimum self transition probability: 0.5555995 
+fraction of time max pr >= 1/2: 0.8900573 
+
+mar1: mean 0.2105864  variance 0.1662398 
+
+mar2: mean 0.0734449  variance 0.06805075 
+
+and02: mean 0.0494294  variance 0.04698614 
+    user   system  elapsed 
+1658.991    0.096 1659.088 
+ [1] 3 1 3 2 1 2 2 2 2 5
+
+UDST, Random:
+self transition frequency: 0.5558141 
+average self transition probability: 0.5558385 
+minimum self transition probability: 0.5558475 
+fraction of time max pr >= 1/2: 0.8902555 
+
+mar1: mean 0.2105542  variance 0.1662211 
+
+mar2: mean 0.0748491  variance 0.06924672 
+
+and02: mean 0.050191  variance 0.04767187 
+    user   system  elapsed 
+1836.872    0.064 1836.944 
+ [1] 3 1 2 1 1 2 1 1 5 1
+
+UDST, Sequential:
+self transition frequency: 0.556002 
+average self transition probability: 0.5558187 
+minimum self transition probability: 0.5556985 
+fraction of time max pr >= 1/2: 0.8901394 
+
+mar1: mean 0.210947  variance 0.1664484 
+
+mar2: mean 0.073498  variance 0.06809605 
+
+and02: mean 0.0493732  variance 0.04693549 
+    user   system  elapsed 
+1807.480    0.076 1807.564 
+ [1] 2 3 2 4 1 4 3 1 4 1
+
+UDST, Shuffled Sequential:
+self transition frequency: 0.555673 
+average self transition probability: 0.5558048 
+minimum self transition probability: 0.5558402 
+fraction of time max pr >= 1/2: 0.8903246 
+
+mar1: mean 0.2109509  variance 0.1664506 
+
+mar2: mean 0.073777  variance 0.06833396 
+
+and02: mean 0.0493821  variance 0.04694351 
+    user   system  elapsed 
+1832.928    0.064 1832.996 
+ [1] 1 1 3 1 1 4 1 2 4 2
+
+UDST, Random order:
+self transition frequency: 0.5558132 
+average self transition probability: 0.5557589 
+minimum self transition probability: 0.5557528 
+fraction of time max pr >= 1/2: 0.8902104 
+
+mar1: mean 0.2104149  variance 0.1661405 
+
+mar2: mean 0.0736551  variance 0.06823003 
+
+and02: mean 0.0494475  variance 0.04700245 
+    user   system  elapsed 
+1825.826    0.080 1825.910 
+ [1] 3 1 2 1 1 2 3 2 2 1
+
+UDST, Random order x4:
+self transition frequency: 0.5556025 
+average self transition probability: 0.5556999 
+minimum self transition probability: 0.5557655 
+fraction of time max pr >= 1/2: 0.890147 
+
+mar1: mean 0.2106199  variance 0.1662592 
+
+mar2: mean 0.0737397  variance 0.06830216 
+
+and02: mean 0.0499068  variance 0.04741612 
+    user   system  elapsed 
+1839.637    0.088 1839.730 
+ [1] 3 3 2 2 1 2 3 1 5 1
+
+HST, Random:
+self transition frequency: 0.5551964 
+average self transition probability: 0.5552866 
+minimum self transition probability: 0.5553456 
+fraction of time max pr >= 1/2: 0.8900171 
+
+mar1: mean 0.2108747  variance 0.1664066 
+
+mar2: mean 0.074045  variance 0.06856234 
+
+and02: mean 0.0500761  variance 0.04756849 
+    user   system  elapsed 
+1630.252    0.072 1630.330 
+ [1] 3 1 2 4 3 1 4 1 1 3
+
+HST, Sequential:
+self transition frequency: 0.5553151 
+average self transition probability: 0.5554851 
+minimum self transition probability: 0.5555157 
+fraction of time max pr >= 1/2: 0.8901709 
+
+mar1: mean 0.209982  variance 0.1658896 
+
+mar2: mean 0.073676  variance 0.06824785 
+
+and02: mean 0.0493212  variance 0.04688862 
+    user   system  elapsed 
+1637.461    0.080 1637.548 
+ [1] 1 2 2 4 3 4 4 2 4 3
+
+HST, Shuffled Sequential:
+self transition frequency: 0.5557892 
+average self transition probability: 0.5557231 
+minimum self transition probability: 0.5556712 
+fraction of time max pr >= 1/2: 0.8902194 
+
+mar1: mean 0.210197  variance 0.1660142 
+
+mar2: mean 0.073274  variance 0.06790493 
+
+and02: mean 0.0494891  variance 0.04703993 
+    user   system  elapsed 
+1629.555    0.080 1629.640 
+ [1] 3 1 2 3 1 2 3 1 4 1
+
+HST, Random order:
+self transition frequency: 0.5560353 
+average self transition probability: 0.5559733 
+minimum self transition probability: 0.5559941 
+fraction of time max pr >= 1/2: 0.8901987 
+
+mar1: mean 0.2105651  variance 0.1662275 
+
+mar2: mean 0.073713  variance 0.0682794 
+
+and02: mean 0.0495301  variance 0.04707687 
+    user   system  elapsed 
+1654.259    0.076 1654.340 
+ [1] 3 1 2 3 2 2 4 2 3 4
+
+HST, Random order x4:
+self transition frequency: 0.5553473 
+average self transition probability: 0.5553947 
+minimum self transition probability: 0.5554724 
+fraction of time max pr >= 1/2: 0.890055 
+
+mar1: mean 0.2110779  variance 0.166524 
+
+mar2: mean 0.0731396  variance 0.06779021 
+
+and02: mean 0.049472  variance 0.04702453 
+    user   system  elapsed 
+1634.873    0.068 1634.947 
+ [1] 3 2 2 4 2 3 2 4 4 4
+
+OHST, Random:
+self transition frequency: 0.5557885 
+average self transition probability: 0.5558322 
+minimum self transition probability: 0.5559239 
+fraction of time max pr >= 1/2: 0.8901644 
+
+mar1: mean 0.2128204  variance 0.1675279 
+
+mar2: mean 0.0732697  variance 0.06790126 
+
+and02: mean 0.0496355  variance 0.04717182 
+    user   system  elapsed 
+1719.196    0.072 1719.273 
+ [1] 3 1 2 2 1 2 3 3 2 1
+
+OHST, Sequential:
+self transition frequency: 0.5556822 
+average self transition probability: 0.5556038 
+minimum self transition probability: 0.555558 
+fraction of time max pr >= 1/2: 0.8900384 
+
+mar1: mean 0.2117337  variance 0.1669026 
+
+mar2: mean 0.072849  variance 0.06754203 
+
+and02: mean 0.048883  variance 0.04649346 
+    user   system  elapsed 
+1690.526    0.088 1690.620 
+ [1] 1 3 2 1 4 4 3 4 4 1
+
+OHST, Shuffled Sequential:
+self transition frequency: 0.5556153 
+average self transition probability: 0.5556932 
+minimum self transition probability: 0.5557082 
+fraction of time max pr >= 1/2: 0.8900537 
+
+mar1: mean 0.211391  variance 0.1667049 
+
+mar2: mean 0.073342  variance 0.06796296 
+
+and02: mean 0.0494315  variance 0.04698803 
+    user   system  elapsed 
+1715.145    0.084 1715.234 
+ [1] 3 3 1 3 1 1 2 1 3 3
+
+OHST, Random order:
+self transition frequency: 0.5557751 
+average self transition probability: 0.5558753 
+minimum self transition probability: 0.5558253 
+fraction of time max pr >= 1/2: 0.8901483 
+
+mar1: mean 0.2117246  variance 0.1668973 
+
+mar2: mean 0.072885  variance 0.06757278 
+
+and02: mean 0.0490156  variance 0.04661308 
+    user   system  elapsed 
+1709.280    0.092 1709.378 
+ [1] 3 3 2 4 3 2 3 1 5 1
+
+OHST, Random order x4:
+self transition frequency: 0.5555822 
+average self transition probability: 0.5555931 
+minimum self transition probability: 0.5555851 
+fraction of time max pr >= 1/2: 0.8901215 
+
+mar1: mean 0.211091  variance 0.1665316 
+
+mar2: mean 0.0730962  variance 0.06775315 
+
+and02: mean 0.0490286  variance 0.0466248 
+    user   system  elapsed 
+1633.223    0.088 1633.315 
+ [1] 1 1 2 4 1 2 1 1 2 1
+> 

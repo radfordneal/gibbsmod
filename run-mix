@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ x$R == x ]; then
+  R=R
+fi
+
+for i in 0 1 2 3
+do
+  time $R --vanilla --args $i <mix-runs-a.r >&runs/mix-output-a$i &
+  time $R --vanilla --args $i <mix-runs-b.r >&runs/mix-output-b$i & 
+  time $R --vanilla --args $i <mix-runs-c.r >&runs/mix-output-c$i &
+# wait   # comment out if you have plenty of cores and RAM
+done
+wait
+
+$R --vanilla --args a 4 <mix-summary.r >&runs/mix-summary-a
+$R --vanilla --args b 4 <mix-summary.r >&runs/mix-summary-b
+$R --vanilla --args c 4 <mix-summary.r >&runs/mix-summary-c

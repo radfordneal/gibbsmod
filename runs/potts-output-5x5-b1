@@ -1,0 +1,1125 @@
+
+R version 4.1.2 (2021-11-01) -- "Bird Hippie"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # DO THE 5x5 POTTS EXPERIMENTAL RUNS - SET B.
+> 
+> source("methods.r")
+> source("scans.r")
+> source("potts-5x5.r")
+> source("plot.r")
+> 
+> rtype <- "b"
+> 
+> meth <- list (GS=trans_GS,
++               MHGS=trans_MHGS,
++               UNAM=trans_UNAM,
++               DNAM=trans_DNAM,
++               UDNAM=trans_UDNAM,
++               ZDNAM=trans_ZDNAM
++         )
+> 
+> scan <- list (Random=scan_random,
++               Sequential=scan_sequential,
++               `Shuffled Sequential`=scan_shuffled_sequential,
++               Checkerboard=scan_checkerboard,
++               `Random order`=scan_random_order,
++               `Random order x4`=scan_random_order_x4
++         )
+> 
+> source("potts-runs-5x5-tail.r")
+Shuffle order: 25 4 7 1 2 11 14 18 22 5 16 10 6 19 23 9 15 12 17 20 8 13 21 3 24 
+
+GS, Random:
+self transition frequency: 0.2747312 
+average self transition probability: 0.2746414 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.088821  variance 7.713588 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1787   18914   88796  280286  671044 1290499 2079652 2856595 3408063 3561016 
+     10      11      12      13      14      15      16      17      18      19 
+3285652 2694590 1970212 1291062  759041  404889  195704   86292   35451   13399 
+     20      21      22      23      24      25      26      27 
+   4698    1603     515     169      44      23       3       1 
+
+count of 1 values: mean 6.247453  variance 3.368818 
+
+sum sq counts: mean 169.721  variance 116.5105 
+
+final counts: 5 5 6 9 
+
+   user  system elapsed 
+382.688   1.384 384.082 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    3    1    2    1    3
+[2,]    4    4    2    1    4
+[3,]    1    1    3    4    3
+[4,]    2    4    4    3    2
+[5,]    4    3    2    4    4
+
+GS, Sequential:
+self transition frequency: 0.2745864 
+average self transition probability: 0.2746247 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.089728  variance 7.719505 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1863   18319   87623  280033  671345 1292556 2076967 2861203 3408756 3563238 
+     10      11      12      13      14      15      16      17      18      19 
+3281071 2691802 1963770 1290780  763086  407451  197175   87073   35751   13278 
+     20      21      22      23      24      25      26 
+   4681    1580     420     122      44      11       2 
+
+count of 1 values: mean 6.251049  variance 3.358217 
+
+sum sq counts: mean 169.6966  variance 115.9189 
+
+final counts: 4 9 6 6 
+
+   user  system elapsed 
+377.402   1.396 378.808 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    2    4    3    1
+[2,]    2    1    4    1    4
+[3,]    4    4    2    4    2
+[4,]    3    2    2    3    3
+[5,]    2    2    3    2    3
+
+GS, Shuffled Sequential:
+self transition frequency: 0.2745234 
+average self transition probability: 0.2746325 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.091582  variance 7.71341 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1923   18383   88024  278993  670574 1289271 2076469 2856322 3407409 3560037 
+     10      11      12      13      14      15      16      17      18      19 
+3289276 2694990 1970094 1291222  761032  406052  197555   86890   35514   12957 
+     20      21      22      23      24      25      26 
+   4755    1568     492     140      46       7       5 
+
+count of 1 values: mean 6.248633  variance 3.369805 
+
+sum sq counts: mean 169.7169  variance 116.4471 
+
+final counts: 6 4 6 9 
+
+   user  system elapsed 
+376.465   1.468 377.943 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    4    2    4    4
+[2,]    3    2    1    4    1
+[3,]    4    1    4    4    3
+[4,]    1    2    3    1    4
+[5,]    3    3    4    2    3
+
+GS, Checkerboard:
+self transition frequency: 0.2746718 
+average self transition probability: 0.2746373 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.088895  variance 7.712094 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1931   18625   88094  279566  669936 1292696 2083093 2854796 3406413 3560386 
+     10      11      12      13      14      15      16      17      18      19 
+3287353 2693735 1970828 1291302  760159  402855  195047   87065   35398   13639 
+     20      21      22      23      24      25      26 
+   4757    1553     554     165      47       6       1 
+
+count of 1 values: mean 6.248981  variance 3.367586 
+
+sum sq counts: mean 169.7098  variance 116.308 
+
+final counts: 6 3 8 8 
+
+   user  system elapsed 
+384.227   1.344 385.580 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    3    3    4    3
+[2,]    1    1    3    2    4
+[3,]    4    2    1    4    3
+[4,]    3    4    1    1    4
+[5,]    3    4    4    3    2
+
+GS, Random order:
+self transition frequency: 0.2745773 
+average self transition probability: 0.2746096 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.091601  variance 7.705747 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   2108   18524   87282  277279  670381 1286997 2077291 2857859 3408398 3563320 
+     10      11      12      13      14      15      16      17      18      19 
+3291279 2694731 1969069 1289766  760032  406514  197203   86761   35100   13205 
+     20      21      22      23      24      25 
+   4694    1548     472     147      32       8 
+
+count of 1 values: mean 6.248958  variance 3.362487 
+
+sum sq counts: mean 169.6959  variance 116.2013 
+
+final counts: 9 8 4 4 
+
+   user  system elapsed 
+386.034   1.312 387.350 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    2    4    1    3
+[2,]    3    3    2    2    4
+[3,]    1    1    2    4    1
+[4,]    1    2    2    1    2
+[5,]    4    3    2    1    1
+
+GS, Random order x4:
+self transition frequency: 0.2744138 
+average self transition probability: 0.2746321 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.08851  variance 7.711503 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1991   18316   88807  280858  669990 1291701 2074617 2859539 3411393 3562725 
+     10      11      12      13      14      15      16      17      18      19 
+3290829 2688978 1969244 1288598  760020  403606  195342   87206   35493   13614 
+     20      21      22      23      24      25      26 
+   4765    1657     520     143      38       6       4 
+
+count of 1 values: mean 6.249743  variance 3.359135 
+
+sum sq counts: mean 169.7056  variance 116.3357 
+
+final counts: 4 10 4 7 
+
+   user  system elapsed 
+381.723   1.356 383.089 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    2    1    3    2    1
+[2,]    4    2    4    4    2
+[3,]    3    2    1    2    4
+[4,]    3    4    2    1    4
+[5,]    2    4    3    2    2
+
+MHGS, Random:
+self transition frequency: 0.0637346 
+average self transition probability: 0.06370829 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.088542  variance 7.711775 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   2016   18202   87675  279483  671511 1291957 2081731 2859422 3404079 3563722 
+     10      11      12      13      14      15      16      17      18      19 
+3288994 2690935 1966856 1289263  759230  405336  197124   86997   35529   13211 
+     20      21      22      23      24      25      26 
+   4589    1485     461     144      27      14       7 
+
+count of 1 values: mean 6.249455  variance 3.365609 
+
+sum sq counts: mean 169.7124  variance 116.4997 
+
+final counts: 5 6 9 5 
+
+   user  system elapsed 
+615.283   1.376 616.668 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    4    4    3    1    3
+[2,]    1    1    2    1    4
+[3,]    2    2    1    2    4
+[4,]    3    3    2    3    2
+[5,]    3    3    3    4    3
+
+MHGS, Sequential:
+self transition frequency: 0.06375944 
+average self transition probability: 0.06369589 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.087228  variance 7.722889 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1910   18877   88908  282262  673499 1294519 2081860 2855525 3402083 3557734 
+     10      11      12      13      14      15      16      17      18      19 
+3287307 2692103 1968186 1292593  759613  404780  195752   86842   35427   13424 
+     20      21      22      23      24      25      26 
+   4649    1501     433     154      44       9       6 
+
+count of 1 values: mean 6.24844  variance 3.360192 
+
+sum sq counts: mean 169.7102  variance 116.4075 
+
+final counts: 8 6 5 6 
+
+   user  system elapsed 
+605.710   1.268 606.985 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    2    1    2    4
+[2,]    2    4    3    1    4
+[3,]    2    3    2    3    4
+[4,]    1    1    1    3    1
+[5,]    4    3    2    4    1
+
+MHGS, Shuffled Sequential:
+self transition frequency: 0.063693 
+average self transition probability: 0.06371395 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.086531  variance 7.709347 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   2055   18752   88476  281264  671047 1290234 2080037 2863478 3411032 3559753 
+     10      11      12      13      14      15      16      17      18      19 
+3287219 2692256 1964367 1287879  758848  405949  196112   86338   35248   13074 
+     20      21      22      23      24      25      26 
+   4516    1482     436     114      30       3       1 
+
+count of 1 values: mean 6.252617  variance 3.369942 
+
+sum sq counts: mean 169.708  variance 116.2952 
+
+final counts: 7 7 7 4 
+
+   user  system elapsed 
+608.183   1.360 609.550 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    3    2    2    4
+[2,]    1    2    3    2    3
+[3,]    2    3    2    1    1
+[4,]    1    4    2    1    3
+[5,]    4    1    3    4    3
+
+MHGS, Checkerboard:
+self transition frequency: 0.06375956 
+average self transition probability: 0.06370274 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.088768  variance 7.70881 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1959   18638   88341  279261  670414 1290165 2082012 2857634 3406477 3561075 
+     10      11      12      13      14      15      16      17      18      19 
+3289120 2694456 1970057 1288617  758968  404781  195867   86380   35544   13522 
+     20      21      22      23      24      25      26 
+   4530    1506     460     167      40       8       1 
+
+count of 1 values: mean 6.250075  variance 3.36217 
+
+sum sq counts: mean 169.7061  variance 116.3776 
+
+final counts: 2 11 5 7 
+
+   user  system elapsed 
+613.450   1.272 614.736 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    3    4    2    3
+[2,]    4    2    2    4    4
+[3,]    1    3    2    2    4
+[4,]    4    2    3    3    2
+[5,]    4    2    2    2    2
+
+MHGS, Random order:
+self transition frequency: 0.0636608 
+average self transition probability: 0.06370975 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.089014  variance 7.709097 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1979   18139   88774  279253  670434 1291066 2078804 2859824 3404804 3563895 
+     10      11      12      13      14      15      16      17      18      19 
+3287033 2695815 1968943 1288216  760836  404267  195239   86738   35510   13564 
+     20      21      22      23      24      25      26 
+   4720    1500     476     129      33       7       2 
+
+count of 1 values: mean 6.247492  variance 3.365879 
+
+sum sq counts: mean 169.7103  variance 116.2575 
+
+final counts: 5 6 8 6 
+
+   user  system elapsed 
+613.827   1.248 615.091 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    3    1    4    3    3
+[2,]    1    1    1    2    3
+[3,]    3    3    4    1    2
+[4,]    2    4    3    2    3
+[5,]    4    4    2    4    2
+
+MHGS, Random order x4:
+self transition frequency: 0.06370072 
+average self transition probability: 0.06369857 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.088803  variance 7.71211 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   2066   18843   88697  280123  669286 1293231 2078621 2855800 3407714 3565064 
+     10      11      12      13      14      15      16      17      18      19 
+3282461 2694086 1970539 1291730  759404  404282  195906   86875   35299   13171 
+     20      21      22      23      24      25      26      27 
+   4607    1548     450     143      34      16       3       1 
+
+count of 1 values: mean 6.250834  variance 3.372528 
+
+sum sq counts: mean 169.7131  variance 116.4772 
+
+final counts: 4 6 7 8 
+
+   user  system elapsed 
+565.944   1.116 567.073 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    2    3    3    3    2
+[2,]    2    4    4    2    2
+[3,]    4    3    1    2    1
+[4,]    3    4    4    3    4
+[5,]    1    3    4    4    1
+
+UNAM, Random:
+self transition frequency: 0.03127404 
+average self transition probability: 0.03129633 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.090736  variance 7.721264 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1929   18647   88051  278997  670908 1292710 2077802 2856290 3403233 3565909 
+     10      11      12      13      14      15      16      17      18      19 
+3285006 2694535 1969804 1287942  759484  406733  197236   88106   35786   13823 
+     20      21      22      23      24      25      26 
+   4800    1601     468     129      50      18       3 
+
+count of 1 values: mean 6.250336  variance 3.366894 
+
+sum sq counts: mean 169.7078  variance 116.4865 
+
+final counts: 1 9 7 8 
+
+    user   system  elapsed 
+1085.994    0.980 1087.004 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    4    4    2    3    2
+[2,]    2    2    3    1    2
+[3,]    4    2    4    3    4
+[4,]    3    4    4    2    2
+[5,]    2    4    3    3    3
+
+UNAM, Sequential:
+self transition frequency: 0.03121244 
+average self transition probability: 0.03127581 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.092512  variance 7.716448 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1990   18287   88292  280418  670628 1288987 2075701 2853590 3401325 3561095 
+     10      11      12      13      14      15      16      17      18      19 
+3289178 2697489 1973633 1292834  760882  406376  196831   86815   35511   13334 
+     20      21      22      23      24      25      26 
+   4639    1508     465     149      33       8       2 
+
+count of 1 values: mean 6.250241  variance 3.369549 
+
+sum sq counts: mean 169.7135  variance 116.4344 
+
+final counts: 6 4 10 5 
+
+    user   system  elapsed 
+1075.285    1.080 1076.389 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    4    1    3    1    2
+[2,]    1    2    4    3    1
+[3,]    3    4    1    4    1
+[4,]    2    2    3    3    3
+[5,]    3    3    3    3    4
+
+UNAM, Shuffled Sequential:
+self transition frequency: 0.03127772 
+average self transition probability: 0.0313003 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.093193  variance 7.703887 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1990   18435   87418  277662  667819 1287533 2074018 2856154 3407251 3565015 
+     10      11      12      13      14      15      16      17      18      19 
+3290111 2698989 1970201 1293503  760364  404882  195635   86962   35798   13357 
+     20      21      22      23      24      25      26 
+   4619    1557     514     150      48      12       3 
+
+count of 1 values: mean 6.249256  variance 3.368386 
+
+sum sq counts: mean 169.722  variance 116.6375 
+
+final counts: 8 5 6 6 
+
+    user   system  elapsed 
+1097.969    1.324 1105.646 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    3    2    1    3    2
+[2,]    1    3    4    2    1
+[3,]    1    4    4    1    3
+[4,]    4    2    4    2    3
+[5,]    4    1    3    1    1
+
+UNAM, Checkerboard:
+self transition frequency: 0.03137636 
+average self transition probability: 0.03129738 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.08895  variance 7.721794 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1975   18476   88294  280508  672659 1292835 2080344 2855703 3408635 3558344 
+     10      11      12      13      14      15      16      17      18      19 
+3283570 2692090 1969595 1290322  761306  405805  196278   87001   35749   13474 
+     20      21      22      23      24      25 
+   4764    1647     464     121      30      11 
+
+count of 1 values: mean 6.249972  variance 3.363011 
+
+sum sq counts: mean 169.7086  variance 116.691 
+
+final counts: 6 7 8 4 
+
+    user   system  elapsed 
+1254.237    1.256 1255.631 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    3    4    1    3
+[2,]    2    3    1    3    2
+[3,]    2    4    3    2    1
+[4,]    4    1    2    3    1
+[5,]    2    3    2    3    4
+
+UNAM, Random order:
+self transition frequency: 0.03131184 
+average self transition probability: 0.03127956 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.092818  variance 7.709821 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1868   18298   87989  278445  668119 1290870 2073398 2855974 3407454 3560754 
+     10      11      12      13      14      15      16      17      18      19 
+3289797 2695482 1972573 1292180  760837  406529  196976   87184   35347   13269 
+     20      21      22      23      24      25      26      27 
+   4539    1485     463     120      33      12       2       3 
+
+count of 1 values: mean 6.251142  variance 3.370142 
+
+sum sq counts: mean 169.7127  variance 116.3473 
+
+final counts: 8 6 6 5 
+
+    user   system  elapsed 
+1226.594    1.352 1229.736 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    3    3    1    1    4
+[2,]    2    1    4    3    1
+[3,]    2    4    3    2    2
+[4,]    1    1    1    3    2
+[5,]    4    3    2    4    1
+
+UNAM, Random order x4:
+self transition frequency: 0.0312998 
+average self transition probability: 0.03129468 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.091864  variance 7.716196 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1796   18193   87784  280454  669422 1290114 2076891 2855575 3405992 3560978 
+     10      11      12      13      14      15      16      17      18      19 
+3288475 2694493 1970239 1291799  761594  406148  196830   86860   35878   13458 
+     20      21      22      23      24      25 
+   4748    1582     517     140      31       9 
+
+count of 1 values: mean 6.25063  variance 3.362443 
+
+sum sq counts: mean 169.7115  variance 116.2676 
+
+final counts: 5 5 10 5 
+
+    user   system  elapsed 
+1208.735    1.188 1209.942 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    2    3    3    4    3
+[2,]    1    2    3    3    4
+[3,]    3    4    1    2    3
+[4,]    1    3    1    4    2
+[5,]    4    3    3    1    2
+
+DNAM, Random:
+self transition frequency: 0.01146772 
+average self transition probability: 0.01147834 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.092215  variance 7.709802 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1895   18353   88624  279603  667801 1291077 2075167 2853346 3404655 3560282 
+     10      11      12      13      14      15      16      17      18      19 
+3291755 2697176 1973225 1292330  761225  405673  195679   86623   35467   13284 
+     20      21      22      23      24      25      26 
+   4627    1491     468     132      29      10       3 
+
+count of 1 values: mean 6.249752  variance 3.362655 
+
+sum sq counts: mean 169.7063  variance 116.2235 
+
+final counts: 8 5 5 7 
+
+    user   system  elapsed 
+1093.187    1.212 1094.558 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    4    3    4    1
+[2,]    4    2    1    2    2
+[3,]    4    1    3    1    1
+[4,]    3    3    4    3    4
+[5,]    2    1    4    2    1
+
+DNAM, Sequential:
+self transition frequency: 0.01152388 
+average self transition probability: 0.01146798 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.090436  variance 7.724876 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1843   18448   88397  280521  670128 1293167 2079384 2856274 3408934 3557509 
+     10      11      12      13      14      15      16      17      18      19 
+3283706 2689961 1970893 1290016  762745  406859  197797   87401   35523   13508 
+     20      21      22      23      24      25      26      27 
+   4728    1574     490     125      46      16       6       1 
+
+count of 1 values: mean 6.249968  variance 3.362331 
+
+sum sq counts: mean 169.7087  variance 116.479 
+
+final counts: 3 9 5 8 
+
+    user   system  elapsed 
+1092.213    1.256 1093.487 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    4    1    2    4    2
+[2,]    2    2    4    3    4
+[3,]    4    3    2    1    2
+[4,]    2    3    1    4    4
+[5,]    4    2    3    3    2
+
+DNAM, Shuffled Sequential:
+self transition frequency: 0.011472 
+average self transition probability: 0.01147599 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.087963  variance 7.717607 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1976   18393   88859  280688  672944 1293042 2078292 2857558 3406550 3561611 
+     10      11      12      13      14      15      16      17      18      19 
+3287436 2691387 1967766 1289923  759404  404801  196542   86973   35523   13414 
+     20      21      22      23      24      25      27      28 
+   4728    1575     461     113      30       9       1       1 
+
+count of 1 values: mean 6.247903  variance 3.363584 
+
+sum sq counts: mean 169.6976  variance 116.221 
+
+final counts: 9 4 6 6 
+
+    user   system  elapsed 
+1089.818    1.456 1093.085 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    4    3    4    1    3
+[2,]    3    1    3    1    4
+[3,]    1    4    1    2    2
+[4,]    3    1    4    2    4
+[5,]    1    2    1    3    1
+
+DNAM, Checkerboard:
+self transition frequency: 0.01144568 
+average self transition probability: 0.0114679 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.09075  variance 7.709831 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1863   18273   87989  279397  669295 1290713 2077788 2857444 3406119 3562178 
+     10      11      12      13      14      15      16      17      18      19 
+3287561 2695483 1969938 1290928  760583  406000  196126   87116   35125   13210 
+     20      21      22      23      24      25      26      27 
+   4645    1582     462     132      36       9       4       1 
+
+count of 1 values: mean 6.249208  variance 3.366332 
+
+sum sq counts: mean 169.7108  variance 116.6051 
+
+final counts: 8 5 3 9 
+
+    user   system  elapsed 
+1098.181    1.188 1099.374 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    4    3    2    4
+[2,]    3    1    4    3    1
+[3,]    2    1    4    1    4
+[4,]    4    2    1    1    2
+[5,]    4    1    4    4    2
+
+DNAM, Random order:
+self transition frequency: 0.01147752 
+average self transition probability: 0.01148619 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.086855  variance 7.709771 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1927   18674   89500  280468  669854 1291966 2080004 2862689 3406987 3562892 
+     10      11      12      13      14      15      16      17      18      19 
+3285987 2691450 1969642 1286820  759220  404377  195569   87122   35022   12990 
+     20      21      22      23      24      25      26 
+   4616    1547     472     148      42      12       3 
+
+count of 1 values: mean 6.250829  variance 3.368236 
+
+sum sq counts: mean 169.7219  variance 116.5844 
+
+final counts: 6 5 9 5 
+
+    user   system  elapsed 
+1103.316    1.264 1104.585 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    4    2    3    2    2
+[2,]    4    3    4    4    1
+[3,]    2    3    3    3    3
+[4,]    1    3    1    1    2
+[5,]    3    1    1    4    3
+
+DNAM, Random order x4:
+self transition frequency: 0.01146932 
+average self transition probability: 0.01147346 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.08992  variance 7.723016 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   2009   18754   88574  280211  671219 1292820 2078863 2855805 3404572 3562018 
+     10      11      12      13      14      15      16      17      18      19 
+3283955 2694158 1969137 1289920  760532  406274  197444   87894   35689   13362 
+     20      21      22      23      24      25      26      27      29 
+   4612    1509     479     139      30      17       1       2       1 
+
+count of 1 values: mean 6.248919  variance 3.367198 
+
+sum sq counts: mean 169.7222  variance 116.4125 
+
+final counts: 8 7 6 4 
+
+    user   system  elapsed 
+1096.344    1.164 1097.545 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    2    1    2    3
+[2,]    1    2    4    2    3
+[3,]    3    1    1    3    2
+[4,]    4    4    3    1    4
+[5,]    2    1    2    3    1
+
+UDNAM, Random:
+self transition frequency: 0.02142476 
+average self transition probability: 0.02138031 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.094741  variance 7.718511 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1842   18403   88115  279475  668775 1290032 2073480 2853006 3400076 3556952 
+     10      11      12      13      14      15      16      17      18      19 
+3290308 2700829 1974196 1296503  762117  406556  195920   87170   35581   13520 
+     20      21      22      23      24      25      26      27 
+   4882    1591     480     135      41       9       4       2 
+
+count of 1 values: mean 6.247977  variance 3.365551 
+
+sum sq counts: mean 169.7103  variance 116.3505 
+
+final counts: 8 6 3 8 
+
+    user   system  elapsed 
+1968.804    1.256 1970.121 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    3    1    4    2    4
+[2,]    2    4    2    1    1
+[3,]    4    1    4    1    2
+[4,]    4    3    2    3    1
+[5,]    4    1    1    4    2
+
+UDNAM, Sequential:
+self transition frequency: 0.0214222 
+average self transition probability: 0.02139352 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.092227  variance 7.707689 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1803   17987   87163  278841  669041 1288982 2075411 2856603 3408467 3563076 
+     10      11      12      13      14      15      16      17      18      19 
+3290786 2696638 1969833 1289693  758907  406200  196837   87618   35823   13407 
+     20      21      22      23      24      25      26 
+   4771    1487     449     139      31       6       1 
+
+count of 1 values: mean 6.251105  variance 3.370511 
+
+sum sq counts: mean 169.713  variance 116.384 
+
+final counts: 7 6 6 6 
+
+    user   system  elapsed 
+1952.455    2.092 1977.631 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    2    2    3    3    4
+[2,]    2    3    1    1    3
+[3,]    2    1    1    4    2
+[4,]    1    3    4    3    4
+[5,]    1    1    2    4    4
+
+UDNAM, Shuffled Sequential:
+self transition frequency: 0.02139024 
+average self transition probability: 0.02138089 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.089398  variance 7.71028 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   2132   18692   89165  280460  671209 1287546 2075655 2856508 3412171 3557545 
+     10      11      12      13      14      15      16      17      18      19 
+3291974 2696900 1967886 1287981  762071  404957  195131   86776   35175   13186 
+     20      21      22      23      24      25      26 
+   4651    1505     499     154      52      13       6 
+
+count of 1 values: mean 6.249791  variance 3.362825 
+
+sum sq counts: mean 169.7128  variance 116.4563 
+
+final counts: 8 6 8 3 
+
+    user   system  elapsed 
+1959.713    1.532 1963.540 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    2    1    3    3    1
+[2,]    1    3    3    2    2
+[3,]    4    1    2    1    3
+[4,]    4    3    1    1    4
+[5,]    2    3    2    3    1
+
+UDNAM, Checkerboard:
+self transition frequency: 0.02137788 
+average self transition probability: 0.02138787 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.0915  variance 7.709645 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1916   18415   87720  279614  667482 1291517 2074906 2858518 3408780 3560333 
+     10      11      12      13      14      15      16      17      18      19 
+3285522 2696427 1972297 1291643  760725  404754  196893   87103   35342   13278 
+     20      21      22      23      24      25      26      27 
+   4703    1516     440     123      25       5       2       1 
+
+count of 1 values: mean 6.248751  variance 3.366374 
+
+sum sq counts: mean 169.7134  variance 116.4574 
+
+final counts: 7 4 9 5 
+
+    user   system  elapsed 
+1962.693    1.668 1966.857 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    3    1    2    4    2
+[2,]    1    4    3    1    3
+[3,]    3    4    4    3    1
+[4,]    1    3    3    1    2
+[5,]    2    4    1    3    3
+
+UDNAM, Random order:
+self transition frequency: 0.0213668 
+average self transition probability: 0.02137503 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.092526  variance 7.715419 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1826   18436   88812  279689  668954 1289131 2074163 2855410 3407572 3562963 
+     10      11      12      13      14      15      16      17      18      19 
+3286005 2691951 1971972 1294082  763341  406584  196921   87047   35204   13292 
+     20      21      22      23      24      25      26      27 
+   4525    1502     427     125      50       6       9       1 
+
+count of 1 values: mean 6.249389  variance 3.366844 
+
+sum sq counts: mean 169.721  variance 116.5916 
+
+final counts: 6 6 7 6 
+
+    user   system  elapsed 
+1969.429    1.660 1973.512 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    2    2    1    3    4
+[2,]    3    4    1    4    1
+[3,]    4    3    4    2    4
+[4,]    2    3    3    1    1
+[5,]    1    3    2    3    2
+
+UDNAM, Random order x4:
+self transition frequency: 0.02139352 
+average self transition probability: 0.0213764 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.08854  variance 7.707798 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1993   18677   88180  278889  671933 1292107 2076863 2857424 3409066 3563350 
+     10      11      12      13      14      15      16      17      18      19 
+3287300 2694869 1970360 1286525  759831  404900  195865   86608   35076   13305 
+     20      21      22      23      24      25      26      27 
+   4768    1489     467     118      25       9       2       1 
+
+count of 1 values: mean 6.249596  variance 3.361103 
+
+sum sq counts: mean 169.7025  variance 116.1766 
+
+final counts: 5 4 6 10 
+
+    user   system  elapsed 
+1954.670    1.516 1957.754 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    4    4    3    1    1
+[2,]    3    4    4    1    1
+[3,]    2    4    2    4    3
+[4,]    3    3    3    2    4
+[5,]    4    1    2    4    4
+
+ZDNAM, Random:
+self transition frequency: 0 
+average self transition probability: 0 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.088156  variance 7.708664 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1864   18249   87637  279725  670630 1294888 2077416 2859657 3406537 3565482 
+     10      11      12      13      14      15      16      17      18      19 
+3287584 2693583 1966271 1287823  758312  405568  196235   87153   35138   13449 
+     20      21      22      23      24      25      26 
+   4648    1497     456     153      31      13       1 
+
+count of 1 values: mean 6.249081  variance 3.366129 
+
+sum sq counts: mean 169.7044  variance 116.4 
+
+final counts: 5 5 9 6 
+
+    user   system  elapsed 
+ 998.094    1.752 1001.893 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    4    1    3    4    3
+[2,]    3    3    3    1    1
+[3,]    2    1    2    3    4
+[4,]    1    4    4    4    2
+[5,]    3    2    3    3    2
+
+ZDNAM, Sequential:
+self transition frequency: 0 
+average self transition probability: 0 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.089367  variance 7.715453 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1818   18810   89357  280453  673089 1291542 2076239 2853646 3402400 3563265 
+     10      11      12      13      14      15      16      17      18      19 
+3288884 2696885 1969162 1289707  762023  405333  195755   86688   35108   13059 
+     20      21      22      23      24      25      26      27 
+   4541    1535     468     158      49      18       5       3 
+
+count of 1 values: mean 6.249276  variance 3.368269 
+
+sum sq counts: mean 169.7169  variance 116.3806 
+
+final counts: 5 7 6 7 
+
+   user  system elapsed 
+975.408   1.148 976.562 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    2    4    3    2
+[2,]    1    4    2    3    4
+[3,]    2    2    3    4    1
+[4,]    4    2    1    3    4
+[5,]    1    4    3    2    3
+
+ZDNAM, Shuffled Sequential:
+self transition frequency: 0 
+average self transition probability: 0 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.091125  variance 7.713868 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1803   18254   88128  279156  670872 1291309 2076511 2854932 3407747 3560159 
+     10      11      12      13      14      15      16      17      18      19 
+3289085 2692696 1971382 1293442  759646  405224  196560   87120   35749   13310 
+     20      21      22      23      24      25 
+   4638    1595     493     140      41       8 
+
+count of 1 values: mean 6.251587  variance 3.36216 
+
+sum sq counts: mean 169.7163  variance 116.4777 
+
+final counts: 10 3 6 6 
+
+   user  system elapsed 
+994.931   1.116 996.050 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    2    4    1    3
+[2,]    4    2    3    4    1
+[3,]    4    1    1    4    3
+[4,]    1    3    1    1    2
+[5,]    4    1    3    1    3
+
+ZDNAM, Checkerboard:
+self transition frequency: 0 
+average self transition probability: 0 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.090606  variance 7.698168 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1858   18142   87577  278249  667674 1288749 2076704 2860119 3411809 3561715 
+     10      11      12      13      14      15      16      17      18      19 
+3290429 2696118 1969302 1289080  759785  405600  195808   86199   35208   13214 
+     20      21      22      23      24      25      26 
+   4479    1518     475     127      43      13       6 
+
+count of 1 values: mean 6.250748  variance 3.369015 
+
+sum sq counts: mean 169.7214  variance 116.5956 
+
+final counts: 6 7 6 6 
+
+   user  system elapsed 
+998.399   1.312 999.725 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    3    2    4    1    1
+[2,]    4    2    4    2    4
+[3,]    1    3    3    1    2
+[4,]    3    4    1    2    1
+[5,]    2    3    2    4    3
+
+ZDNAM, Random order:
+self transition frequency: 0 
+average self transition probability: 0 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.088262  variance 7.717124 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1824   18426   88870  279921  671727 1293813 2077816 2857059 3409469 3562732 
+     10      11      12      13      14      15      16      17      18      19 
+3286704 2691790 1968061 1286742  760168  404832  196082   87620   35765   13542 
+     20      21      22      23      24      25      26      27 
+   4668    1623     529     165      38      12       1       1 
+
+count of 1 values: mean 6.248517  variance 3.363611 
+
+sum sq counts: mean 169.7121  variance 116.5766 
+
+final counts: 6 7 7 5 
+
+   user  system elapsed 
+998.593   1.156 999.753 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    4    1    2    1    3
+[2,]    3    1    4    2    2
+[3,]    3    4    3    4    1
+[4,]    2    1    2    3    1
+[5,]    3    2    3    4    2
+
+ZDNAM, Random order x4:
+self transition frequency: 0 
+average self transition probability: 0 
+minimum self transition probability: 0 
+fraction of time max pr > 1/2: 0 
+
+equal neighbors: mean 9.088745  variance 7.712178 
+eq
+      0       1       2       3       4       5       6       7       8       9 
+   1875   18418   88022  279411  671500 1291745 2079412 2856186 3413928 3560521 
+     10      11      12      13      14      15      16      17      18      19 
+3285026 2692408 1967547 1290349  759013  405301  196928   86862   35318   13342 
+     20      21      22      23      24      25      26 
+   4652    1535     465     156      54      20       6 
+
+count of 1 values: mean 6.250254  variance 3.364014 
+
+sum sq counts: mean 169.7122  variance 116.4878 
+
+final counts: 6 5 3 11 
+
+    user   system  elapsed 
+ 992.039    2.592 1014.269 
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    2    4    4    1    3
+[2,]    2    4    1    4    1
+[3,]    2    1    4    2    4
+[4,]    2    4    3    4    1
+[5,]    4    1    3    4    4
+> 

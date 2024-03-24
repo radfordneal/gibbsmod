@@ -1,0 +1,638 @@
+
+R version 4.1.2 (2021-11-01) -- "Bird Hippie"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # PLOT DATA SUMMARY FROM 5x5 POTTS RUNS.
+> 
+> source("plot.r")
+> source("potts-5x5.r")
+> 
+> args <- commandArgs(trailingOnly=TRUE)   # Run type from after --args
+> if (length(args)==0)
++ { stop("Need run type as argument")
++ }
+> rtype <- args[1]
+> 
+> if (length(args)<2)
++ { stop("Need number of runs as argument")
++ }
+> nruns <- as.numeric(args[2])             # Number of runs to use
+> runs <- 0:(nruns-1)
+> 
+> 
+> # PRINT SELF-TRANSITION DATA.
+> 
+> print (read_self (paste0("runs/potts-res-5x5-",rtype), runs))
+$self
+     Random Sequential Shuffled Sequential Checkerboard Random order
+ST        0          0                   0            0            0
+DST       0          0                   0            0            0
+UST       0          0                   0            0            0
+UDST      0          0                   0            0            0
+HST       0          0                   0            0            0
+OHST      0          0                   0            0            0
+     Random order x4
+ST                 0
+DST                0
+UST                0
+UDST               0
+HST                0
+OHST               0
+
+$prhalf
+     Random Sequential Shuffled Sequential Checkerboard Random order
+ST        0          0                   0            0            0
+DST       0          0                   0            0            0
+UST       0          0                   0            0            0
+UDST      0          0                   0            0            0
+HST       0          0                   0            0            0
+OHST      0          0                   0            0            0
+     Random order x4
+ST                 0
+DST                0
+UST                0
+UDST               0
+HST                0
+OHST               0
+
+$self_pr
+     Random Sequential Shuffled Sequential Checkerboard Random order
+ST        0          0                   0            0            0
+DST       0          0                   0            0            0
+UST       0          0                   0            0            0
+UDST      0          0                   0            0            0
+HST       0          0                   0            0            0
+OHST      0          0                   0            0            0
+     Random order x4
+ST                 0
+DST                0
+UST                0
+UDST               0
+HST                0
+OHST               0
+
+$min_self
+     Random Sequential Shuffled Sequential Checkerboard Random order
+ST        0          0                   0            0            0
+DST       0          0                   0            0            0
+UST       0          0                   0            0            0
+UDST      0          0                   0            0            0
+HST       0          0                   0            0            0
+OHST      0          0                   0            0            0
+     Random order x4
+ST                 0
+DST                0
+UST                0
+UDST               0
+HST                0
+OHST               0
+
+> 
+> 
+> # COMPUTE AND PLOT THE ASYMPTOTIC VARIANCES.
+> 
+> width <- 7
+> hght <- 9
+> 
+> asv <- NULL
+> 
+> for (runn in runs)
++ {
++   load (paste0("runs/potts-res-5x5-",rtype,runn))
++   methods <- rownames(res)
++   scans <- colnames(res)
++ 
++   asymvar <- list()
++ 
++   pdf(paste0("runs/potts-5x5-cnt1-",rtype,runn,".pdf"),width=width,height=hght)
++   
++   asymvar <- c (asymvar, cnt1=list(
++    acv_plots ("Count of 1s", methods, scans,
++               maxlag=10.5*n, maxvar=3.4, minacov=-0.5*3.4, mean_to_use=n/NV,
++               data=res, sub="cnt1", rnd=2
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/potts-5x5-sumsqcnt-",rtype,runn,".pdf"),
++               width=width,height=hght)
++   
++   asymvar <- c (asymvar, sumsqcnt=list(
++    acv_plots ("sum squared counts", methods, scans,
++               maxlag=16.5*n, maxvar=120, 
++               data=res, sub="sumsqcnt"
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/potts-5x5-eq-",rtype,runn,".pdf"),width=width,height=hght)
++   
++   asymvar <- c (asymvar, eq=list(
++    acv_plots ("Equal neighbors", methods, scans,
++               maxlag=5.5*n, maxvar=7.8, 
++               data=res, sub="eq", rnd=2
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/potts-5x5-cnt1t-",rtype,runn,".pdf"),width=width,height=hght)
++   
++   asymvar <- c (asymvar, cnt1=list(
++    acv_plots ("Count of 1s", methods, scans,
++               maxlag=10, maxvar=3.4, minacov=-0.5*3.4, mean_to_use=n/NV,
++               data=res, sub="cnt1", thin=n, rnd=2
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/potts-5x5-sumsqcntt-",rtype,runn,".pdf"),
++               width=width,height=hght)
++   
++   asymvar <- c (asymvar, sumsqcnt=list(
++    acv_plots ("sum squared counts", methods, scans,
++               maxlag=16, maxvar=120, 
++               data=res, sub="sumsqcnt", thin=n
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/potts-5x5-eqt-",rtype,runn,".pdf"),width=width,height=hght)
++   
++   asymvar <- c (asymvar, eq=list(
++    acv_plots ("Equal neighbors", methods, scans,
++               maxlag=5, maxvar=7.8, 
++               data=res, sub="eq", thin=n, rnd=2
++              )))
++   
++   dev.off()
++ 
++   if (is.null(asv))
++   { asv <- rep (list(array(0,c(dim(asymvar[[1]]),length(runs)))),
++                 length(asymvar))
++     names(asv) <- names(asymvar)
++     for (i in 1:length(asymvar))
++     { rownames(asv[[i]]) <- rownames(asymvar[[i]])
++       colnames(asv[[i]]) <- colnames(asymvar[[i]])
++     }
++   }
++ 
++   for (i in 1:length(asymvar))
++   { asv[[i]][,,runn+1] <- asymvar[[i]]
++   }
++ }
+> 
+> print(asv)
+$cnt1
+, , 1
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+ST    75.26043   16.81725            16.20434     15.88175     30.22702
+DST   83.36936   28.11335            27.87364     28.05114     40.72998
+UST   84.28567   27.92076            27.96484     27.89331     41.10818
+UDST  90.03290   29.73602            29.48694     29.72894     44.33545
+HST  129.53886   70.98735            71.90808     73.43153     82.76501
+OHST  96.10554   32.47345            32.34100     32.87865     48.04383
+     Random order x4
+ST          18.89157
+DST         30.68935
+UST         30.44958
+UDST        32.95912
+HST         73.52688
+OHST        35.40264
+
+, , 2
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+ST    75.16519   16.63115            16.35738     15.91487     30.55461
+DST   84.33926   27.99990            28.05445     27.96989     40.53261
+UST   83.18362   28.00634            27.70109     27.93604     40.78165
+UDST  89.64175   30.06865            29.90377     29.96253     44.22231
+HST  127.88341   71.48680            71.83405     73.67985     83.28661
+OHST  97.16504   32.84826            32.45887     32.70873     47.74621
+     Random order x4
+ST          18.81417
+DST         30.05040
+UST         30.56372
+UDST        32.42453
+HST         73.61918
+OHST        35.40603
+
+, , 3
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+ST    74.32038   16.63820            16.23646     15.99153     30.18275
+DST   82.61252   28.01619            27.70820     27.65801     40.47587
+UST   83.60232   27.69276            27.97710     28.13043     40.79846
+UDST  88.61334   29.84449            29.81878     29.72123     44.57356
+HST  128.93240   71.74165            73.47406     73.71746     83.37263
+OHST  97.03994   32.39000            32.86146     32.64992     47.67517
+     Random order x4
+ST          18.92121
+DST         30.62917
+UST         30.55652
+UDST        32.45419
+HST         73.00531
+OHST        35.54873
+
+, , 4
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+ST    74.49724   16.53912            16.05294     15.78443     30.29469
+DST   83.57021   27.80192            27.97393     27.94450     41.23850
+UST   84.61876   28.03956            27.95739     27.91058     41.06976
+UDST  89.19650   30.04760            29.76726     30.02063     44.57517
+HST  129.41152   71.13155            71.80976     72.62575     81.98833
+OHST  97.68783   32.52348            32.79595     32.24559     47.66189
+     Random order x4
+ST          18.91511
+DST         30.39170
+UST         30.40830
+UDST        32.72412
+HST         73.75881
+OHST        35.32208
+
+
+$sumsqcnt
+, , 1
+
+       Random Sequential Shuffled Sequential Checkerboard Random order
+ST   1445.867   2842.829            2661.352     2977.689     2015.795
+DST  1427.365   1585.948            1471.883     1480.250     1305.697
+UST  1421.581   1593.739            1452.209     1475.597     1266.506
+UDST 1511.361   1454.965            1378.413     1363.348     1226.549
+HST  2218.660   3303.322            2962.909     3318.503     2227.006
+OHST 1573.586   1592.962            1439.880     1436.600     1257.365
+     Random order x4
+ST          2370.983
+DST         1411.023
+UST         1421.233
+UDST        1319.171
+HST         2585.275
+OHST        1380.900
+
+, , 2
+
+       Random Sequential Shuffled Sequential Checkerboard Random order
+ST   1469.689   2870.133            2668.312     2970.520     2057.866
+DST  1416.777   1584.812            1488.310     1476.141     1294.222
+UST  1421.720   1582.532            1463.867     1490.747     1284.766
+UDST 1499.219   1493.329            1369.494     1346.813     1235.148
+HST  2209.426   3294.835            2910.756     3311.291     2218.679
+OHST 1590.424   1562.671            1423.452     1420.974     1266.384
+     Random order x4
+ST          2319.353
+DST         1410.988
+UST         1421.479
+UDST        1320.601
+HST         2569.614
+OHST        1364.971
+
+, , 3
+
+       Random Sequential Shuffled Sequential Checkerboard Random order
+ST   1460.950   2860.701            2658.057     2952.119     2073.205
+DST  1420.354   1600.280            1497.379     1488.827     1290.615
+UST  1431.729   1593.893            1461.319     1480.246     1313.070
+UDST 1527.139   1487.697            1382.233     1373.685     1221.176
+HST  2240.023   3331.779            3018.489     3305.717     2191.613
+OHST 1613.862   1583.033            1443.062     1440.874     1268.188
+     Random order x4
+ST          2326.552
+DST         1395.108
+UST         1418.690
+UDST        1336.103
+HST         2594.023
+OHST        1357.264
+
+, , 4
+
+       Random Sequential Shuffled Sequential Checkerboard Random order
+ST   1450.330   2843.246            2704.411     2989.090     2060.365
+DST  1440.321   1591.605            1476.715     1474.859     1288.042
+UST  1426.307   1618.835            1490.168     1476.106     1296.826
+UDST 1501.802   1473.747            1380.207     1343.642     1220.343
+HST  2208.780   3297.562            2971.970     3297.469     2189.371
+OHST 1592.596   1550.217            1436.366     1441.677     1259.548
+     Random order x4
+ST          2345.957
+DST         1413.004
+UST         1415.254
+UDST        1336.994
+HST         2578.598
+OHST        1363.415
+
+
+$eq
+, , 1
+
+       Random Sequential Shuffled Sequential Checkerboard Random order
+ST   140.3469   269.0096           206.83504    173.97822    140.70119
+DST  133.6806   134.3869            94.78412     65.08831     94.35831
+UST  134.2790   134.9785            94.69086     65.74050     94.05077
+UDST 145.9060   135.3227            98.49372     67.79867     99.99457
+HST  241.8371   383.9613           238.18088    181.76197    199.83602
+OHST 168.3479   163.9567           115.10170     85.70411    117.65497
+     Random order x4
+ST         175.86156
+DST         95.43256
+UST         95.44009
+UDST        98.31789
+HST        226.87189
+OHST       116.47279
+
+, , 2
+
+       Random Sequential Shuffled Sequential Checkerboard Random order
+ST   139.1637   267.4238           209.63390    174.47204    140.72031
+DST  133.9108   135.1611            94.65997     65.34863     93.96115
+UST  134.6035   134.7455            94.32116     65.30882     93.36341
+UDST 144.3683   135.7187            98.04329     68.25073     99.75743
+HST  243.7300   382.9028           239.34284    183.35073    200.90442
+OHST 168.2294   163.6982           115.49171     86.03602    117.46671
+     Random order x4
+ST         175.84293
+DST         95.38946
+UST         95.77060
+UDST        97.92870
+HST        223.33768
+OHST       116.49223
+
+, , 3
+
+       Random Sequential Shuffled Sequential Checkerboard Random order
+ST   139.2604   269.6982           208.28343    173.25655    139.63677
+DST  133.2284   135.0807            94.50278     65.24395     94.64041
+UST  132.5059   135.1179            94.78961     65.23651     93.95035
+UDST 146.8867   135.8684            97.22967     67.41535     99.66519
+HST  242.7806   383.7560           239.06052    184.47367    200.64173
+OHST 168.5009   164.0944           115.61768     86.32510    117.20978
+     Random order x4
+ST         176.23577
+DST         95.14652
+UST         95.05825
+UDST        98.27827
+HST        224.24436
+OHST       116.82170
+
+, , 4
+
+       Random Sequential Shuffled Sequential Checkerboard Random order
+ST   138.9997   269.3575           209.11337    175.97783    140.21084
+DST  133.8739   134.7761            94.43604     65.67560     94.01362
+UST  133.8005   135.8236            94.40970     65.63958     93.82914
+UDST 145.6314   136.3499            96.32203     68.31646     99.20246
+HST  243.6992   381.0029           238.61029    182.49273    199.59726
+OHST 166.7998   163.6619           115.73793     85.81065    117.84270
+     Random order x4
+ST         175.21332
+DST         94.94238
+UST         94.80213
+UDST        98.44406
+HST        224.40621
+OHST       117.10247
+
+
+$cnt1
+, , 1
+
+       Random Sequential Shuffled Sequential Checkerboard Random order
+ST   100.8939   16.79120            14.97485     14.44023     19.50422
+DST  109.6027   28.19844            27.88797     27.96347     30.36754
+UST  109.4121   27.92924            27.86250     28.01037     30.56600
+UDST 115.0377   29.88734            29.53430     29.76260     32.69028
+HST  154.1581   72.43942            73.54642     75.19507     73.37112
+OHST 120.7272   32.52062            32.33220     32.75187     35.51548
+     Random order x4
+ST          17.41000
+DST         28.67488
+UST         28.34248
+UDST        30.96217
+HST         71.32083
+OHST        33.03885
+
+, , 2
+
+       Random Sequential Shuffled Sequential Checkerboard Random order
+ST   101.0913   16.41553            14.83755     14.44042     19.48445
+DST  110.3668   27.93407            28.02009     28.11318     30.67819
+UST  108.9873   28.10563            27.65159     28.06679     30.27534
+UDST 115.6179   30.14195            29.80869     29.98605     32.56354
+HST  153.4495   73.22363            73.59879     75.42465     74.08109
+OHST 122.2776   32.85090            32.44775     32.75075     35.30625
+     Random order x4
+ST          17.17323
+DST         28.02017
+UST         28.38174
+UDST        30.38328
+HST         71.37132
+OHST        33.05885
+
+, , 3
+
+       Random Sequential Shuffled Sequential Checkerboard Random order
+ST   100.2105   16.55187            14.73517     14.35752     19.63554
+DST  109.2259   28.02960            27.48240     27.67854     30.51422
+UST  109.8547   27.60118            28.07419     28.11940     30.82178
+UDST 114.2440   29.72803            29.84299     29.70472     32.85667
+HST  154.0304   73.42695            75.09424     75.47852     74.26569
+OHST 121.7161   32.31043            32.82790     32.52095     35.36162
+     Random order x4
+ST          17.23897
+DST         28.38845
+UST         28.53933
+UDST        30.54073
+HST         70.94044
+OHST        33.48489
+
+, , 4
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+ST    99.76788   16.43713            14.78909     14.28530     19.70157
+DST  108.97158   27.81089            27.88089     28.03645     30.68489
+UST  111.48452   27.99953            27.94710     28.02239     30.45154
+UDST 114.88643   30.16007            29.80580     29.98395     32.58359
+HST  154.13617   72.65914            73.50564     74.53583     73.17737
+OHST 122.25757   32.35575            32.77048     32.32025     35.54094
+     Random order x4
+ST          17.42227
+DST         28.24002
+UST         28.31778
+UDST        30.49639
+HST         71.59259
+OHST        33.19297
+
+
+$sumsqcnt
+, , 1
+
+       Random Sequential Shuffled Sequential Checkerboard Random order
+ST   2958.354   7613.857            6424.242     6264.375     7929.081
+DST  3025.366   4704.498            4278.604     4224.415     4682.311
+UST  2993.754   4793.680            4281.068     4318.958     4568.336
+UDST 3054.876   4396.375            4120.082     4083.195     4320.947
+HST  3647.855   8340.331            6354.512     6224.874     8298.363
+OHST 3081.264   4568.204            4170.357     4082.966     4445.369
+     Random order x4
+ST          6833.891
+DST         4506.427
+UST         4522.669
+UDST        4233.389
+HST         6853.511
+OHST        4300.266
+
+, , 2
+
+       Random Sequential Shuffled Sequential Checkerboard Random order
+ST   3047.245   7743.229            6386.477     6235.072     8017.967
+DST  2968.262   4758.430            4343.200     4280.360     4647.217
+UST  2958.493   4705.944            4298.314     4334.801     4618.254
+UDST 3047.983   4451.033            4087.648     4000.674     4366.549
+HST  3603.305   8462.659            6337.583     6165.685     8363.225
+OHST 3067.946   4676.834            4028.923     4035.126     4360.443
+     Random order x4
+ST          6777.828
+DST         4489.326
+UST         4419.953
+UDST        4151.147
+HST         6813.076
+OHST        4222.433
+
+, , 3
+
+       Random Sequential Shuffled Sequential Checkerboard Random order
+ST   2977.321   7719.345            6432.272     6311.247     8085.060
+DST  3019.610   4762.276            4319.773     4324.758     4582.809
+UST  3018.062   4677.881            4238.296     4287.920     4650.899
+UDST 3086.263   4542.465            4123.946     4084.888     4340.101
+HST  3653.487   8495.400            6464.983     6141.471     8266.427
+OHST 3134.756   4615.102            4219.936     4060.777     4409.756
+     Random order x4
+ST          6755.596
+DST         4407.291
+UST         4524.779
+UDST        4253.393
+HST         6813.106
+OHST        4322.848
+
+, , 4
+
+       Random Sequential Shuffled Sequential Checkerboard Random order
+ST   3032.157   7599.190            6467.289     6329.762     8015.113
+DST  3021.309   4755.392            4331.200     4211.215     4616.754
+UST  2965.587   4785.271            4304.146     4246.240     4601.408
+UDST 3049.180   4420.843            4094.608     4006.608     4330.824
+HST  3629.442   8415.832            6383.152     6199.401     8242.739
+OHST 3095.985   4502.050            4152.267     4065.344     4379.755
+     Random order x4
+ST          6771.426
+DST         4418.603
+UST         4511.313
+UDST        4263.066
+HST         6840.790
+OHST        4214.123
+
+
+$eq
+, , 1
+
+       Random Sequential Shuffled Sequential Checkerboard Random order
+ST   220.9083   359.4568            345.3070     347.0172     344.7165
+DST  214.3607   203.2383            205.9797     208.0542     204.9824
+UST  214.1762   203.3227            205.6921     208.8323     204.3248
+UDST 222.6703   200.7844            212.8405     215.6634     209.8143
+HST  307.6803   526.0654            365.5110     356.6848     414.8144
+OHST 238.6744   228.8161            210.0056     210.2437     215.5660
+     Random order x4
+ST          334.7093
+DST         204.5589
+UST         205.4616
+UDST        207.8056
+HST         397.1330
+OHST        213.1231
+
+, , 2
+
+       Random Sequential Shuffled Sequential Checkerboard Random order
+ST   218.8623   356.7459            343.1616     351.7278     345.2303
+DST  213.5373   203.2442            206.9917     208.8901     203.5697
+UST  215.5283   202.5067            206.0797     207.8914     202.1373
+UDST 221.5405   201.9609            211.2476     215.5361     209.4253
+HST  309.4002   526.4829            363.0740     356.8243     415.8809
+OHST 239.1526   230.2415            210.3066     208.1546     216.9435
+     Random order x4
+ST          334.2529
+DST         205.5680
+UST         206.2314
+UDST        206.4464
+HST         395.5430
+OHST        213.0389
+
+, , 3
+
+       Random Sequential Shuffled Sequential Checkerboard Random order
+ST   219.3337   359.5266            344.5901     347.2406     343.5404
+DST  212.7371   203.0405            206.5000     208.8361     205.2751
+UST  213.1849   203.6984            204.2894     207.4672     203.9649
+UDST 225.5883   200.9294            209.6715     212.9046     208.9015
+HST  308.1225   524.9925            361.7351     357.4154     415.6469
+OHST 240.0620   229.2456            211.8688     210.7280     216.2638
+     Random order x4
+ST          334.8348
+DST         206.2956
+UST         204.9455
+UDST        207.8698
+HST         399.9594
+OHST        214.0357
+
+, , 4
+
+       Random Sequential Shuffled Sequential Checkerboard Random order
+ST   217.9683   359.6147            345.2096     351.5204     342.9056
+DST  214.1230   202.6015            205.1780     207.7948     204.5311
+UST  213.7738   204.8614            204.4785     208.4116     203.5189
+UDST 224.9427   201.1330            210.5173     216.6833     209.4376
+HST  309.8368   521.9715            365.1806     358.1495     417.3036
+OHST 238.6897   229.2455            211.7830     211.5793     216.8470
+     Random order x4
+ST          335.7036
+DST         205.1475
+UST         204.5443
+UDST        207.2696
+HST         399.3476
+OHST        214.1205
+
+
+> 
+> 
+> # PLOT SUMMARIES.
+> 
+> pdf(paste0("runs/potts-summary-5x5-",rtype,".pdf"),width=6.5,height=8.5)
+> 
+> summary_plot (asv,
++               methods=rownames(res),
++               orders=colnames(res),
++               ranges=list (cnt1=c(10,145,20),          # Asymp var range & step
++                            sumsqcnt=c(1000,9000,2000),
++                            eq=c(50,450,100)),
++               qnames=c(cnt1="Count of 1s",             # Names for display
++                        sumsqcnt="Sum squared counts",
++                        eq="Equal neighbors"))
+methods: ST DST UST UDST HST OHST 
+> 
+> dev.off()
+null device 
+          1 
+> 

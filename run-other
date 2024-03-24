@@ -1,0 +1,5 @@
+#!/bin/bash
+
+R --vanilla <pself.r 
+R --vanilla <potts-cond-plots.r
+R --vanilla <beliefnet-marginals.r >runs/beliefnet-marginals

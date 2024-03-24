@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ x$R == x ]; then
+  R=R
+fi
+
+for i in 0 1 2 3
+do
+  time $R --vanilla --args $i <potts-runs-5x5-a.r >&runs/potts-output-5x5-a$i &
+  time $R --vanilla --args $i <potts-runs-5x5-b.r >&runs/potts-output-5x5-b$i & 
+  time $R --vanilla --args $i <potts-runs-5x5-c.r >&runs/potts-output-5x5-c$i &
+# wait   # comment out if you have plenty of cores and RAM
+done
+wait
+
+$R --vanilla --args a 4 <potts-summary-5x5.r >&runs/potts-summary-5x5-a
+$R --vanilla --args b 4 <potts-summary-5x5.r >&runs/potts-summary-5x5-b
+$R --vanilla --args c 4 <potts-summary-5x5.r >&runs/potts-summary-5x5-c

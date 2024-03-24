@@ -1,0 +1,21 @@
+T7810: time run-mix
+
+real    187m51.567s
+user    187m46.952s
+sys     0m5.863s
+
+real    188m54.077s
+user    188m48.634s
+sys     0m6.147s
+
+real    191m53.170s
+user    191m48.924s
+sys     0m6.064s
+
+real    195m10.343s
+user    194m14.582s
+sys     0m10.678s
+
+real    279m0.430s
+user    846m14.805s
+sys     0m48.184s

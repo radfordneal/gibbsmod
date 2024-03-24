@@ -1,0 +1,53 @@
+T5820c: time run-mix
+
+real    119m6.170s
+user    119m4.366s
+sys     0m1.728s
+
+real    119m15.596s
+user    119m13.707s
+sys     0m1.792s
+
+real    119m16.020s
+user    119m14.499s
+sys     0m1.672s
+
+real    119m23.425s
+user    119m21.823s
+sys     0m1.733s
+
+real    125m19.997s
+user    125m18.423s
+sys     0m1.636s
+
+real    125m25.350s
+user    125m23.847s
+sys     0m1.576s
+
+real    125m36.421s
+user    125m34.914s
+sys     0m1.772s
+
+real    125m53.153s
+user    125m51.538s
+sys     0m1.708s
+
+real    142m45.713s
+user    142m44.255s
+sys     0m1.629s
+
+real    142m47.856s
+user    142m46.165s
+sys     0m1.629s
+
+real    142m50.012s
+user    142m48.333s
+sys     0m1.668s
+
+real    143m3.540s
+user    143m1.928s
+sys     0m1.685s
+
+real    367m15.787s
+user    1774m21.766s
+sys     0m36.207s

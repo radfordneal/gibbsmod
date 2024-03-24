@@ -1,0 +1,638 @@
+
+R version 4.1.2 (2021-11-01) -- "Bird Hippie"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # PLOT DATA SUMMARY FROM 5x5 POTTS RUNS.
+> 
+> source("plot.r")
+> source("potts-5x5.r")
+> 
+> args <- commandArgs(trailingOnly=TRUE)   # Run type from after --args
+> if (length(args)==0)
++ { stop("Need run type as argument")
++ }
+> rtype <- args[1]
+> 
+> if (length(args)<2)
++ { stop("Need number of runs as argument")
++ }
+> nruns <- as.numeric(args[2])             # Number of runs to use
+> runs <- 0:(nruns-1)
+> 
+> 
+> # PRINT SELF-TRANSITION DATA.
+> 
+> print (read_self (paste0("runs/potts-res-5x5-",rtype), runs))
+$self
+          Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  0.03130187 0.03133119          0.03128543    0.0312471     0.031284
+ZDNAM 0.00000000 0.00000000          0.00000000    0.0000000     0.000000
+ST    0.00000000 0.00000000          0.00000000    0.0000000     0.000000
+UDST  0.00000000 0.00000000          0.00000000    0.0000000     0.000000
+FSS   0.00000000 0.00000000          0.00000000    0.0000000     0.000000
+ZFSS  0.00000000 0.00000000          0.00000000    0.0000000     0.000000
+      Random order x4
+UNAM        0.0312866
+ZDNAM       0.0000000
+ST          0.0000000
+UDST        0.0000000
+FSS         0.0000000
+ZFSS        0.0000000
+
+$prhalf
+      Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM       0          0                   0            0            0
+ZDNAM      0          0                   0            0            0
+ST         0          0                   0            0            0
+UDST       0          0                   0            0            0
+FSS        0          0                   0            0            0
+ZFSS       0          0                   0            0            0
+      Random order x4
+UNAM                0
+ZDNAM               0
+ST                  0
+UDST                0
+FSS                 0
+ZFSS                0
+
+$self_pr
+          Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  0.03128766 0.03128822          0.03129256   0.03128403   0.03128136
+ZDNAM 0.00000000 0.00000000          0.00000000   0.00000000   0.00000000
+ST    0.00000000 0.00000000          0.00000000   0.00000000   0.00000000
+UDST  0.00000000 0.00000000          0.00000000   0.00000000   0.00000000
+FSS   0.00000000 0.00000000          0.00000000   0.00000000   0.00000000
+ZFSS  0.00000000 0.00000000          0.00000000   0.00000000   0.00000000
+      Random order x4
+UNAM       0.03128456
+ZDNAM      0.00000000
+ST         0.00000000
+UDST       0.00000000
+FSS        0.00000000
+ZFSS       0.00000000
+
+$min_self
+      Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM       0          0                   0            0            0
+ZDNAM      0          0                   0            0            0
+ST         0          0                   0            0            0
+UDST       0          0                   0            0            0
+FSS        0          0                   0            0            0
+ZFSS       0          0                   0            0            0
+      Random order x4
+UNAM                0
+ZDNAM               0
+ST                  0
+UDST                0
+FSS                 0
+ZFSS                0
+
+> 
+> 
+> # COMPUTE AND PLOT THE ASYMPTOTIC VARIANCES.
+> 
+> width <- 7
+> hght <- 9
+> 
+> asv <- NULL
+> 
+> for (runn in runs)
++ {
++   load (paste0("runs/potts-res-5x5-",rtype,runn))
++   methods <- rownames(res)
++   scans <- colnames(res)
++ 
++   asymvar <- list()
++ 
++   pdf(paste0("runs/potts-5x5-cnt1-",rtype,runn,".pdf"),width=width,height=hght)
++   
++   asymvar <- c (asymvar, cnt1=list(
++    acv_plots ("Count of 1s", methods, scans,
++               maxlag=10.5*n, maxvar=3.4, minacov=-0.5*3.4, mean_to_use=n/NV,
++               data=res, sub="cnt1", rnd=2
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/potts-5x5-sumsqcnt-",rtype,runn,".pdf"),
++               width=width,height=hght)
++   
++   asymvar <- c (asymvar, sumsqcnt=list(
++    acv_plots ("sum squared counts", methods, scans,
++               maxlag=16.5*n, maxvar=120, 
++               data=res, sub="sumsqcnt"
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/potts-5x5-eq-",rtype,runn,".pdf"),width=width,height=hght)
++   
++   asymvar <- c (asymvar, eq=list(
++    acv_plots ("Equal neighbors", methods, scans,
++               maxlag=5.5*n, maxvar=7.8, 
++               data=res, sub="eq", rnd=2
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/potts-5x5-cnt1t-",rtype,runn,".pdf"),width=width,height=hght)
++   
++   asymvar <- c (asymvar, cnt1=list(
++    acv_plots ("Count of 1s", methods, scans,
++               maxlag=10, maxvar=3.4, minacov=-0.5*3.4, mean_to_use=n/NV,
++               data=res, sub="cnt1", thin=n, rnd=2
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/potts-5x5-sumsqcntt-",rtype,runn,".pdf"),
++               width=width,height=hght)
++   
++   asymvar <- c (asymvar, sumsqcnt=list(
++    acv_plots ("sum squared counts", methods, scans,
++               maxlag=16, maxvar=120, 
++               data=res, sub="sumsqcnt", thin=n
++              )))
++   
++   dev.off()
++   
++   pdf(paste0("runs/potts-5x5-eqt-",rtype,runn,".pdf"),width=width,height=hght)
++   
++   asymvar <- c (asymvar, eq=list(
++    acv_plots ("Equal neighbors", methods, scans,
++               maxlag=5, maxvar=7.8, 
++               data=res, sub="eq", thin=n, rnd=2
++              )))
++   
++   dev.off()
++ 
++   if (is.null(asv))
++   { asv <- rep (list(array(0,c(dim(asymvar[[1]]),length(runs)))),
++                 length(asymvar))
++     names(asv) <- names(asymvar)
++     for (i in 1:length(asymvar))
++     { rownames(asv[[i]]) <- rownames(asymvar[[i]])
++       colnames(asv[[i]]) <- colnames(asymvar[[i]])
++     }
++   }
++ 
++   for (i in 1:length(asymvar))
++   { asv[[i]][,,runn+1] <- asymvar[[i]]
++   }
++ }
+> 
+> print(asv)
+$cnt1
+, , 1
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  90.46263   31.78281            31.73102     31.45047     45.52431
+ZDNAM 88.45100   29.12148            29.15839     29.64300     43.72103
+ST    75.59792   16.59353            16.07962     15.68652     30.42199
+UDST  89.52656   29.96479            29.92896     30.15843     44.75692
+FSS   73.41583   14.76221            14.22800     14.75280     29.16097
+ZFSS  73.57977   14.66083            14.46161     14.71507     29.17743
+      Random order x4
+UNAM         34.19068
+ZDNAM        31.90609
+ST           18.67618
+UDST         32.73386
+FSS          17.19301
+ZFSS         17.27836
+
+, , 2
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  90.68520   31.89971            31.75228     31.41016     45.29188
+ZDNAM 88.64560   29.76207            29.11687     29.48363     43.31810
+ST    75.78611   16.46892            16.11622     15.61538     30.22996
+UDST  89.13413   29.76503            30.10750     30.03029     44.41243
+FSS   73.50659   14.72551            14.56648     14.91364     29.33303
+ZFSS  74.73495   14.71314            14.47662     14.88583     29.18043
+      Random order x4
+UNAM         34.27090
+ZDNAM        31.63457
+ST           18.71069
+UDST         32.26030
+FSS          17.05195
+ZFSS         17.29224
+
+, , 3
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  90.53951   31.78417            32.13509     31.60855     45.82443
+ZDNAM 89.35436   29.14797            29.67745     29.29426     43.62595
+ST    75.17968   16.67313            16.26732     15.69867     30.01196
+UDST  88.50846   29.76930            30.04358     29.97685     44.27370
+FSS   72.88371   14.83805            14.27709     14.88791     29.11387
+ZFSS  74.10307   14.68832            14.32781     14.84247     29.20492
+      Random order x4
+UNAM         34.58412
+ZDNAM        32.15736
+ST           18.78107
+UDST         32.56163
+FSS          17.09390
+ZFSS         17.05226
+
+, , 4
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  92.03473   31.69932            31.64491     31.63415     45.55661
+ZDNAM 88.13608   29.40751            29.13630     29.45421     43.83369
+ST    75.00355   16.39959            15.94993     15.95347     29.96376
+UDST  88.69127   29.89425            29.65004     29.94198     44.21834
+FSS   73.97720   14.84650            14.37408     14.80722     28.92567
+ZFSS  73.94702   14.93569            14.44881     14.88094     29.31827
+      Random order x4
+UNAM         34.19838
+ZDNAM        31.97460
+ST           18.81874
+UDST         32.69297
+FSS          17.05175
+ZFSS         17.22502
+
+
+$sumsqcnt
+, , 1
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  1564.011   1495.858            1381.583     1346.109     1270.173
+ZDNAM 1531.210   1461.553            1380.887     1354.927     1226.483
+ST    1468.926   2836.840            2629.034     2972.275     2034.429
+UDST  1502.222   1486.971            1369.949     1364.329     1233.089
+FSS   1566.402   3635.190            3238.743     3366.424     2292.088
+ZFSS  1543.556   3622.323            3197.765     3328.519     2302.752
+      Random order x4
+UNAM         1339.599
+ZDNAM        1345.571
+ST           2302.065
+UDST         1339.830
+FSS          2749.084
+ZFSS         2763.238
+
+, , 2
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  1523.449   1510.174            1378.562     1365.994     1270.290
+ZDNAM 1499.987   1487.290            1361.546     1336.843     1214.960
+ST    1425.706   2798.534            2642.293     2963.492     2052.216
+UDST  1510.890   1477.197            1390.413     1382.899     1240.241
+FSS   1551.876   3568.991            3216.452     3301.871     2268.690
+ZFSS  1572.354   3593.865            3275.144     3328.202     2283.457
+      Random order x4
+UNAM         1342.026
+ZDNAM        1325.011
+ST           2345.984
+UDST         1335.373
+FSS          2768.640
+ZFSS         2756.105
+
+, , 3
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  1547.517   1497.258            1367.127     1338.642     1282.187
+ZDNAM 1489.778   1498.179            1367.297     1346.856     1229.690
+ST    1445.803   2872.801            2623.420     2928.287     2081.210
+UDST  1487.712   1497.391            1374.392     1351.709     1216.874
+FSS   1589.154   3596.231            3214.684     3310.107     2301.905
+ZFSS  1547.873   3615.268            3221.829     3322.791     2322.595
+      Random order x4
+UNAM         1343.764
+ZDNAM        1320.395
+ST           2334.240
+UDST         1338.876
+FSS          2777.430
+ZFSS         2793.807
+
+, , 4
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  1562.536   1486.321            1403.177     1358.790     1279.837
+ZDNAM 1494.947   1486.250            1349.425     1329.511     1206.708
+ST    1447.561   2861.750            2669.752     2954.682     2051.421
+UDST  1492.531   1509.727            1375.896     1364.072     1224.136
+FSS   1578.324   3604.324            3259.929     3298.277     2290.979
+ZFSS  1556.953   3603.471            3234.428     3254.087     2258.232
+      Random order x4
+UNAM         1348.806
+ZDNAM        1321.438
+ST           2355.402
+UDST         1330.926
+FSS          2746.328
+ZFSS         2796.201
+
+
+$eq
+, , 1
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  168.5573   163.1859           118.30954     89.75555    123.38374
+ZDNAM 143.5025   131.9534            94.68995     65.66635     96.72489
+ST    139.2336   270.3854           208.14388    175.52766    140.99844
+UDST  146.7293   136.2418            96.52192     67.73997     99.42796
+FSS   170.0432   371.1087           281.73883    237.74009    185.88264
+ZFSS  170.1294   370.6076           285.47209    237.88435    186.44057
+      Random order x4
+UNAM        121.14169
+ZDNAM        95.89500
+ST          176.74981
+UDST         98.57519
+FSS         245.53721
+ZFSS        243.25893
+
+, , 2
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  167.7879   162.1366           117.40406     89.70822    124.03203
+ZDNAM 143.3737   131.8682            94.71697     65.33361     96.82684
+ST    140.6740   267.7848           209.47193    175.97426    141.26114
+UDST  146.7267   137.4896            96.47598     67.95516     99.00799
+FSS   170.5881   367.8842           281.96367    235.54253    186.02460
+ZFSS  170.9510   370.1891           285.10319    237.18517    185.65665
+      Random order x4
+UNAM        121.73793
+ZDNAM        95.84840
+ST          176.56905
+UDST         98.34322
+FSS         246.51924
+ZFSS        245.24795
+
+, , 3
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  168.2020   162.8803           118.75724     90.67296    122.93954
+ZDNAM 144.6114   132.3816            95.27865     64.81219     97.04536
+ST    139.8132   269.2851           210.07927    175.22767    140.81786
+UDST  146.6453   135.4396            96.70134     67.35033     99.43347
+FSS   170.5766   369.5909           285.25282    237.11939    185.92741
+ZFSS  168.1827   371.0016           284.54842    236.95784    185.20441
+      Random order x4
+UNAM        121.76376
+ZDNAM        96.36308
+ST          175.92431
+UDST         98.69428
+FSS         243.64044
+ZFSS        242.97680
+
+, , 4
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  169.4891   163.3927           119.20567     89.80828    123.92635
+ZDNAM 144.0649   132.5642            94.89396     65.44699     97.69617
+ST    140.8057   273.3279           208.65743    175.34290    141.06484
+UDST  146.0645   135.8861            96.99134     67.71273     99.60986
+FSS   169.7163   370.2695           285.09328    239.07785    185.20903
+ZFSS  170.6231   366.4913           284.71898    236.08175    185.89525
+      Random order x4
+UNAM        121.40090
+ZDNAM        95.08675
+ST          175.25612
+UDST         98.08324
+FSS         243.99248
+ZFSS        244.58749
+
+
+$cnt1
+, , 1
+
+         Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  115.51847   31.81025            31.82267     31.24014     34.46330
+ZDNAM 112.89733   29.16008            29.17797     29.56409     32.29927
+ST    101.69510   16.48715            14.65378     14.19050     19.77589
+UDST  114.79895   29.96902            30.01834     30.21295     32.61184
+FSS    98.46144   15.61234            14.03994     15.08383     18.22215
+ZFSS   99.12515   15.54512            14.36277     15.04377     18.65282
+      Random order x4
+UNAM         32.17259
+ZDNAM        29.94910
+ST           17.20144
+UDST         30.65975
+FSS          15.39113
+ZFSS         15.51925
+
+, , 2
+
+         Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  114.75412   31.84452            31.91853     31.33684     34.67910
+ZDNAM 114.18489   29.73423            29.29228     29.56425     32.23745
+ST    102.15697   16.45673            14.69057     14.08809     19.11870
+UDST  115.24189   29.92649            30.21675     29.99480     32.93465
+FSS    99.22152   15.69320            14.43808     15.26788     18.29068
+ZFSS  100.57998   15.91683            14.16565     15.41790     18.27482
+      Random order x4
+UNAM         32.27994
+ZDNAM        29.67559
+ST           17.30735
+UDST         30.11622
+FSS          15.13639
+ZFSS         15.36162
+
+, , 3
+
+         Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  115.59032   31.73960            32.15032     31.71945     34.87053
+ZDNAM 114.50685   29.08804            29.54959     29.18017     32.14945
+ST    101.55945   16.54282            14.85489     14.23165     19.35763
+UDST  114.43398   29.80720            30.22097     30.06624     32.79072
+FSS    99.06098   15.80058            14.12559     15.22497     18.27323
+ZFSS   99.52192   15.49850            14.12027     15.07829     18.08444
+      Random order x4
+UNAM         32.36263
+ZDNAM        29.87377
+ST           17.16555
+UDST         30.45768
+FSS          15.32895
+ZFSS         15.05699
+
+, , 4
+
+         Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  116.76375   31.59143            31.76209     31.51830     34.50264
+ZDNAM 113.54048   29.44855            29.06034     29.48028     32.37200
+ST    100.35834   16.25554            14.53418     14.41039     19.21545
+UDST  113.66088   29.89682            29.70133     30.01828     32.52210
+FSS   100.18789   15.84465            14.28845     15.01990     18.04949
+ZFSS   99.40737   15.97402            14.19504     15.20869     18.36693
+      Random order x4
+UNAM         32.18729
+ZDNAM        30.00819
+ST           17.23202
+UDST         30.66018
+FSS          15.38225
+ZFSS         15.35898
+
+
+$sumsqcnt
+, , 1
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  3062.367   4245.295            3907.776     3869.306     4083.957
+ZDNAM 3089.302   4449.015            4108.279     4041.483     4335.845
+ST    3032.763   7637.761            6313.249     6246.029     8004.720
+UDST  3047.098   4472.278            4125.994     4092.165     4347.129
+FSS   3063.123   8943.676            6988.173     6860.562     8641.517
+ZFSS  3051.925   9079.702            6923.834     6766.133     8690.062
+      Random order x4
+UNAM         4105.625
+ZDNAM        4215.592
+ST           6827.832
+UDST         4279.317
+FSS          7651.428
+ZFSS         7759.556
+
+, , 2
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  2984.381   4227.111            3920.579     3910.865     4136.368
+ZDNAM 3066.425   4426.232            4035.849     4084.088     4317.987
+ST    2966.978   7585.202            6319.773     6268.660     7981.143
+UDST  3068.769   4493.774            4139.676     4034.711     4370.998
+FSS   3068.676   9101.364            7047.153     6747.563     8647.439
+ZFSS  3114.318   9009.331            7043.981     6742.601     8685.591
+      Random order x4
+UNAM         4044.422
+ZDNAM        4216.548
+ST           6785.135
+UDST         4273.434
+FSS          7692.820
+ZFSS         7689.494
+
+, , 3
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  3027.134   4205.550            3887.611     3889.516     4114.894
+ZDNAM 3012.221   4481.367            4128.033     4065.465     4326.499
+ST    2983.261   7627.621            6278.751     6294.323     8092.577
+UDST  3026.389   4505.409            4132.286     4045.154     4345.360
+FSS   3107.419   9004.374            7002.942     6765.034     8631.847
+ZFSS  3085.121   9103.542            7074.007     6805.751     8674.030
+      Random order x4
+UNAM         4036.336
+ZDNAM        4209.620
+ST           6887.063
+UDST         4252.592
+FSS          7765.011
+ZFSS         7665.947
+
+, , 4
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  3035.572   4266.937            3950.446     3929.284     4115.735
+ZDNAM 3046.974   4417.706            4102.337     3991.732     4300.160
+ST    3007.406   7565.834            6413.961     6275.204     8028.280
+UDST  3059.273   4438.161            4078.689     4060.218     4337.579
+FSS   3105.760   9091.101            7094.276     6732.400     8673.843
+ZFSS  3056.767   9116.773            6986.182     6726.384     8648.490
+      Random order x4
+UNAM         4062.875
+ZDNAM        4210.562
+ST           6832.351
+UDST         4271.219
+FSS          7528.050
+ZFSS         7741.125
+
+
+$eq
+, , 1
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  239.1885   227.0563            208.0294     207.0986     213.3340
+ZDNAM 222.3319   196.0755            211.7641     217.9876     208.0087
+ST    219.5492   359.1380            344.6514     352.9987     345.1305
+UDST  224.8852   201.7979            209.7944     215.6823     208.7903
+FSS   240.3649   477.0631            414.2308     409.8299     385.6859
+ZFSS  241.3299   477.1295            417.4702     409.8277     385.6780
+      Random order x4
+UNAM         213.8483
+ZDNAM        205.5294
+ST           336.7451
+UDST         206.5727
+FSS          409.3220
+ZFSS         408.4615
+
+, , 2
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  236.6679   225.2074            207.6035     206.7406     216.0005
+ZDNAM 223.1656   196.9326            210.0579     214.7317     208.4884
+ST    221.2790   356.1086            345.9801     349.7098     344.2267
+UDST  224.5818   202.4037            210.0386     212.4028     208.8118
+FSS   241.7003   474.0448            409.6051     407.4294     385.1131
+ZFSS  240.4156   475.7512            414.8110     407.4353     385.6826
+      Random order x4
+UNAM         214.5484
+ZDNAM        206.6656
+ST           336.6976
+UDST         206.1201
+FSS          409.8084
+ZFSS         410.1352
+
+, , 3
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  236.5762   226.1192            209.9105     208.8156     213.0827
+ZDNAM 223.4087   197.9450            210.6746     215.7682     208.2883
+ST    219.9863   358.0093            345.1102     351.3147     346.6765
+UDST  224.5345   201.2104            208.7775     214.7376     208.1548
+FSS   238.7512   473.2582            414.6339     409.4808     384.5763
+ZFSS  238.7444   477.6188            415.2303     407.4838     383.7694
+      Random order x4
+UNAM         213.5570
+ZDNAM        206.6435
+ST           334.6350
+UDST         206.3983
+FSS          407.2824
+ZFSS         406.5990
+
+, , 4
+
+        Random Sequential Shuffled Sequential Checkerboard Random order
+UNAM  238.0712   228.0913            210.4651     206.3658     213.9727
+ZDNAM 222.2100   197.6393            211.3955     217.1642     208.5445
+ST    220.4628   362.6343            347.3383     350.5230     346.3131
+UDST  223.7643   200.8442            210.1122     214.4758     209.3794
+FSS   239.6944   477.5898            414.0804     408.0681     387.3060
+ZFSS  239.4673   469.7651            416.0725     406.4026     384.0990
+      Random order x4
+UNAM         213.4976
+ZDNAM        205.6971
+ST           335.7834
+UDST         207.4773
+FSS          406.7583
+ZFSS         410.6597
+
+
+> 
+> 
+> # PLOT SUMMARIES.
+> 
+> pdf(paste0("runs/potts-summary-5x5-",rtype,".pdf"),width=6.5,height=8.5)
+> 
+> summary_plot (asv,
++               methods=rownames(res),
++               orders=colnames(res),
++               ranges=list (cnt1=c(10,145,20),          # Asymp var range & step
++                            sumsqcnt=c(1000,9000,2000),
++                            eq=c(50,450,100)),
++               qnames=c(cnt1="Count of 1s",             # Names for display
++                        sumsqcnt="Sum squared counts",
++                        eq="Equal neighbors"))
+methods: UNAM ZDNAM ST UDST FSS ZFSS 
+> 
+> dev.off()
+null device 
+          1 
+> 
