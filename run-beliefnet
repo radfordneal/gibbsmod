@@ -9,7 +9,7 @@ do
   time $R --vanilla --args $i <beliefnet-runs-a.r >&runs/beliefnet-output-a$i &
   time $R --vanilla --args $i <beliefnet-runs-b.r >&runs/beliefnet-output-b$i & 
   time $R --vanilla --args $i <beliefnet-runs-c.r >&runs/beliefnet-output-c$i &
-# wait   # comment out if you have plenty of cores and RAM
+  wait   # comment out if you have plenty of cores and RAM
 done
 wait
 

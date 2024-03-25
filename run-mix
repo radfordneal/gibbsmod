@@ -9,7 +9,7 @@ do
   time $R --vanilla --args $i <mix-runs-a.r >&runs/mix-output-a$i &
   time $R --vanilla --args $i <mix-runs-b.r >&runs/mix-output-b$i & 
   time $R --vanilla --args $i <mix-runs-c.r >&runs/mix-output-c$i &
-# wait   # comment out if you have plenty of cores and RAM
+  wait   # comment out if you have plenty of cores and RAM
 done
 wait
 

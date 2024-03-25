@@ -6,7 +6,7 @@
 
 # RUN PARAMETERS.
 
-K <- 200000     # Number of iterations to simulate for each run (each
+K <- 2000       # Number of iterations to simulate for each run (each
                 # consisting of n updates)
 
 # DO RUNS.

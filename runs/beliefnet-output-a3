@@ -319,452 +319,452 @@ $p2
 Shuffle order: 9 4 7 1 2 5 3 10 6 8 
 
 ST, Random:
-self transition frequency: 0.5556625 
-average self transition probability: 0.5556706 
-minimum self transition probability: 0.5556832 
-fraction of time max pr >= 1/2: 0.8901165 
+self transition frequency: 0.5576 
+average self transition probability: 0.5573529 
+minimum self transition probability: 0.5566745 
+fraction of time max pr >= 1/2: 0.89085 
 
-mar1: mean 0.2105828  variance 0.1662377 
+mar1: mean 0.20322  variance 0.1619233 
 
-mar2: mean 0.073312  variance 0.06793736 
+mar2: mean 0.07502  variance 0.06939269 
 
-and02: mean 0.0491483  variance 0.04673275 
-    user   system  elapsed 
-1632.008    0.076 1632.107 
- [1] 1 3 1 3 2 4 2 4 3 4
+and02: mean 0.05623  variance 0.05306872 
+   user  system elapsed 
+ 12.694   0.000  12.713 
+ [1] 3 3 1 1 4 4 3 1 2 1
 
 ST, Sequential:
-self transition frequency: 0.5557013 
-average self transition probability: 0.5556551 
-minimum self transition probability: 0.555694 
-fraction of time max pr >= 1/2: 0.890189 
+self transition frequency: 0.55926 
+average self transition probability: 0.5581052 
+minimum self transition probability: 0.5573926 
+fraction of time max pr >= 1/2: 0.88878 
 
-mar1: mean 0.2111037  variance 0.1665389 
+mar1: mean 0.2066  variance 0.1639181 
 
-mar2: mean 0.073109  variance 0.06776408 
+mar2: mean 0.0762  variance 0.07039426 
 
-and02: mean 0.0488668  variance 0.04647884 
-    user   system  elapsed 
-1635.039    0.080 1635.131 
- [1] 3 1 2 1 1 2 1 1 5 1
+and02: mean 0.0524  variance 0.04965474 
+   user  system elapsed 
+ 11.927   0.000  11.931 
+ [1] 3 3 3 2 3 1 2 3 5 4
 
 ST, Shuffled Sequential:
-self transition frequency: 0.5555452 
-average self transition probability: 0.5556507 
-minimum self transition probability: 0.5556293 
-fraction of time max pr >= 1/2: 0.8901372 
+self transition frequency: 0.55179 
+average self transition probability: 0.5527951 
+minimum self transition probability: 0.5535006 
+fraction of time max pr >= 1/2: 0.88889 
 
-mar1: mean 0.211135  variance 0.166557 
+mar1: mean 0.2113  variance 0.166654 
 
-mar2: mean 0.073491  variance 0.06809008 
+mar2: mean 0.0697  variance 0.06484256 
 
-and02: mean 0.0493645  variance 0.04692765 
-    user   system  elapsed 
-1642.994    0.092 1643.104 
- [1] 3 3 3 3 2 1 2 2 2 4
+and02: mean 0.04727  variance 0.045036 
+   user  system elapsed 
+ 11.836   0.007  11.870 
+ [1] 1 1 1 4 2 2 4 2 1 1
 
 ST, Random order:
-self transition frequency: 0.5556385 
-average self transition probability: 0.555704 
-minimum self transition probability: 0.5557593 
-fraction of time max pr >= 1/2: 0.890135 
+self transition frequency: 0.55395 
+average self transition probability: 0.5545193 
+minimum self transition probability: 0.5552805 
+fraction of time max pr >= 1/2: 0.88977 
 
-mar1: mean 0.2114062  variance 0.1667136 
+mar1: mean 0.2111  variance 0.1665385 
 
-mar2: mean 0.073293  variance 0.06792114 
+mar2: mean 0.07174  variance 0.06659404 
 
-and02: mean 0.0491893  variance 0.04676972 
-    user   system  elapsed 
-1653.729    0.076 1653.825 
- [1] 3 3 3 1 4 1 1 1 5 1
+and02: mean 0.04757  variance 0.04530755 
+   user  system elapsed 
+ 11.986   0.003  11.997 
+ [1] 2 3 2 4 1 4 3 4 4 4
 
 ST, Random order x4:
-self transition frequency: 0.5551745 
-average self transition probability: 0.5554262 
-minimum self transition probability: 0.555515 
-fraction of time max pr >= 1/2: 0.8901835 
+self transition frequency: 0.55171 
+average self transition probability: 0.5528194 
+minimum self transition probability: 0.5532995 
+fraction of time max pr >= 1/2: 0.88995 
 
-mar1: mean 0.2122797  variance 0.167217 
+mar1: mean 0.21803  variance 0.1704946 
 
-mar2: mean 0.0735164  variance 0.06811175 
+mar2: mean 0.07455  variance 0.06899299 
 
-and02: mean 0.0493249  variance 0.04689196 
-    user   system  elapsed 
-1633.337    0.052 1633.412 
- [1] 1 1 2 1 1 2 1 1 5 1
+and02: mean 0.0484  variance 0.0460579 
+   user  system elapsed 
+ 11.859   0.000  11.859 
+ [1] 3 2 2 3 3 3 2 4 5 4
 
 DST, Random:
-self transition frequency: 0.5560356 
-average self transition probability: 0.5559808 
-minimum self transition probability: 0.5559873 
-fraction of time max pr >= 1/2: 0.890241 
+self transition frequency: 0.55484 
+average self transition probability: 0.5541993 
+minimum self transition probability: 0.5542011 
+fraction of time max pr >= 1/2: 0.88736 
 
-mar1: mean 0.2102766  variance 0.1660604 
+mar1: mean 0.20666  variance 0.1639533 
 
-mar2: mean 0.0736614  variance 0.0682354 
+mar2: mean 0.06389  variance 0.05980867 
 
-and02: mean 0.0496244  variance 0.04716182 
-    user   system  elapsed 
-1692.757    0.104 1692.883 
- [1] 3 3 1 4 1 1 2 1 5 3
+and02: mean 0.04438  variance 0.04241084 
+   user  system elapsed 
+ 12.130   0.004  12.135 
+ [1] 3 1 1 2 1 2 4 3 2 1
 
 DST, Sequential:
-self transition frequency: 0.555858 
-average self transition probability: 0.5559103 
-minimum self transition probability: 0.5558869 
-fraction of time max pr >= 1/2: 0.890135 
+self transition frequency: 0.55431 
+average self transition probability: 0.5550926 
+minimum self transition probability: 0.5560176 
+fraction of time max pr >= 1/2: 0.88948 
 
-mar1: mean 0.21129  variance 0.1666466 
+mar1: mean 0.20597  variance 0.163548 
 
-mar2: mean 0.073809  variance 0.06836124 
+mar2: mean 0.0762  variance 0.07039426 
 
-and02: mean 0.049603  variance 0.04714255 
-    user   system  elapsed 
-1666.508    0.100 1666.629 
- [1] 3 3 1 4 1 4 2 1 5 3
+and02: mean 0.0501  variance 0.04759047 
+   user  system elapsed 
+ 11.991   0.004  12.004 
+ [1] 3 1 2 1 3 2 4 1 5 1
 
 DST, Shuffled Sequential:
-self transition frequency: 0.5556745 
-average self transition probability: 0.5557308 
-minimum self transition probability: 0.5557312 
-fraction of time max pr >= 1/2: 0.8901796 
+self transition frequency: 0.55532 
+average self transition probability: 0.5565643 
+minimum self transition probability: 0.55587 
+fraction of time max pr >= 1/2: 0.89116 
 
-mar1: mean 0.210922  variance 0.1664339 
+mar1: mean 0.2066  variance 0.1639181 
 
-mar2: mean 0.073505  variance 0.06810202 
+mar2: mean 0.0748  variance 0.06920565 
 
-and02: mean 0.0495704  variance 0.04711318 
-    user   system  elapsed 
-1691.030    0.092 1691.144 
- [1] 1 3 2 4 4 2 2 1 5 5
+and02: mean 0.05105  variance 0.04844438 
+   user  system elapsed 
+ 11.366   0.000  11.517 
+ [1] 1 3 2 4 4 2 1 1 5 1
 
 DST, Random order:
-self transition frequency: 0.5557663 
-average self transition probability: 0.5558172 
-minimum self transition probability: 0.555902 
-fraction of time max pr >= 1/2: 0.8902804 
+self transition frequency: 0.55652 
+average self transition probability: 0.5565148 
+minimum self transition probability: 0.5563186 
+fraction of time max pr >= 1/2: 0.89096 
 
-mar1: mean 0.2105519  variance 0.1662198 
+mar1: mean 0.20646  variance 0.1638359 
 
-mar2: mean 0.0737934  variance 0.06834794 
+mar2: mean 0.07559  variance 0.06987685 
 
-and02: mean 0.0496027  variance 0.04714228 
-    user   system  elapsed 
-1682.035    0.080 1682.138 
- [1] 3 1 1 1 1 2 1 3 4 2
+and02: mean 0.05206  variance 0.04935025 
+   user  system elapsed 
+ 11.208   0.008  11.519 
+ [1] 3 1 2 1 1 2 4 2 4 3
 
 DST, Random order x4:
-self transition frequency: 0.5558122 
-average self transition probability: 0.5558375 
-minimum self transition probability: 0.5557806 
-fraction of time max pr >= 1/2: 0.8902392 
+self transition frequency: 0.55147 
+average self transition probability: 0.5534368 
+minimum self transition probability: 0.5541928 
+fraction of time max pr >= 1/2: 0.88868 
 
-mar1: mean 0.2108468  variance 0.1663904 
+mar1: mean 0.21619  variance 0.1694536 
 
-mar2: mean 0.0732546  variance 0.06788837 
+mar2: mean 0.07103  variance 0.0659854 
 
-and02: mean 0.0493244  variance 0.04689151 
-    user   system  elapsed 
-1696.703    0.088 1696.815 
- [1] 3 3 1 4 3 1 2 1 5 3
+and02: mean 0.04857  variance 0.04621142 
+   user  system elapsed 
+ 11.279   0.016  11.598 
+ [1] 2 1 1 4 4 2 4 1 5 1
 
 UST, Random:
-self transition frequency: 0.5559091 
-average self transition probability: 0.5557239 
-minimum self transition probability: 0.5556307 
-fraction of time max pr >= 1/2: 0.8900328 
+self transition frequency: 0.558 
+average self transition probability: 0.5574821 
+minimum self transition probability: 0.5569137 
+fraction of time max pr >= 1/2: 0.89097 
 
-mar1: mean 0.2099284  variance 0.1658585 
+mar1: mean 0.20457  variance 0.1627227 
 
-mar2: mean 0.0743328  variance 0.06880744 
+mar2: mean 0.0767  variance 0.07081782 
 
-and02: mean 0.0500566  variance 0.04755094 
-    user   system  elapsed 
-1655.743    0.092 1655.858 
- [1] 1 1 3 4 2 1 1 2 1 4
+and02: mean 0.05477  variance 0.05177076 
+   user  system elapsed 
+ 11.092   0.008  11.392 
+ [1] 1 3 2 3 1 4 3 2 4 4
 
 UST, Sequential:
-self transition frequency: 0.5556444 
-average self transition probability: 0.5556856 
-minimum self transition probability: 0.5557302 
-fraction of time max pr >= 1/2: 0.8902229 
+self transition frequency: 0.55307 
+average self transition probability: 0.5537373 
+minimum self transition probability: 0.5537631 
+fraction of time max pr >= 1/2: 0.8911 
 
-mar1: mean 0.2111557  variance 0.166569 
+mar1: mean 0.2098  variance 0.1657856 
 
-mar2: mean 0.073688  variance 0.06825809 
+mar2: mean 0.0676  variance 0.06303087 
 
-and02: mean 0.0496666  variance 0.04719983 
-    user   system  elapsed 
-1663.346    0.076 1663.442 
- [1] 1 1 3 1 1 2 1 2 2 3
+and02: mean 0.04604  variance 0.04392076 
+   user  system elapsed 
+ 11.149   0.000  11.444 
+ [1] 1 3 2 4 4 3 1 1 5 1
 
 UST, Shuffled Sequential:
-self transition frequency: 0.5557288 
-average self transition probability: 0.5556415 
-minimum self transition probability: 0.5556157 
-fraction of time max pr >= 1/2: 0.8900142 
+self transition frequency: 0.55886 
+average self transition probability: 0.5580966 
+minimum self transition probability: 0.5575289 
+fraction of time max pr >= 1/2: 0.88972 
 
-mar1: mean 0.210858  variance 0.1663969 
+mar1: mean 0.21729  variance 0.1700768 
 
-mar2: mean 0.074302  variance 0.06878122 
+mar2: mean 0.0744  variance 0.06886533 
 
-and02: mean 0.0500838  variance 0.04757542 
-    user   system  elapsed 
-1655.274    0.080 1655.373 
- [1] 1 3 3 3 2 4 2 4 1 4
+and02: mean 0.05131  variance 0.04867777 
+   user  system elapsed 
+ 11.043   0.020  11.356 
+ [1] 3 3 3 1 1 1 3 2 2 3
 
 UST, Random order:
-self transition frequency: 0.5557233 
-average self transition probability: 0.5557142 
-minimum self transition probability: 0.5556965 
-fraction of time max pr >= 1/2: 0.8902897 
+self transition frequency: 0.55605 
+average self transition probability: 0.5567712 
+minimum self transition probability: 0.5570317 
+fraction of time max pr >= 1/2: 0.88975 
 
-mar1: mean 0.2106973  variance 0.166304 
+mar1: mean 0.21934  variance 0.1712317 
 
-mar2: mean 0.0731884  variance 0.06783186 
+mar2: mean 0.07272  variance 0.06743248 
 
-and02: mean 0.0490398  variance 0.0466349 
-    user   system  elapsed 
-1681.684    0.056 1681.762 
- [1] 1 1 3 3 2 4 1 4 4 4
+and02: mean 0.04739  variance 0.04514464 
+   user  system elapsed 
+ 11.331   0.004  11.487 
+ [1] 3 1 1 1 2 2 4 3 2 1
 
 UST, Random order x4:
-self transition frequency: 0.5559266 
-average self transition probability: 0.5558389 
-minimum self transition probability: 0.5557273 
-fraction of time max pr >= 1/2: 0.8900406 
+self transition frequency: 0.55441 
+average self transition probability: 0.5547843 
+minimum self transition probability: 0.5546024 
+fraction of time max pr >= 1/2: 0.88937 
 
-mar1: mean 0.2107088  variance 0.1663106 
+mar1: mean 0.21106  variance 0.1665153 
 
-mar2: mean 0.0733989  variance 0.06801151 
+mar2: mean 0.06493  variance 0.0607147 
 
-and02: mean 0.0495471  variance 0.04709219 
-    user   system  elapsed 
-1662.060    0.072 1662.147 
- [1] 3 1 1 2 2 2 4 1 2 1
+and02: mean 0.04442  variance 0.04244729 
+   user  system elapsed 
+ 11.330   0.004  11.335 
+ [1] 1 1 2 1 1 2 1 4 4 1
 
 UDST, Random:
-self transition frequency: 0.5559994 
-average self transition probability: 0.5562047 
-minimum self transition probability: 0.5562665 
-fraction of time max pr >= 1/2: 0.8903568 
+self transition frequency: 0.55758 
+average self transition probability: 0.5575992 
+minimum self transition probability: 0.5580992 
+fraction of time max pr >= 1/2: 0.89045 
 
-mar1: mean 0.2125175  variance 0.1673538 
+mar1: mean 0.22249  variance 0.1729899 
 
-mar2: mean 0.0727542  variance 0.06746103 
+mar2: mean 0.0768  variance 0.07090247 
 
-and02: mean 0.0488467  variance 0.0464607 
-    user   system  elapsed 
-1836.487    0.100 1836.615 
- [1] 3 3 2 4 1 1 2 3 5 3
+and02: mean 0.05315  variance 0.05032558 
+   user  system elapsed 
+ 12.369   0.003  12.629 
+ [1] 3 3 2 3 3 3 2 1 4 3
 
 UDST, Sequential:
-self transition frequency: 0.5557899 
-average self transition probability: 0.5556912 
-minimum self transition probability: 0.5556702 
-fraction of time max pr >= 1/2: 0.8901194 
+self transition frequency: 0.55345 
+average self transition probability: 0.5536007 
+minimum self transition probability: 0.5544963 
+fraction of time max pr >= 1/2: 0.89001 
 
-mar1: mean 0.211209  variance 0.1665998 
+mar1: mean 0.21247  variance 0.1673282 
 
-mar2: mean 0.073477  variance 0.06807814 
+mar2: mean 0.0712  variance 0.06613122 
 
-and02: mean 0.0494986  variance 0.04704849 
-    user   system  elapsed 
-1808.788    0.068 1808.899 
- [1] 3 3 2 3 3 2 3 3 2 4
+and02: mean 0.0468  variance 0.04461021 
+   user  system elapsed 
+ 12.197   0.008  12.539 
+ [1] 1 1 3 1 1 4 1 2 4 1
 
 UDST, Shuffled Sequential:
-self transition frequency: 0.5552893 
-average self transition probability: 0.5554432 
-minimum self transition probability: 0.5555408 
-fraction of time max pr >= 1/2: 0.890049 
+self transition frequency: 0.55174 
+average self transition probability: 0.5533587 
+minimum self transition probability: 0.5546309 
+fraction of time max pr >= 1/2: 0.8908 
 
-mar1: mean 0.210824  variance 0.1663773 
+mar1: mean 0.2114  variance 0.1667117 
 
-mar2: mean 0.074199  variance 0.06869352 
+mar2: mean 0.0691  variance 0.06432583 
 
-and02: mean 0.0499036  variance 0.04741324 
-    user   system  elapsed 
-1834.344    0.100 1834.501 
- [1] 1 2 1 4 2 4 2 4 1 4
+and02: mean 0.04637  variance 0.04422027 
+   user  system elapsed 
+ 12.445   0.004  12.559 
+ [1] 1 3 3 3 2 1 1 3 2 4
 
 UDST, Random order:
-self transition frequency: 0.5551021 
-average self transition probability: 0.5553912 
-minimum self transition probability: 0.5555127 
-fraction of time max pr >= 1/2: 0.8900638 
+self transition frequency: 0.55394 
+average self transition probability: 0.5546827 
+minimum self transition probability: 0.5550735 
+fraction of time max pr >= 1/2: 0.89085 
 
-mar1: mean 0.2113094  variance 0.1666578 
+mar1: mean 0.21442  variance 0.1684457 
 
-mar2: mean 0.0736823  variance 0.06825323 
+mar2: mean 0.08183  variance 0.0751346 
 
-and02: mean 0.0494513  variance 0.04700587 
-    user   system  elapsed 
-1826.940    0.084 1827.080 
- [1] 3 3 2 4 1 4 2 1 4 1
+and02: mean 0.05069  variance 0.04812101 
+   user  system elapsed 
+ 12.496   0.000  12.495 
+ [1] 3 1 2 1 1 2 2 3 2 3
 
 UDST, Random order x4:
-self transition frequency: 0.555732 
-average self transition probability: 0.5557352 
-minimum self transition probability: 0.5557322 
-fraction of time max pr >= 1/2: 0.8901008 
+self transition frequency: 0.55477 
+average self transition probability: 0.5542374 
+minimum self transition probability: 0.5534683 
+fraction of time max pr >= 1/2: 0.88811 
 
-mar1: mean 0.2110902  variance 0.1665311 
+mar1: mean 0.20621  variance 0.1636891 
 
-mar2: mean 0.0743372  variance 0.06881119 
+mar2: mean 0.067  variance 0.06251163 
 
-and02: mean 0.0500958  variance 0.04758622 
-    user   system  elapsed 
-1841.142    0.100 1841.298 
- [1] 1 3 1 4 2 1 2 4 3 4
+and02: mean 0.04567  variance 0.04358469 
+   user  system elapsed 
+ 12.568   0.000  12.567 
+ [1] 1 3 3 2 3 2 1 1 5 1
 
 HST, Random:
-self transition frequency: 0.5555608 
-average self transition probability: 0.555604 
-minimum self transition probability: 0.555642 
-fraction of time max pr >= 1/2: 0.8902807 
+self transition frequency: 0.55953 
+average self transition probability: 0.5574772 
+minimum self transition probability: 0.5566307 
+fraction of time max pr >= 1/2: 0.89143 
 
-mar1: mean 0.2100183  variance 0.1659106 
+mar1: mean 0.22202  variance 0.1727288 
 
-mar2: mean 0.0738836  variance 0.06842482 
+mar2: mean 0.07478  variance 0.06918864 
 
-and02: mean 0.0495503  variance 0.04709507 
-    user   system  elapsed 
-1632.177    0.072 1632.303 
- [1] 3 1 3 1 2 4 4 2 4 1
+and02: mean 0.04646  variance 0.04430191 
+   user  system elapsed 
+ 11.288   0.000  11.289 
+ [1] 1 3 2 3 1 1 1 1 5 3
 
 HST, Sequential:
-self transition frequency: 0.5557789 
-average self transition probability: 0.5557587 
-minimum self transition probability: 0.5557146 
-fraction of time max pr >= 1/2: 0.8902195 
+self transition frequency: 0.55263 
+average self transition probability: 0.5535217 
+minimum self transition probability: 0.5542154 
+fraction of time max pr >= 1/2: 0.89006 
 
-mar1: mean 0.211337  variance 0.1666737 
+mar1: mean 0.21267  variance 0.1674431 
 
-mar2: mean 0.073288  variance 0.06791688 
+mar2: mean 0.0694  variance 0.06458429 
 
-and02: mean 0.0493174  variance 0.0468852 
-    user   system  elapsed 
-1638.648    0.092 1638.780 
- [1] 1 3 3 3 3 4 1 2 4 4
+and02: mean 0.0479  variance 0.04560605 
+   user  system elapsed 
+ 11.384   0.000  11.384 
+ [1] 3 1 1 1 4 1 4 1 5 3
 
 HST, Shuffled Sequential:
-self transition frequency: 0.5555511 
-average self transition probability: 0.5556095 
-minimum self transition probability: 0.5556209 
-fraction of time max pr >= 1/2: 0.8901829 
+self transition frequency: 0.55658 
+average self transition probability: 0.556687 
+minimum self transition probability: 0.5571134 
+fraction of time max pr >= 1/2: 0.89048 
 
-mar1: mean 0.2106919  variance 0.1663008 
+mar1: mean 0.21599  variance 0.16934 
 
-mar2: mean 0.07364  variance 0.06821716 
+mar2: mean 0.0771  variance 0.0711563 
 
-and02: mean 0.0497031  variance 0.04723271 
-    user   system  elapsed 
-1631.442    0.076 1631.555 
- [1] 1 1 2 1 1 2 1 3 2 3
+and02: mean 0.05246  variance 0.04970845 
+   user  system elapsed 
+ 11.574   0.000  11.574 
+ [1] 3 1 2 1 1 4 4 2 4 3
 
 HST, Random order:
-self transition frequency: 0.5558586 
-average self transition probability: 0.5559003 
-minimum self transition probability: 0.5558689 
-fraction of time max pr >= 1/2: 0.8900022 
+self transition frequency: 0.55837 
+average self transition probability: 0.5570195 
+minimum self transition probability: 0.55664 
+fraction of time max pr >= 1/2: 0.88971 
 
-mar1: mean 0.2110188  variance 0.1664899 
+mar1: mean 0.21514  variance 0.1688565 
 
-mar2: mean 0.074122  variance 0.06862794 
+mar2: mean 0.07308  variance 0.06773999 
 
-and02: mean 0.0500571  variance 0.04755139 
-    user   system  elapsed 
-1657.268    0.084 1657.388 
- [1] 1 1 2 4 4 2 1 1 5 1
+and02: mean 0.04623  variance 0.04409323 
+   user  system elapsed 
+ 11.422   0.000  11.423 
+ [1] 3 1 1 1 1 1 4 1 2 3
 
 HST, Random order x4:
-self transition frequency: 0.555801 
-average self transition probability: 0.5557418 
-minimum self transition probability: 0.5557396 
-fraction of time max pr >= 1/2: 0.8902072 
+self transition frequency: 0.55602 
+average self transition probability: 0.5560371 
+minimum self transition probability: 0.5553112 
+fraction of time max pr >= 1/2: 0.88978 
 
-mar1: mean 0.2108598  variance 0.166398 
+mar1: mean 0.21338  variance 0.1678507 
 
-mar2: mean 0.073661  variance 0.06823506 
+mar2: mean 0.06988  variance 0.06499744 
 
-and02: mean 0.0496496  variance 0.04718452 
-    user   system  elapsed 
-1636.516    0.088 1636.639 
- [1] 1 1 1 1 2 2 1 3 2 2
+and02: mean 0.04797  variance 0.04566934 
+   user  system elapsed 
+ 11.331   0.000  11.332 
+ [1] 3 1 1 2 2 3 3 3 2 1
 
 OHST, Random:
-self transition frequency: 0.5557954 
-average self transition probability: 0.5557867 
-minimum self transition probability: 0.5557776 
-fraction of time max pr >= 1/2: 0.8900852 
+self transition frequency: 0.56121 
+average self transition probability: 0.5595152 
+minimum self transition probability: 0.5593302 
+fraction of time max pr >= 1/2: 0.89129 
 
-mar1: mean 0.2099307  variance 0.1658598 
+mar1: mean 0.20474  variance 0.1628232 
 
-mar2: mean 0.0732984  variance 0.06792575 
+mar2: mean 0.08211  variance 0.0753687 
 
-and02: mean 0.0495717  variance 0.04711435 
-    user   system  elapsed 
-1722.807    0.060 1722.904 
- [1] 3 2 1 4 2 4 3 2 4 1
+and02: mean 0.0623  variance 0.05841929 
+   user  system elapsed 
+ 11.703   0.000  11.703 
+ [1] 1 3 2 2 1 1 1 1 5 3
 
 OHST, Sequential:
-self transition frequency: 0.5560327 
-average self transition probability: 0.5559691 
-minimum self transition probability: 0.5559016 
-fraction of time max pr >= 1/2: 0.8901909 
+self transition frequency: 0.55495 
+average self transition probability: 0.5562597 
+minimum self transition probability: 0.556768 
+fraction of time max pr >= 1/2: 0.89085 
 
-mar1: mean 0.210801  variance 0.166364 
+mar1: mean 0.2124  variance 0.1672879 
 
-mar2: mean 0.073777  variance 0.06833396 
+mar2: mean 0.08282  variance 0.07596161 
 
-and02: mean 0.0495984  variance 0.0471384 
-    user   system  elapsed 
-1694.002    0.084 1694.125 
- [1] 3 3 2 4 3 3 3 1 5 1
+and02: mean 0.05554  variance 0.05245583 
+   user  system elapsed 
+ 11.613   0.000  11.612 
+ [1] 2 1 1 4 4 1 4 3 1 3
 
 OHST, Shuffled Sequential:
-self transition frequency: 0.5558554 
-average self transition probability: 0.555725 
-minimum self transition probability: 0.5556882 
-fraction of time max pr >= 1/2: 0.8901574 
+self transition frequency: 0.5551 
+average self transition probability: 0.5553259 
+minimum self transition probability: 0.5557433 
+fraction of time max pr >= 1/2: 0.89058 
 
-mar1: mean 0.210537  variance 0.1662112 
+mar1: mean 0.2114  variance 0.1667117 
 
-mar2: mean 0.073465  variance 0.0680679 
+mar2: mean 0.0733  variance 0.06792779 
 
-and02: mean 0.0494608  variance 0.04701443 
-    user   system  elapsed 
-1717.650    0.096 1717.784 
- [1] 1 1 2 4 4 3 1 1 5 1
+and02: mean 0.05033  variance 0.04779737 
+   user  system elapsed 
+ 11.723   0.000  11.723 
+ [1] 3 1 1 4 2 2 3 2 4 1
 
 OHST, Random order:
-self transition frequency: 0.5554605 
-average self transition probability: 0.5554575 
-minimum self transition probability: 0.5555208 
-fraction of time max pr >= 1/2: 0.8900537 
+self transition frequency: 0.55341 
+average self transition probability: 0.5542219 
+minimum self transition probability: 0.55473 
+fraction of time max pr >= 1/2: 0.89022 
 
-mar1: mean 0.2093621  variance 0.1655296 
+mar1: mean 0.21613  variance 0.1694195 
 
-mar2: mean 0.074329  variance 0.06880421 
+mar2: mean 0.0793  variance 0.07301224 
 
-and02: mean 0.0498128  variance 0.04733149 
-    user   system  elapsed 
-1712.861    0.072 1712.974 
- [1] 1 3 2 3 1 3 1 1 5 4
+and02: mean 0.05459  variance 0.05161045 
+   user  system elapsed 
+ 11.547   0.000  11.550 
+ [1] 3 3 3 2 3 1 2 1 2 3
 
 OHST, Random order x4:
-self transition frequency: 0.5557241 
-average self transition probability: 0.5557836 
-minimum self transition probability: 0.5557646 
-fraction of time max pr >= 1/2: 0.8902911 
+self transition frequency: 0.55544 
+average self transition probability: 0.5564659 
+minimum self transition probability: 0.5568762 
+fraction of time max pr >= 1/2: 0.89068 
 
-mar1: mean 0.2118225  variance 0.1669537 
+mar1: mean 0.22113  variance 0.1722332 
 
-mar2: mean 0.0735572  variance 0.06814655 
+mar2: mean 0.07355  variance 0.06814108 
 
-and02: mean 0.049603  variance 0.04714255 
-    user   system  elapsed 
-1632.470    0.064 1632.571 
- [1] 1 1 2 4 4 2 1 1 5 1
+and02: mean 0.05087  variance 0.04828273 
+   user  system elapsed 
+ 11.380   0.000  11.408 
+ [1] 1 3 1 4 2 4 2 2 1 4
 > 

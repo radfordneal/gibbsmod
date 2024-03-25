@@ -9,7 +9,7 @@ do
   time $R --vanilla --args $i <potts-runs-5x5-a.r >&runs/potts-output-5x5-a$i &
   time $R --vanilla --args $i <potts-runs-5x5-b.r >&runs/potts-output-5x5-b$i & 
   time $R --vanilla --args $i <potts-runs-5x5-c.r >&runs/potts-output-5x5-c$i &
-# wait   # comment out if you have plenty of cores and RAM
+  wait   # comment out if you have plenty of cores and RAM
 done
 wait
 
