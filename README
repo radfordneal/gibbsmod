@@ -2,3 +2,20 @@ Programs (in R) for the results in the paper:
 
   Modifying Gibbs Sampling to Avoid Self Transitions
   Radford M. Neal, 2024
+
+The algorithms described in the paper are implemented (in R) in the
+file methods.r.  Various checks for validity of these methods are
+done in check-all.r.
+
+The experimental runs reported in the paper can be reproduced with the
+run-potts-8x8, run-potts-5x5, run-mix, run-beliefnet, and run-other
+shell scripts.  These runs take a long time - several days, in total.
+The outputs of these runs are in the sub-directory runs, except for
+the saved R workspaces, which would be quite large.
+
+Checking out the small-runs branch of this repository will switch to
+smaller runs (1/100 the length of the full runs), which take only
+about a half hour or less for each shell script.  Of course, the
+asymptotic variance estimates are then much noisier.  The results of
+these smaller runs are in the runs sub-directory when the small-runs
+branch is checked out.
