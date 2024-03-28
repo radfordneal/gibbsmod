@@ -3,7 +3,7 @@ Programs (in R) for the results in the paper:
   Modifying Gibbs Sampling to Avoid Self Transitions
   Radford M. Neal, 2024
 
-The paper is in gibbs-self.pdf here.
+The paper is in gibbs-self.pdf here, and at https://arxiv.org/abs/2403.18054
 
 The algorithms described in the paper are implemented (in R) in the
 file methods.r.  Various checks for validity of these methods are
